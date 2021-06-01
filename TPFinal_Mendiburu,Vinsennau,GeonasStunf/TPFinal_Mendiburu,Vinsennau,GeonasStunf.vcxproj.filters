@@ -14,4 +14,86 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Audio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioVisual.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BASIC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FREE.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Juegos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Paises.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Plataforma.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PREMIUM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RegistroAyV.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RegistroJuegos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RegUsuarios.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Servicios.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Usuarios.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Librerias.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Audio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioVisual.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BASIC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FREE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Juegos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Plataforma.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PREMIUM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RegistroAyV.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RegistroJuegos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RegUsuarios.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Servicios.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Usuarios.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>
