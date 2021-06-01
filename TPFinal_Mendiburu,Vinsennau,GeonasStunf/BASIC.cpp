@@ -8,25 +8,22 @@
 #include "BASIC.h"
 
 
-BASIC::BASIC(){
-
+BASIC::BASIC(int Edad, Paises Pais, string Password, const string Name):
+	Usuarios(Edad, Pais, Password, Name)
+{
 }
-
-
 
 BASIC::~BASIC(){
 
 }
 
 
-
-
-
 void BASIC::Registrarse(){
 
 }
 
-
-void BASIC::SeleccionarServicio(){
+void BASIC::SeleccionarServicio(cListaT<Servicios>* servicio)
+{
+}
 
 }

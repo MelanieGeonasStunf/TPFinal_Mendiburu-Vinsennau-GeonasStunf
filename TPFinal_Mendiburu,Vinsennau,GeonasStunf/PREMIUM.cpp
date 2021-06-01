@@ -8,11 +8,11 @@
 #include "PREMIUM.h"
 
 
-PREMIUM::PREMIUM(){
 
+PREMIUM::PREMIUM(int Edad, Paises Pais, string Password, const string Name):
+Usuarios(Edad, Pais, Password, Name)
+{
 }
-
-
 
 PREMIUM::~PREMIUM(){
 
@@ -36,7 +36,6 @@ void PREMIUM::Registrarse(){
 
 }
 
-
-void PREMIUM::SeleccionarServicio(Servicios* servicio){
-
+void PREMIUM::SeleccionarServicio(cListaT<Servicios>* servicio)
+{
 }

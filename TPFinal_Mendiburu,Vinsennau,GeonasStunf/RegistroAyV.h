@@ -10,21 +10,21 @@
 #include "AudioVisual.h"
 #include "Audio.h"
 #include "Librerias.h"
+#include"cListaT.h"
 
 class RegistroAyV
 {
 
-public:
-	RegistroAyV();
-	virtual ~RegistroAyV();
-	AudioVisual *m_AudioVisual;
-	Audio *m_Audio;
-
 private:
 	tm Fecha;
-	int ListadeRecientes;
+	cListaT<AudioVisual>* ListadeRecientesAyV;
+	cListaT <Audio>** ListaRecientesA;
 	int MinutodeReproduccion;
 	const string UserName;
+
+public:
+	RegistroAyV(const string Name);
+	virtual ~RegistroAyV();
 
 };
 

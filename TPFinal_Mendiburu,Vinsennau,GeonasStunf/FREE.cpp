@@ -8,7 +8,9 @@
 #include "FREE.h"
 
 
-FREE::FREE(){
+FREE::FREE(int Edad, Paises Pais, string Password, const string Name):
+	Usuarios(Edad, Pais, Password, Name)
+{
 
 }
 
@@ -36,11 +38,9 @@ void FREE::Registrarse(){
 
 }
 
-
-void FREE::SeleccionarServicio(){
-
+void FREE::SeleccionarServicio(cListaT<Servicios>* servicio)
+{
 }
-
 
 void FREE::VariarLista(){
 

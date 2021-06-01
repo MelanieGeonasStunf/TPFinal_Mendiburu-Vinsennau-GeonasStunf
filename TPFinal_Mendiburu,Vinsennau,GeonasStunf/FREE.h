@@ -14,13 +14,13 @@ class FREE : public Usuarios
 {
 
 public:
-	FREE();
+	FREE(int Edad, Paises Pais, string Password, const string Name);
 	virtual ~FREE();
 
 	void Anuncios();
 	void LimiteTiempo();
 	void Registrarse();
-	void SeleccionarServicio();
+	void SeleccionarServicio(cListaT<Servicios>*servicio);
 	void VariarLista();
 
 private:

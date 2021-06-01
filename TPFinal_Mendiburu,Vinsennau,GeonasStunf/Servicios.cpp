@@ -8,7 +8,8 @@
 #include "Servicios.h"
 
 
-Servicios::Servicios(){
+Servicios::Servicios(const string clave, tm duracion, const string nombre, Paises* paises): Clave(clave), Nombre(nombre)
+{
 
 }
 
@@ -49,4 +50,8 @@ void Servicios::Reanudar(){
 
 void Servicios::VerificarPais(){
 
+}
+
+void Servicios::RegistrarenRegistro(Servicios* servicio)
+{
 }

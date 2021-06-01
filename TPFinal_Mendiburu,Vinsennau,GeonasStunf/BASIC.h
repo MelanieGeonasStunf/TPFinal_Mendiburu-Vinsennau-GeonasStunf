@@ -12,15 +12,14 @@
 
 class BASIC : public Usuarios
 {
+private:
+	int CostoBasic;
 
 public:
-	BASIC();
+	BASIC(int Edad, Paises Pais, string Password, const string Name);
 	virtual ~BASIC();
 
 	void Registrarse();
-	void SeleccionarServicio();
-
-private:
-	int CostoBasic;
+	void SeleccionarServicio(cListaT<Servicios>* servicio);
 
 };

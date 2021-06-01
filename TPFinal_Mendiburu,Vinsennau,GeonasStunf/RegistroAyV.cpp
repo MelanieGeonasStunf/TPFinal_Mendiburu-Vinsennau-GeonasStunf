@@ -8,11 +8,10 @@
 #include "RegistroAyV.h"
 
 
-RegistroAyV::RegistroAyV(){
 
+RegistroAyV::RegistroAyV(const string Name)
+{
 }
-
-
 
 RegistroAyV::~RegistroAyV(){
 

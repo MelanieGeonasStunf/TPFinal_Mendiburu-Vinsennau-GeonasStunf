@@ -8,18 +8,18 @@
 #include "Plataforma.h"
 
 
-Plataforma::Plataforma(){
-
+Plataforma::Plataforma():Nombre("Labfliz")
+{
+	/*this->CantidadUsuariosConectados=0;
+	ListaUsuariosxDia = new cListaT<Usuarios>;
+	this-> UsuariosxSemana=0;
+	m_Servicios=NULL;
+	m_Usuarios=NULL;*/
 }
-
-
 
 Plataforma::~Plataforma(){
-
+	//delete ListaUsuariosxDia;
 }
-
-
-
 
 
 void Plataforma::EstadisticasPorContenido(){
@@ -27,19 +27,19 @@ void Plataforma::EstadisticasPorContenido(){
 }
 
 
-Audio** Plataforma::MasEscuchados(tm Periodo){
+cListaT<Audio>* Plataforma::MasEscuchados(tm Periodo){
 
 	return  NULL;
 }
 
 
-Juegos** Plataforma::MasJugados(tm Periodo){
+cListaT<Juegos>* Plataforma::MasJugados(tm Periodo){
 
 	return  NULL;
 }
 
 
-AudioVisual** Plataforma::MasVistos(tm Periodo){
+cListaT<AudioVisual>* Plataforma::MasVistos(tm Periodo){
 
 	return  NULL;
 }

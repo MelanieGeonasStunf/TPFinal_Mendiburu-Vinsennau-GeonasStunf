@@ -8,11 +8,10 @@
 #include "Usuarios.h"
 
 
-Usuarios::Usuarios(){
 
+Usuarios::Usuarios(int Edad, Paises Pais, string Password, const string Name):UserName(Name)
+{
 }
-
-
 
 Usuarios::~Usuarios(){
 
@@ -41,7 +40,7 @@ void Usuarios::Registrarse(){
 
 }
 
-
-void Usuarios::SeleccionarServicio(){
-
+void Usuarios::SeleccionarServicio(cListaT<Servicios>* servicio)
+{
 }
+

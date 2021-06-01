@@ -9,19 +9,11 @@
 
 #include "Librerias.h"
 #include "Paises.h"
+#include "Servicios.h"
+#include "cListaT.h"
 
 class Usuarios
 {
-
-public:
-	Usuarios();
-	virtual ~Usuarios();
-
-	void CerrarSesion();
-	void IniciarSesion();
-	void RegistrarenRegistro();
-	virtual void Registrarse();
-	virtual void SeleccionarServicio();
 
 private:
 	int Edad;
@@ -31,5 +23,15 @@ private:
 	Paises Pais;
 	string Password;
 	const string UserName;
+	Servicios* servicio;
 
+public:
+	Usuarios(int Edad, Paises Pais,string Password, const string Name);
+	virtual ~Usuarios();
+
+	void CerrarSesion();
+	void IniciarSesion();
+	void RegistrarenRegistro();
+	virtual void Registrarse();
+	virtual void SeleccionarServicio(cListaT <Servicios> *servicio);
 };

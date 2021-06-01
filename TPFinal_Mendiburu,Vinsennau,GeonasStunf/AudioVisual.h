@@ -13,17 +13,17 @@
 class AudioVisual : public Servicios
 {
 
+private:
+	int Calidad;
+	int TipoAudioVisual;
+
 public:
-	AudioVisual();
+	AudioVisual(const string clave, tm duracion, const string nombre, Paises* paises);
 	virtual ~AudioVisual();
 
 	void FastBackward();
 	void FastForward();
 	void Record();
-	void VelocidadReproduccion();
-
-private:
-	int Calidad;
-	int TipoAudioVisual;
-
+	void VelocidadReproduccion(int velocidad);
+	void MejorarCalidad(int calidad);
 };

@@ -10,12 +10,6 @@
 
 class RegistroJuegos
 {
-
-public:
-	RegistroJuegos();
-	virtual ~RegistroJuegos();
-	Juegos *m_Juegos;
-
 private:
 	int CantidadPartidasGanadas;
 	tm Fecha;
@@ -23,5 +17,8 @@ private:
 	int Nivel;
 	const string UserName;
 
+public:
+	RegistroJuegos(const string Name);
+	virtual ~RegistroJuegos();
 };
 

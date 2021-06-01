@@ -12,18 +12,18 @@
 
 class RegUsuarios
 {
-
-public:
-	RegUsuarios();
-	virtual ~RegUsuarios();
-	Usuarios *m_Usuarios;
-
-	void BuscarTipoUsuario();
-
 private:
 	tm Fecha;
 	int TipoUsuario;
-	int UserName;
+	const string UserName;
+
+public:
+	RegUsuarios(const string Name, int TipoUsuario);
+	virtual ~RegUsuarios();
+	
+	void BuscarTipoUsuario();
+
+
 
 };
 

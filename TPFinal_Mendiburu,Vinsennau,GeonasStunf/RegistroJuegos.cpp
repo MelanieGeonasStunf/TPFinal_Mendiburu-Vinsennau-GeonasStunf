@@ -8,11 +8,11 @@
 #include "RegistroJuegos.h"
 
 
-RegistroJuegos::RegistroJuegos(){
 
+
+RegistroJuegos::RegistroJuegos(const string Name)
+{
 }
-
-
 
 RegistroJuegos::~RegistroJuegos(){
 

@@ -1,18 +1,16 @@
-///////////////////////////////////////////////////////////
-//  Audio.h
-//  Implementation of the Class Audio
-//  Created on:      01-Jun-2021 10:50:03 AM
-//  Original author: gstun
-///////////////////////////////////////////////////////////
-
 #pragma once
-
 #include "Servicios.h"
-#include "Librerias.h"
 
-enum Audio
+class Audio :
+    public Servicios
 {
-	Canciones,
-	Podcast
+public:
+    Audio(const string clave, tm duracion, const string nombre, Paises* paises);
+    virtual ~Audio();
+
+    void FastBackward();
+    void FastForward();
+    void Record();
+    void VelocidadReproduccion(int velocidad);
 };
 

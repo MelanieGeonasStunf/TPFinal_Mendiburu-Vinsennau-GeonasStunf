@@ -13,29 +13,32 @@
 #include "Juegos.h"
 #include "Audio.h"
 #include "AudioVisual.h"
+#include "cListaT.h"
 
 class Plataforma
 {
+private:
+	int CantidadUsuariosConectados;
+	cListaT <Usuarios>* ListaUsuariosxDia;
+	const string Nombre;
+	int UsuariosxSemana;
+	cListaT <Usuarios>* m_Usuarios;
 
 public:
+	cListaT <Servicios>* m_Servicios;
+
 	Plataforma();
 	virtual ~Plataforma();
-	Servicios *m_Servicios;
-	Usuarios *m_Usuarios;
 
 	void EstadisticasPorContenido();
-	Audio** MasEscuchados(tm Periodo);
-	Juegos** MasJugados(tm Periodo);
-	AudioVisual** MasVistos(tm Periodo);
+	cListaT <Audio> *MasEscuchados(tm Periodo);
+	cListaT <Juegos> *MasJugados(tm Periodo);
+	cListaT <AudioVisual> *MasVistos(tm Periodo);
 	void PromedioConectadosDia();
 	void PromedioConectadosSemana();
 	void VerResumen(tm Periodo);
 
-private:
-	int CantidadUsuariosConectados;
-	Usuarios** ListaUsuariosxDia;
-	const string Nombre;
-	int UsuariosxSemana;
 
+	
 };
 

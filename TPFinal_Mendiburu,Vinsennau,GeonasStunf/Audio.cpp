@@ -8,11 +8,14 @@
 #include "Audio.h"
 
 
-Audio::Audio(){
 
+
+
+
+Audio::Audio(const string clave, tm duracion, const string nombre, Paises* paises)
+	:Servicios(clave, duracion, nombre, paises)
+{
 }
-
-
 
 Audio::~Audio(){
 
@@ -37,6 +40,6 @@ void Audio::Record(){
 }
 
 
-void Audio::VelocidadReproduccion(){
+void Audio::VelocidadReproduccion(int velocidad){
 
 }

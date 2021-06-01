@@ -7,12 +7,10 @@
 
 #include "Juegos.h"
 
-
-Juegos::Juegos(){
-
+Juegos::Juegos(const string clave, tm duracion, const string nombre, Paises* paises)
+	:Servicios(clave, duracion, nombre, paises)
+{
 }
-
-
 
 Juegos::~Juegos(){
 

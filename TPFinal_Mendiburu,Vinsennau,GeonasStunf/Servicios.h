@@ -7,16 +7,21 @@
 
 #pragma once
 
-#include "Usuarios.h"
 #include "Librerias.h"
+#include "Paises.h"
 
 class Servicios
 {
+private:
+	const string Clave;
+	tm duracion;
+	const string Nombre;
+	Paises* paises;
+
 
 public:
-	Servicios();
+	Servicios(const string clave, tm duracion, const string nombre, Paises* paises);
 	virtual ~Servicios();
-	Usuarios *m_Usuarios;
 
 	void Apagar();
 	void ChequearEdad();
@@ -24,13 +29,6 @@ public:
 	void Pausar();
 	void Reanudar();
 	void VerificarPais();
-
-private:
-	const string Clave;
-	tm duracion;
-	const string Nombre;
-	Paises* paises;
-	int RegistrarenRegistro;
-
+	void RegistrarenRegistro(Servicios* servicio);
 };
 

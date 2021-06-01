@@ -8,11 +8,10 @@
 #include "RegUsuarios.h"
 
 
-RegUsuarios::RegUsuarios(){
 
+RegUsuarios::RegUsuarios(const string Name, int TipoUsuario)
+{
 }
-
-
 
 RegUsuarios::~RegUsuarios(){
 

@@ -8,11 +8,11 @@
 #include "AudioVisual.h"
 
 
-AudioVisual::AudioVisual(){
 
+AudioVisual::AudioVisual(const string clave, tm duracion, const string nombre, Paises* paises)
+	:Servicios( clave,  duracion, nombre,  paises)
+{
 }
-
-
 
 AudioVisual::~AudioVisual(){
 
@@ -37,6 +37,10 @@ void AudioVisual::Record(){
 }
 
 
-void AudioVisual::VelocidadReproduccion(){
+void AudioVisual::VelocidadReproduccion(int velocidad){
 
+}
+
+void AudioVisual::MejorarCalidad(int calidad)
+{
 }

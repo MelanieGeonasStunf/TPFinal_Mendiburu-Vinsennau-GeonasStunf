@@ -10,21 +10,21 @@
 #include "Usuarios.h"
 #include "Servicios.h"
 #include "Librerias.h"
+#include "cListaT.h"
 
 class PREMIUM : public Usuarios
 {
 
 public:
-	PREMIUM();
+	PREMIUM(int Edad, Paises Pais, string Password, const string Name);
 	virtual ~PREMIUM();
-	Servicios *m_Servicios;
 
 	void AumentarCalidad();
 	void DescargarAyV(Servicios* servicio);
 	void Registrarse();
-	void SeleccionarServicio(Servicios* servicio);
+	void SeleccionarServicio(cListaT <Servicios>* servicio);
 
 private:
 	int CostoPremium;
-
+	cListaT <Servicios>* ListaDescargas;
 };

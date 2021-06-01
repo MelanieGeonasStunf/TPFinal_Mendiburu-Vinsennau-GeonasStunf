@@ -12,15 +12,14 @@
 
 class Juegos : public Servicios
 {
-
-public:
-	Juegos();
-	virtual ~Juegos();
-
-	void GuardarProgreso();
-
 private:
 	int NivelFinal;
 	string NombreJuego;
+
+public:
+	Juegos(const string clave, tm duracion, const string nombre, Paises* paises);
+	virtual ~Juegos();
+
+	void GuardarProgreso();
 
 };
