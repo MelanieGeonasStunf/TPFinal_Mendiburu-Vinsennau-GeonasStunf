@@ -5,8 +5,7 @@
 //  Original author: gstun
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_AE23B68B_B092_4f8f_A892_F3C0E0DFA130__INCLUDED_)
-#define EA_AE23B68B_B092_4f8f_A892_F3C0E0DFA130__INCLUDED_
+#pragma once
 
 #include "AudioVisual.h"
 #include "Audio.h"
@@ -28,4 +27,4 @@ private:
 	const string UserName;
 
 };
-#endif // !defined(EA_AE23B68B_B092_4f8f_A892_F3C0E0DFA130__INCLUDED_)
+

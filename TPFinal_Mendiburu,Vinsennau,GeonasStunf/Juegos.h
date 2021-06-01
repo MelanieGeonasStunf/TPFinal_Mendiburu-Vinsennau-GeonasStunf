@@ -5,8 +5,7 @@
 //  Original author: gstun
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_8C869DA1_08CF_4a22_B90A_72531DA9985E__INCLUDED_)
-#define EA_8C869DA1_08CF_4a22_B90A_72531DA9985E__INCLUDED_
+#pragma once
 
 #include "Servicios.h"
 #include "Librerias.h"
@@ -25,4 +24,3 @@ private:
 	string NombreJuego;
 
 };
-#endif // !defined(EA_8C869DA1_08CF_4a22_B90A_72531DA9985E__INCLUDED_)

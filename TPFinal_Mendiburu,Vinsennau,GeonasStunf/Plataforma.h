@@ -5,12 +5,14 @@
 //  Original author: gstun
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_9B808780_E43A_492c_AE7D_6BA9FE780B0F__INCLUDED_)
-#define EA_9B808780_E43A_492c_AE7D_6BA9FE780B0F__INCLUDED_
+#pragma once
 
 #include "Servicios.h"
 #include "Usuarios.h"
 #include "Librerias.h"
+#include "Juegos.h"
+#include "Audio.h"
+#include "AudioVisual.h"
 
 class Plataforma
 {
@@ -36,4 +38,4 @@ private:
 	int UsuariosxSemana;
 
 };
-#endif // !defined(EA_9B808780_E43A_492c_AE7D_6BA9FE780B0F__INCLUDED_)
+

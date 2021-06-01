@@ -5,8 +5,8 @@
 //  Original author: gstun
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_4E377F1E_1572_49cd_9675_C3495C87CD4C__INCLUDED_)
-#define EA_4E377F1E_1572_49cd_9675_C3495C87CD4C__INCLUDED_
+#pragma once
+
 #include "Librerias.h"
 
 enum Paises
@@ -26,4 +26,3 @@ enum Paises
 	España,
 	Francia
 };
-#endif // !defined(EA_4E377F1E_1572_49cd_9675_C3495C87CD4C__INCLUDED_)

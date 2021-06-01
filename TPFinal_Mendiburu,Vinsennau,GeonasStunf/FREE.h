@@ -5,8 +5,7 @@
 //  Original author: gstun
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_66EF5C4A_48DA_415c_9A73_F1E0ED52452E__INCLUDED_)
-#define EA_66EF5C4A_48DA_415c_9A73_F1E0ED52452E__INCLUDED_
+#pragma once
 
 #include "Usuarios.h"
 #include "Librerias.h"
@@ -28,4 +27,4 @@ private:
 	static int LimiteTiempoMax;
 
 };
-#endif // !defined(EA_66EF5C4A_48DA_415c_9A73_F1E0ED52452E__INCLUDED_)
+

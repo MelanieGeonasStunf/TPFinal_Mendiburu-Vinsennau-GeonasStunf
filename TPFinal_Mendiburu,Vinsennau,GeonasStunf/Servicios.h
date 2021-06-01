@@ -5,8 +5,7 @@
 //  Original author: gstun
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_3001E55B_D89E_4d2a_8642_8FB9B9A0975C__INCLUDED_)
-#define EA_3001E55B_D89E_4d2a_8642_8FB9B9A0975C__INCLUDED_
+#pragma once
 
 #include "Usuarios.h"
 #include "Librerias.h"
@@ -34,4 +33,4 @@ private:
 	int RegistrarenRegistro;
 
 };
-#endif // !defined(EA_3001E55B_D89E_4d2a_8642_8FB9B9A0975C__INCLUDED_)
+

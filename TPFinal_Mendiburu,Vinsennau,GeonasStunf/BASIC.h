@@ -5,8 +5,7 @@
 //  Original author: gstun
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_19CA766C_DE95_4789_9F6E_055A1428EEA9__INCLUDED_)
-#define EA_19CA766C_DE95_4789_9F6E_055A1428EEA9__INCLUDED_
+#pragma once
 
 #include "Usuarios.h"
 #include "Librerias.h"
@@ -25,4 +24,3 @@ private:
 	int CostoBasic;
 
 };
-#endif // !defined(EA_19CA766C_DE95_4789_9F6E_055A1428EEA9__INCLUDED_)

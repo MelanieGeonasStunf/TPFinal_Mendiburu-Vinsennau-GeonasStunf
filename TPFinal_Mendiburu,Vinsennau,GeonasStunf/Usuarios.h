@@ -5,8 +5,8 @@
 //  Original author: gstun
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_C36BBC5C_137B_4007_80D1_CD048CCB9978__INCLUDED_)
-#define EA_C36BBC5C_137B_4007_80D1_CD048CCB9978__INCLUDED_
+#pragma once
+
 #include "Librerias.h"
 #include "Paises.h"
 
@@ -33,4 +33,3 @@ private:
 	const string UserName;
 
 };
-#endif // !defined(EA_C36BBC5C_137B_4007_80D1_CD048CCB9978__INCLUDED_)

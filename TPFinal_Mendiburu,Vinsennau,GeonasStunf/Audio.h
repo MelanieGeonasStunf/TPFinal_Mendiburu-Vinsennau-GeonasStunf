@@ -5,8 +5,7 @@
 //  Original author: gstun
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_E404E412_9A73_4320_AD97_CF1E0B7A8C90__INCLUDED_)
-#define EA_E404E412_9A73_4320_AD97_CF1E0B7A8C90__INCLUDED_
+#pragma once
 
 #include "Servicios.h"
 #include "Librerias.h"
@@ -16,4 +15,4 @@ enum Audio
 	Canciones,
 	Podcast
 };
-#endif // !defined(EA_E404E412_9A73_4320_AD97_CF1E0B7A8C90__INCLUDED_)
+

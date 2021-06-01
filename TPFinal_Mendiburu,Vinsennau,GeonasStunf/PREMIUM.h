@@ -5,8 +5,7 @@
 //  Original author: gstun
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_B5435F7E_5DB6_47db_B8D6_B63D1D13B9AB__INCLUDED_)
-#define EA_B5435F7E_5DB6_47db_B8D6_B63D1D13B9AB__INCLUDED_
+#pragma once
 
 #include "Usuarios.h"
 #include "Servicios.h"
@@ -29,4 +28,3 @@ private:
 	int CostoPremium;
 
 };
-#endif // !defined(EA_B5435F7E_5DB6_47db_B8D6_B63D1D13B9AB__INCLUDED_)

@@ -5,8 +5,7 @@
 //  Original author: gstun
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_699459EF_0D5E_4b37_9041_0E92694884C5__INCLUDED_)
-#define EA_699459EF_0D5E_4b37_9041_0E92694884C5__INCLUDED_
+#pragma once
 
 #include "Servicios.h"
 #include "Librerias.h"
@@ -25,7 +24,6 @@ public:
 
 private:
 	int Calidad;
-	int int TipoAudioVisual;
+	int TipoAudioVisual;
 
 };
-#endif // !defined(EA_699459EF_0D5E_4b37_9041_0E92694884C5__INCLUDED_)

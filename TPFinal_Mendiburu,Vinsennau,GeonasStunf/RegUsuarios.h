@@ -5,8 +5,7 @@
 //  Original author: gstun
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_64EADC80_A977_4110_A8C7_0B3D3DDEA0D8__INCLUDED_)
-#define EA_64EADC80_A977_4110_A8C7_0B3D3DDEA0D8__INCLUDED_
+#pragma once
 
 #include "Usuarios.h"
 #include "Librerias.h"
@@ -27,4 +26,4 @@ private:
 	int UserName;
 
 };
-#endif // !defined(EA_64EADC80_A977_4110_A8C7_0B3D3DDEA0D8__INCLUDED_)
+
