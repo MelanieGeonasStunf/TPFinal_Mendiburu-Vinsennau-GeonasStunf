@@ -14,15 +14,17 @@
 
 class PREMIUM : public Usuarios
 {
-
+	string tarjeta;
+	
 public:
-	PREMIUM(int Edad, Paises Pais, string Password, const string Name);
+	PREMIUM(int Edad, Paises Pais, string Password, const string Name, string tarjeta);
 	virtual ~PREMIUM();
 
 	void AumentarCalidad();
 	void DescargarAyV(Servicios* servicio);
 	void Registrarse();
 	void SeleccionarServicio(cListaT <Servicios>* servicio);
+	
 
 private:
 	int CostoPremium;

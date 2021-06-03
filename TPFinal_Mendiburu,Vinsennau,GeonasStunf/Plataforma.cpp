@@ -14,7 +14,8 @@ Plataforma::Plataforma():Nombre("Labfliz")
 	ListaUsuariosxDia = new cListaT<Usuarios>;
 	this-> UsuariosxSemana=0;
 	m_Servicios=NULL;
-	m_Usuarios=NULL;*/
+	m_Usuarios=NULL;
+	-> inicializar lista paises*/
 }
 
 Plataforma::~Plataforma(){
@@ -55,6 +56,7 @@ void Plataforma::PromedioConectadosSemana(){
 }
 
 
-void Plataforma::VerResumen(tm Periodo){
+void Plataforma::VerResumen(){
 
 }
+

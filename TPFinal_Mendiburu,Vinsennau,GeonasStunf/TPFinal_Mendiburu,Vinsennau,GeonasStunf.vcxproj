@@ -139,12 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Archivos.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="eAudio.h" />
     <ClInclude Include="AudioVisual.h" />
     <ClInclude Include="BASIC.h" />
     <ClInclude Include="cListaT.h" />
     <ClInclude Include="FREE.h" />
+    <ClInclude Include="funciones.h" />
     <ClInclude Include="Juegos.h" />
     <ClInclude Include="Librerias.h" />
     <ClInclude Include="Paises.h" />
@@ -161,6 +163,7 @@
     <ClCompile Include="AudioVisual.cpp" />
     <ClCompile Include="BASIC.cpp" />
     <ClCompile Include="FREE.cpp" />
+    <ClCompile Include="funciones.cpp" />
     <ClCompile Include="Juegos.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Plataforma.cpp" />

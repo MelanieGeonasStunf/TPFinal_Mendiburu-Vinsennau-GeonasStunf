@@ -34,4 +34,14 @@ public:
 	void RegistrarenRegistro();
 	virtual void Registrarse();
 	virtual void SeleccionarServicio(cListaT <Servicios> *servicio);
+	//AGREGADO:
+	bool VerificarContrasena();//verifica que cumpla requisitos
+	/*
+	* REQUISITOS:
+	* - +8 caracteres
+	* - Mayuscula
+	* - Numero
+	* - Simbolo
+	* - Sin espacios
+	*/
 };

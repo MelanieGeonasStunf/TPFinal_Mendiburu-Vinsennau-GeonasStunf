@@ -23,6 +23,8 @@ private:
 	const string Nombre;
 	int UsuariosxSemana;
 	cListaT <Usuarios>* m_Usuarios;
+	//AGREGADO:
+	Paises* paises;
 
 public:
 	cListaT <Servicios>* m_Servicios;
@@ -36,7 +38,7 @@ public:
 	cListaT <AudioVisual> *MasVistos(tm Periodo);
 	void PromedioConectadosDia();
 	void PromedioConectadosSemana();
-	void VerResumen(tm Periodo);
+	void VerResumen ();//da resumen de la semana
 
 
 	

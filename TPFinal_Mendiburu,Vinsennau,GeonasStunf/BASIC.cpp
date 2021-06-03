@@ -8,9 +8,10 @@
 #include "BASIC.h"
 
 
-BASIC::BASIC(int Edad, Paises Pais, string Password, const string Name):
+BASIC::BASIC(int Edad, Paises Pais, string Password, const string Name, string tarjeta):
 	Usuarios(Edad, Pais, Password, Name)
 {
+	//inicializar tarjeta
 }
 
 BASIC::~BASIC(){

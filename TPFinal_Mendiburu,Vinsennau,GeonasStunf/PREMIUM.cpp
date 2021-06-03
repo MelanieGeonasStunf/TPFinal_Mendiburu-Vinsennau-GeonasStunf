@@ -9,9 +9,10 @@
 
 
 
-PREMIUM::PREMIUM(int Edad, Paises Pais, string Password, const string Name):
+PREMIUM::PREMIUM(int Edad, Paises Pais, string Password, const string Name, string tarjeta):
 Usuarios(Edad, Pais, Password, Name)
 {
+	//inicializar tarjeta
 }
 
 PREMIUM::~PREMIUM(){

@@ -14,9 +14,10 @@ class BASIC : public Usuarios
 {
 private:
 	int CostoBasic;
+	string tarjeta;
 
 public:
-	BASIC(int Edad, Paises Pais, string Password, const string Name);
+	BASIC(int Edad, Paises Pais, string Password, const string Name, string tarjeta);
 	virtual ~BASIC();
 
 	void Registrarse();

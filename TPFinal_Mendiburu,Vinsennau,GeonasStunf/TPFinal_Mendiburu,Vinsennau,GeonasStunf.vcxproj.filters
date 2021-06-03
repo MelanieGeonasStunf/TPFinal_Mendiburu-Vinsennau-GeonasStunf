@@ -63,6 +63,12 @@
     <ClInclude Include="Audio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="funciones.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Archivos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Audio.cpp">
@@ -102,6 +108,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="funciones.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
