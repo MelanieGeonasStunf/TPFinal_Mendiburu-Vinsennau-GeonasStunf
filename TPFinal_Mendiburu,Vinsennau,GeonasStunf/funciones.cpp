@@ -2,7 +2,7 @@
 
 bool tick()
 {
-	
+	return 0;
 }
 
 void Encriptar(string clave)

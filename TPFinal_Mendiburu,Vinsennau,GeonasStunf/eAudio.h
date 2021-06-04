@@ -10,7 +10,7 @@
 #include "Servicios.h"
 #include "Librerias.h"
 
-enum Audio
+enum eAudio
 {
 	Canciones,
 	Podcast

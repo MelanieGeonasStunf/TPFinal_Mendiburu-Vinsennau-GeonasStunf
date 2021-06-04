@@ -19,6 +19,7 @@ int main()
 	BASIC* usuarioBasic = new BASIC(14, Brasil, "Yanotengoimagination<3", "Coco", "11001100");
 	bool semana = false;
 
+
 	do
 	{
 		
