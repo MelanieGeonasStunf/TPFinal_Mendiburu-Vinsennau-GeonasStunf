@@ -4,8 +4,9 @@
 class Audio :
     public Servicios
 {
+    tm duracion;
 public:
-    Audio(const string clave, tm duracion, const string nombre, Paises* paises);
+    Audio(const string clave, const string nombre, Paises* paises, tm duracion);
     virtual ~Audio();
 
     void FastBackward();

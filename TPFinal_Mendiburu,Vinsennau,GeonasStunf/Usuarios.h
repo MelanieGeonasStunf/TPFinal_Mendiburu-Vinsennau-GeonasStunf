@@ -12,6 +12,8 @@
 #include "Servicios.h"
 #include "cListaT.h"
 
+class Plataforma;
+
 class Usuarios
 {
 
@@ -30,10 +32,11 @@ public:
 	virtual ~Usuarios();
 
 	void CerrarSesion();
-	void IniciarSesion();
+	void IniciarSesion(Plataforma* plataforma);//llamamos a casos y a menu2
 	void RegistrarenRegistro();
-	virtual void Registrarse();
+	virtual void Registrarse();//verifica que contrasena sea correcta
 	virtual void SeleccionarServicio(cListaT <Servicios> *servicio);
+	virtual void EditarCuenta()=0;// cambia de free a premium por ejemplo
 	//AGREGADO:
 	bool VerificarContrasena();//verifica que cumpla requisitos
 	/*

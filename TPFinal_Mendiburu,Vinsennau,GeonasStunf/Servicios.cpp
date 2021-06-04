@@ -8,7 +8,7 @@
 #include "Servicios.h"
 
 
-Servicios::Servicios(const string clave, tm duracion, const string nombre, Paises* paises): Clave(clave), Nombre(nombre)
+Servicios::Servicios(const string clave,  const string nombre, Paises* paises): Clave(clave), Nombre(nombre)
 {
 
 }

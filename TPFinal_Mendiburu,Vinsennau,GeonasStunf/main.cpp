@@ -7,58 +7,89 @@
 #include "PREMIUM.h"
 #include "BASIC.h"
 #include "FREE.h"
+//#include "Juegos.h"
 
 int main()
 {
+	srand(time(NULL));
 	Plataforma* Labflix = new Plataforma();
 	// creamos archivo
 	//Leemos archivo
+	Labflix->m_Servicios = new cListaT<Servicios>;
+	Paises paisJ[4] = { Francia, Colombia, Argentina, España };
+	Juegos* juego1 = new Juegos("789","Pacwomen",paisJ, 2021);
+	*Labflix->m_Servicios + juego1;
+
+	Paises paisA[5] = { Chile, Colombia, Argentina, España, Venezuela };
+	Audio* audio1 = new Audio("382", "New Rules", paisA, { 44, 03, 00 });
+	*Labflix->m_Servicios + audio1;
+
+	Paises paisAV[7] = { Chile, EstadosUnidos, Bolivia, Paraguay, Venezuela , Canada, Peru};
+	Audio* audioyvideo1 = new Audio("911", "Sobreviviendo Favaloro", paisAV, { 12, 5, 02 });
+	*Labflix->m_Servicios + audioyvideo1;
+
 	FREE* usuarioFree = new FREE(19, Francia, "EstaLoco00!", "Damian");
+
 	PREMIUM* usuarioPremium = new PREMIUM(70, Argentina, "Bypass123-", "Rene", "06062002");
-	//BASIC* usuarioBasic = new BASIC(14, Brasil, "Yanotengoimagination", "Coco", "11001100");
+	PREMIUM* usuarioPremium1 = new PREMIUM(11,Venezuela , "Crisis", "LaBelu", "09082001");//mal la contrasena
+
+	BASIC* usuarioBasic1 = new BASIC(13, Colombia, "Contra123-", "Ruperto", "42190416");//tarjeta mal
 	BASIC* usuarioBasic = new BASIC(14, Brasil, "Yanotengoimagination<3", "Coco", "11001100");
+
 	bool semana = false;
 
 
 	do
 	{
-		
-		Menu();
 		//Guardamos archivo
 		try
 		{
-			Casos(usuarioFree, 3);
+			Casos1(usuarioFree, Labflix);
 		}
 		catch (int opcion)
 		{
 			cout << "Saliendo de Labflix..." << endl;
-			usuarioFree->CerrarSesion();
 			break;
 		}
 		
 		try
 		{
-			Casos(usuarioBasic, 2);
+			Casos1(usuarioBasic, Labflix);
 		}
 		catch (int opcion)
 		{
 			cout << "Saliendo de Labflix..." << endl;
-			usuarioBasic->CerrarSesion();
 			break;
 		}
 
 		try
 		{
-			Casos(usuarioPremium, 1);
+			Casos1(usuarioPremium, Labflix);
 		}
 		catch (int opcion)
 		{
 			cout << "Saliendo de Labflix..." << endl;
-			usuarioPremium->CerrarSesion();
 			break;
 		}
-		
-
+		try
+		{
+			Casos1(usuarioPremium1, Labflix);
+		}
+		catch (int opcion)
+		{
+			cout << "Saliendo de Labflix..." << endl;
+			
+			break;
+		}
+		try
+		{
+			Casos1(usuarioBasic1, Labflix);
+		}
+		catch (int opcion)
+		{
+			cout << "Saliendo de Labflix..." << endl;
+			break;
+		}
 		semana = tick();
 
 	} while (semana==false);

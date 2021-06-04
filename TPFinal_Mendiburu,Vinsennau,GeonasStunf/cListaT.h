@@ -237,7 +237,7 @@ unsigned int cListaT<T>::getItemPos(string clave)
 }
 
 template<class T>
-void operator<<(ostream& o, cListaT<T>& object)
+void operator<<(ostream& o, cListaT<T>& object)//CORREGIR
 {
 	o << object.toString() << endl;
 }

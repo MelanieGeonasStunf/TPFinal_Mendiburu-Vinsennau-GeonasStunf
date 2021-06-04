@@ -14,6 +14,9 @@
 
 class PREMIUM : public Usuarios
 {
+private:
+	float CostoPremium;
+	cListaT <Servicios>* ListaDescargas;
 	string tarjeta;
 	
 public:
@@ -24,9 +27,5 @@ public:
 	void DescargarAyV(Servicios* servicio);
 	void Registrarse();
 	void SeleccionarServicio(cListaT <Servicios>* servicio);
-	
-
-private:
-	int CostoPremium;
-	cListaT <Servicios>* ListaDescargas;
+	void EditarCuenta();
 };

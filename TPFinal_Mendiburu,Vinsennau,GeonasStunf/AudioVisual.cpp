@@ -9,8 +9,8 @@
 
 
 
-AudioVisual::AudioVisual(const string clave, tm duracion, const string nombre, Paises* paises)
-	:Servicios( clave,  duracion, nombre,  paises)
+AudioVisual::AudioVisual(const string clave,  const string nombre, Paises* paises, tm duracion )
+	:Servicios( clave, nombre,  paises)
 {
 }
 

@@ -7,9 +7,10 @@
 
 #include "Juegos.h"
 
-Juegos::Juegos(const string clave, tm duracion, const string nombre, Paises* paises)
-	:Servicios(clave, duracion, nombre, paises)
+Juegos::Juegos(const string clave, const string nombre, Paises* paises, int NivelFinal)
+	:Servicios(clave, nombre, paises)
 {
+	this->NivelFinal = NivelFinal;
 }
 
 Juegos::~Juegos(){

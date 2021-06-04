@@ -22,6 +22,7 @@ public:
 	void Registrarse();
 	void SeleccionarServicio(cListaT<Servicios>*servicio);
 	void VariarLista();
+	void EditarCuenta();
 
 private:
 	static int LimiteTiempoMax;

@@ -17,7 +17,7 @@ private:
 	string NombreJuego;
 
 public:
-	Juegos(const string clave, tm duracion, const string nombre, Paises* paises);
+	Juegos(const string clave, const string nombre, Paises* paises, int NivelFinal);
 	virtual ~Juegos();
 
 	void GuardarProgreso();

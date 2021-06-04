@@ -16,9 +16,10 @@ class AudioVisual : public Servicios
 private:
 	int Calidad;
 	int TipoAudioVisual;
+	tm duracion;
 
 public:
-	AudioVisual(const string clave, tm duracion, const string nombre, Paises* paises);
+	AudioVisual(const string clave,  const string nombre, Paises* paises, tm duracion );
 	virtual ~AudioVisual();
 
 	void FastBackward();

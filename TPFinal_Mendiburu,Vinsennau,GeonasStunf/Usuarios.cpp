@@ -6,7 +6,7 @@
 ///////////////////////////////////////////////////////////
 
 #include "Usuarios.h"
-
+//#include "Plataforma.h"
 
 
 Usuarios::Usuarios(int Edad, Paises Pais, string Password, const string Name):UserName(Name)
@@ -26,8 +26,8 @@ void Usuarios::CerrarSesion(){
 }
 
 
-void Usuarios::IniciarSesion(){
-
+void Usuarios::IniciarSesion(Plataforma* plataforma){
+	//Llamamos a Menu2 y Casos2
 }
 
 

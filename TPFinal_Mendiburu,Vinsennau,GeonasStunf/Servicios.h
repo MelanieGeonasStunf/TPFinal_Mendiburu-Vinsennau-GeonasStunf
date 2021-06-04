@@ -14,13 +14,12 @@ class Servicios
 {
 private:
 	const string Clave;
-	tm duracion;
+	//tm duracion;
 	const string Nombre;
-	Paises* paises;
-	
+	Paises* paises;	
 
 public:
-	Servicios(const string clave, tm duracion, const string nombre, Paises* paises);
+	Servicios(const string clave, const string nombre, Paises* paises);
 	virtual ~Servicios();
 
 	void Apagar();

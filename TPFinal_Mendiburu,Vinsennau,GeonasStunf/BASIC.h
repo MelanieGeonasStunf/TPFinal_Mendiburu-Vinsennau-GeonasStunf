@@ -13,7 +13,7 @@
 class BASIC : public Usuarios
 {
 private:
-	int CostoBasic;
+	float CostoBasic;
 	string tarjeta;
 
 public:
@@ -22,5 +22,6 @@ public:
 
 	void Registrarse();
 	void SeleccionarServicio(cListaT<Servicios>* servicio);
+	void EditarCuenta();
 
 };
