@@ -12,7 +12,7 @@
 
 class FREE : public Usuarios
 {
-
+	//le tendriamos que poner algun atributo?
 public:
 	FREE(int Edad, Paises Pais, string Password, const string Name);
 	virtual ~FREE();

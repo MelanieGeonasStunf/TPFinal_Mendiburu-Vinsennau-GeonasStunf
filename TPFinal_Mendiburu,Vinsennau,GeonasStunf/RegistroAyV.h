@@ -18,7 +18,7 @@ class RegistroAyV
 private:
 	tm Fecha;
 	cListaT<AudioVisual>* ListadeRecientesAyV;
-	cListaT <Audio>** ListaRecientesA;
+	cListaT <Audio>* ListaRecientesA;//tenia doble puntero y le saque uno
 	int MinutodeReproduccion;
 	const string UserName;
 

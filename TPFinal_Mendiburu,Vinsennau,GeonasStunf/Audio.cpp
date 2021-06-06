@@ -8,13 +8,10 @@
 #include "Audio.h"
 
 
-
-
-
-
 Audio::Audio(const string clave, const string nombre, Paises* paises, tm duracion)
 	:Servicios(clave, nombre, paises)
 {
+	this->duracion = duracion;
 }
 
 Audio::~Audio(){

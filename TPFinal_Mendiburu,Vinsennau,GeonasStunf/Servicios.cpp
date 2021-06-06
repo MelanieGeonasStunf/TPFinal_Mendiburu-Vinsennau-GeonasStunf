@@ -8,9 +8,10 @@
 #include "Servicios.h"
 
 
-Servicios::Servicios(const string clave,  const string nombre, Paises* paises): Clave(clave), Nombre(nombre)
+Servicios::Servicios(const string clave,  const string nombre, Paises* paises): 
+	Clave(clave), Nombre(nombre)
 {
-
+	this->paises = paises;
 }
 
 

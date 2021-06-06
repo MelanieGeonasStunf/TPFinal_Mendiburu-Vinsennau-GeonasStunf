@@ -9,6 +9,11 @@
 #include "FREE.h"
 //#include "Juegos.h"
 
+
+/*
+Podemos hacer un numero en basic y premium que aumente % cada 6 meses -> asi el precio 
+del servicio aumenta.
+*/
 int main()
 {
 	srand(time(NULL));

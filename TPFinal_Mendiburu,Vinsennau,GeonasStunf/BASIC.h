@@ -13,7 +13,7 @@
 class BASIC : public Usuarios
 {
 private:
-	float CostoBasic;
+	static float CostoBasic;//lo cambie a static
 	string tarjeta;
 
 public:

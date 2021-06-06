@@ -10,16 +10,20 @@
 
 Plataforma::Plataforma():Nombre("Labfliz")
 {
-	/*this->CantidadUsuariosConectados=0;
+	this->CantidadUsuariosConectados=0;
 	ListaUsuariosxDia = new cListaT<Usuarios>;
 	this-> UsuariosxSemana=0;
 	m_Servicios=NULL;
 	m_Usuarios=NULL;
-	-> inicializar lista paises*/
+	
+	paises=new Paises[14]{Argentina, Chile,	Peru, Brasil, Colombia,	Mexico,	EstadosUnidos,
+	Canada,Bolivia,	Paraguay,	Uruguay,	Venezuela,	España,	Francia};
 }
 
 Plataforma::~Plataforma(){
-	//delete ListaUsuariosxDia;
+	delete ListaUsuariosxDia;
+	delete m_Usuarios;
+	delete m_Servicios;
 }
 
 

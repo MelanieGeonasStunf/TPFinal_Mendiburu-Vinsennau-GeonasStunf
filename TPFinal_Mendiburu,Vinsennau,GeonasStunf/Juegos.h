@@ -14,7 +14,7 @@ class Juegos : public Servicios
 {
 private:
 	int NivelFinal;
-	string NombreJuego;
+	//string NombreJuego;->nombre ya esta en servicios
 
 public:
 	Juegos(const string clave, const string nombre, Paises* paises, int NivelFinal);

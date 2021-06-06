@@ -37,6 +37,11 @@ public:
 	virtual void Registrarse();//verifica que contrasena sea correcta
 	virtual void SeleccionarServicio(cListaT <Servicios> *servicio);
 	virtual void EditarCuenta()=0;// cambia de free a premium por ejemplo
+
+	//getters y setters
+	void setFHcierre(tm cierre);
+	void setFHinicio(tm inicio);
+
 	//AGREGADO:
 	bool VerificarContrasena();//verifica que cumpla requisitos
 	/*

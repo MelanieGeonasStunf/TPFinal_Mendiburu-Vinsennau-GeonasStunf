@@ -11,6 +11,10 @@
 
 Usuarios::Usuarios(int Edad, Paises Pais, string Password, const string Name):UserName(Name)
 {
+	Estado = false;//usuario empieza desconectado o conectado?
+	this->Pais = Pais;
+	this->Password = Password;
+	servicio = NULL;//no pasamos servicio?- lo seteamos despues?
 }
 
 Usuarios::~Usuarios(){
@@ -43,4 +47,5 @@ void Usuarios::Registrarse(){
 void Usuarios::SeleccionarServicio(cListaT<Servicios>* servicio)
 {
 }
+
 

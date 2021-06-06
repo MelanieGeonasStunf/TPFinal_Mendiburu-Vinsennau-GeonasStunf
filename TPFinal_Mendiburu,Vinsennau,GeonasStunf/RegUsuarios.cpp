@@ -9,8 +9,9 @@
 
 
 
-RegUsuarios::RegUsuarios(const string Name, int TipoUsuario)
+RegUsuarios::RegUsuarios(const string Name, int TipoUsuario):UserName(Name)
 {
+	this->TipoUsuario = TipoUsuario;
 }
 
 RegUsuarios::~RegUsuarios(){

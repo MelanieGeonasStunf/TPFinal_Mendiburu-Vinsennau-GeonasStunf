@@ -19,7 +19,7 @@ private:
 	tm duracion;
 
 public:
-	AudioVisual(const string clave,  const string nombre, Paises* paises, tm duracion );
+	AudioVisual(const string clave,  const string nombre, Paises* paises, tm duracion ,int Tipo );
 	virtual ~AudioVisual();
 
 	void FastBackward();

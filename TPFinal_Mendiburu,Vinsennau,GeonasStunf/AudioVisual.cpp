@@ -9,9 +9,12 @@
 
 
 
-AudioVisual::AudioVisual(const string clave,  const string nombre, Paises* paises, tm duracion )
+AudioVisual::AudioVisual(const string clave,  const string nombre, Paises* paises, tm duracion, int Tipo )
 	:Servicios( clave, nombre,  paises)
 {
+	this->duracion = duracion;
+	TipoAudioVisual = Tipo;//tendriamos que poner el tipo como enum o dejarlo en int?
+	//Calidad depende del servicio o le ponemos lo que nos pinte?
 }
 
 AudioVisual::~AudioVisual(){

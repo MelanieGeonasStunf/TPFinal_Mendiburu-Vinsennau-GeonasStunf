@@ -16,6 +16,7 @@ private:
 	tm FechaUltimaJugada;
 	int Nivel;
 	const string UserName;
+	//no le tendriamos que pasar juegos?
 
 public:
 	RegistroJuegos(const string Name);
