@@ -47,6 +47,8 @@ void Usuarios::IniciarSesion(Plataforma* plataforma){
 		if (plataforma->m_Usuarios->vector[pos]->Password == Password)
 		{
 			Estado = true;//se inicia sesion
+			RegU + RegistrarenRegistro();//hay que hacer la lista oublic o un get
+			//no quiero programar mas por favor
 			//plataforma->
 			//
 		}
@@ -57,6 +59,8 @@ void Usuarios::IniciarSesion(Plataforma* plataforma){
 
 RegUsuarios* Usuarios::RegistrarenRegistro(){
 	//hacemos un registro y en el constructor le pasamos por parametros a reg usuarios los datos del usuario
+	RegUsuarios* reg = new RegUsuarios(UserName, )//CREO QUE TIENE QUE SER VIRTUAL PARA PODER PONER EL TIPO 
+		return reg;
 }
 
 
