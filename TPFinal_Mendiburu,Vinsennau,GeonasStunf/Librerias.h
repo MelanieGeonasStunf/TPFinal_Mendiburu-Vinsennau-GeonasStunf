@@ -5,5 +5,8 @@
 #include <conio.h>
 #include<Windows.h>
 #include<MMSystem.h>
+#include <stdio.h>
+#include <ctype.h>
+#include <cstddef>  
 
 using namespace std;

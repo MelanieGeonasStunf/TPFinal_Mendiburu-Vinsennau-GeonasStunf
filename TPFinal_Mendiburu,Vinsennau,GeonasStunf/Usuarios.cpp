@@ -68,4 +68,25 @@ void Usuarios::SeleccionarServicio(cListaT<Servicios>* servicio)
 {
 }
 
+bool Usuarios::VerificarContrasena()
+{
+	/*
+	* REQUISITOS:
+	* - +8 caracteres
+	* - Mayuscula
+	* - Numero
+	* - Simbolo-> sin ; , : . " ' 
+	* - Sin espacios
+	*/
+
+	if (Password.length() > 8 && Password.find_first_of("ABCDEFGHIJKLMNOPQRSTUVWXYZ") != string::npos
+		&& Password.find_first_of("123456789") != string::npos && Password.find_first_of("~!@#$%^&*()<>?/\[]{}*+-_=") != string::npos &&
+		Password.find_first_of(" ") == string::npos)
+	{
+		return true;
+	}
+		
+	return false;
+}
+
 
