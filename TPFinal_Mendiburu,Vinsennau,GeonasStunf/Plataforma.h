@@ -14,20 +14,29 @@
 #include "Audio.h"
 #include "AudioVisual.h"
 #include "cListaT.h"
+#include "RegUsuarios.h"
+#include "RegistroAyV.h"
+#include "RegistroJuegos.h"
 
 class Plataforma
 {
 private:
 	int CantidadUsuariosConectados;
+	
 	cListaT <Usuarios>* ListaUsuariosxDia;
 	const string Nombre;
 	int UsuariosxSemana;
-	cListaT <Usuarios>* m_Usuarios;
+	
+	cListaT<RegUsuarios>* RegU;
+	cListaT<RegistroJuegos>* RegJ;
+	cListaT<RegistroAyV>* RegAyV;
+
 	//AGREGADO:
 	Paises* paises;
 
 public:
 	cListaT <Servicios>* m_Servicios;
+	cListaT <Usuarios>* m_Usuarios;
 
 	Plataforma();
 	virtual ~Plataforma();
@@ -40,7 +49,7 @@ public:
 	void PromedioConectadosSemana();
 	void VerResumen ();//da resumen de la semana
 
-
+	//Usuarios* get
 	
 };
 

@@ -15,7 +15,7 @@
 class PREMIUM : public Usuarios
 {
 private:
-	float CostoPremium;
+	static float CostoPremium;
 	cListaT <Servicios>* ListaDescargas;
 	string tarjeta;
 	

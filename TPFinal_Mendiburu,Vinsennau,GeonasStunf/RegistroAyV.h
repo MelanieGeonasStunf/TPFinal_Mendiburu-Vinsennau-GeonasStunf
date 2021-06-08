@@ -26,5 +26,7 @@ public:
 	RegistroAyV(const string Name);
 	virtual ~RegistroAyV();
 
+	RegistroAyV* RegistrarenRegistro();
+
 };
 

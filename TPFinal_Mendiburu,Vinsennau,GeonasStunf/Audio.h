@@ -13,5 +13,7 @@ public:
     void FastForward();
     void Record();
     void VelocidadReproduccion(int velocidad);
+
+    RegistroAyV* RegistrarenRegistro();
 };
 

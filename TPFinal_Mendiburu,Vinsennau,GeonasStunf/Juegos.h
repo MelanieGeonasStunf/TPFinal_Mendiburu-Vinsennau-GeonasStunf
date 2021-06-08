@@ -9,6 +9,7 @@
 
 #include "Servicios.h"
 #include "Librerias.h"
+#include "RegistroJuegos.h"
 
 class Juegos : public Servicios
 {
@@ -19,7 +20,7 @@ private:
 public:
 	Juegos(const string clave, const string nombre, Paises* paises, int NivelFinal);
 	virtual ~Juegos();
-
+	RegistroJuegos* RegistrarenRegistro();
 	void GuardarProgreso();
 
 };

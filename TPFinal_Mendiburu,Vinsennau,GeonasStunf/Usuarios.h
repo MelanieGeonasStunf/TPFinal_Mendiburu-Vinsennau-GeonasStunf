@@ -11,6 +11,7 @@
 #include "Paises.h"
 #include "Servicios.h"
 #include "cListaT.h"
+#include "RegUsuarios.h"
 
 class Plataforma;
 
@@ -33,7 +34,7 @@ public:
 
 	void CerrarSesion();
 	void IniciarSesion(Plataforma* plataforma);//llamamos a casos y a menu2
-	void RegistrarenRegistro();
+	RegUsuarios* RegistrarenRegistro();//plataforma usa el registro
 	virtual void Registrarse();//verifica que contrasena sea correcta
 	virtual void SeleccionarServicio(cListaT <Servicios> *servicio);
 	virtual void EditarCuenta()=0;// cambia de free a premium por ejemplo

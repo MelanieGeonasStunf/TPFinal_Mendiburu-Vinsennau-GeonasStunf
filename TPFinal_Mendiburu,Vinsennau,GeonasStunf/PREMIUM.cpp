@@ -9,11 +9,11 @@
 #define costoP 300.00
 
 
+float PREMIUM::CostoPremium = costoP;
 PREMIUM::PREMIUM(int Edad, Paises Pais, string Password, const string Name, string tarjeta):
 Usuarios(Edad, Pais, Password, Name)
 {
 	this->tarjeta = tarjeta;
-	CostoPremium = costoP;
 	ListaDescargas = NULL;
 	for (int i = 0; i < ListaDescargas->getTAM(); i++)
 	{

@@ -45,7 +45,7 @@ void Casos1(Usuarios* user, Plataforma* plataforma)
 			user->IniciarSesion(plataforma);
 		}
 		catch (string exc)//si agarra excepcion significa que no se inicio sesion bien
-		{
+		{//catch (e.what)!!
 			cout << exc << endl;
 			cout << "1) Desea registrarse?" << endl <<
 				"2) Desea salir?" << endl;
