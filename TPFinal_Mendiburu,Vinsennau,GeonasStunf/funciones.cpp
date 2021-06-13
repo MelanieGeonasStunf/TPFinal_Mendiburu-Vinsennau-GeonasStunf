@@ -32,7 +32,7 @@ int Menu2()
 	int opcion;
 	cout << "------------MENU---------------" << endl;
 	cout << " 1) Elegir Servicio" << endl <<
-		"2) Editar cuenta" << endl <<//puede cambiarse de free a premium por ej
+		"2) Editar cuenta" << endl <<//puede cambiarse de free a premium por ej o eliminarla?
 		"3) Cerrar Sesion" << endl;
 	//cin >> opcion;
 	opcion = 1 + rand() % 4 ;
