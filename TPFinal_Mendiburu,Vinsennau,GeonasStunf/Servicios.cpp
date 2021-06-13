@@ -53,6 +53,4 @@ void Servicios::VerificarPais(){
 
 }
 
-void Servicios::RegistrarenRegistro(Servicios* servicio)
-{
-}
+

@@ -17,7 +17,13 @@ int Menu1()
 	cout << " 1) Iniciar sesion" << endl <<
 		"2) Registrarse" << endl <<
 		"3) Salir" << endl;//sale del loop -> liberamos memoria usuario
-	cin >> opcion;
+	//cin >> opcion;
+	opcion = 1 + rand() % 4;
+	/*
+	opcion=1;
+	opcion=2;
+	opcion=3;
+	*/
 	return opcion;
 }
 
@@ -30,6 +36,11 @@ int Menu2()
 		"3) Cerrar Sesion" << endl;
 	//cin >> opcion;
 	opcion = 1 + rand() % 4 ;
+	/*
+	opcion=1;
+	opcion=2;
+	opcion=3;
+	*/
 	return opcion;
 }
 
@@ -70,7 +81,7 @@ void Casos2(Usuarios* user, Plataforma* plataforma)
 	{
 	case 1:user->SeleccionarServicio(plataforma->m_Servicios);
 		break;
-	case 2:user->EditarCuenta();
+	case 2:plataforma->EditarCuenta();
 		break;
 	case 3:user->CerrarSesion();
 		break;

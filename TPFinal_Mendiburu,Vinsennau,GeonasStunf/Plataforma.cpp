@@ -50,14 +50,12 @@ cListaT<AudioVisual>* Plataforma::MasVistos(tm Periodo){
 }
 
 
-void Plataforma::PromedioConectadosDia(){
 
+void Plataforma::PromedioConectadosenSemanaxDia()
+{
 }
 
 
-void Plataforma::PromedioConectadosSemana(){
-
-}
 
 
 void Plataforma::VerResumen(){

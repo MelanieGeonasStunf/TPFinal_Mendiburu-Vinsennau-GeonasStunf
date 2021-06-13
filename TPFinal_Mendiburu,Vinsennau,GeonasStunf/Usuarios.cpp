@@ -7,7 +7,10 @@
 
 #include "Usuarios.h"
 #include "Plataforma.h"
-
+#include "PREMIUM.h"
+#include "TipoUsuario.h"
+#include "FREE.h"
+#include "BASIC.h"
 
 Usuarios::Usuarios(int Edad, Paises Pais, string Password, const string Name):UserName(Name)
 {
@@ -15,15 +18,12 @@ Usuarios::Usuarios(int Edad, Paises Pais, string Password, const string Name):Us
 	this->Pais = Pais;
 	this->Password = Password;
 	servicio = NULL;//no pasamos servicio?- lo seteamos despues?
+	cantConexSemana = 0;
 }
 
 Usuarios::~Usuarios(){
 
 }
-
-
-
-
 
 void Usuarios::CerrarSesion(){
 
@@ -51,6 +51,7 @@ void Usuarios::IniciarSesion(Plataforma* plataforma){
 			//no quiero programar mas por favor
 			//plataforma->
 			//
+			cantConexSemana++;
 		}
 			
 	}
@@ -59,8 +60,22 @@ void Usuarios::IniciarSesion(Plataforma* plataforma){
 
 RegUsuarios* Usuarios::RegistrarenRegistro(){
 	//hacemos un registro y en el constructor le pasamos por parametros a reg usuarios los datos del usuario
-	RegUsuarios* reg = new RegUsuarios(UserName, )//CREO QUE TIENE QUE SER VIRTUAL PARA PODER PONER EL TIPO 
-		return reg;
+	RegUsuarios* reg;//CREO QUE TIENE QUE SER VIRTUAL PARA PODER PONER EL TIPO 
+		
+	
+	if (dynamic_cast<PREMIUM*>(this)!= NULL )
+	{
+		reg = new RegUsuarios(UserName, premium);
+	}
+	if (dynamic_cast<BASIC*>(this) != NULL)
+	{
+		reg = new RegUsuarios(UserName, basic);
+	}
+	if (dynamic_cast<FREE*>(this) != NULL)
+	{
+		reg = new RegUsuarios(UserName, Free);
+	}
+	return reg;
 }
 
 

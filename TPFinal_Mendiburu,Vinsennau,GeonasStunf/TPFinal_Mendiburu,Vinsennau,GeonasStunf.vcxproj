@@ -156,6 +156,7 @@
     <ClInclude Include="RegistroJuegos.h" />
     <ClInclude Include="RegUsuarios.h" />
     <ClInclude Include="Servicios.h" />
+    <ClInclude Include="TipoUsuario.h" />
     <ClInclude Include="Usuarios.h" />
   </ItemGroup>
   <ItemGroup>

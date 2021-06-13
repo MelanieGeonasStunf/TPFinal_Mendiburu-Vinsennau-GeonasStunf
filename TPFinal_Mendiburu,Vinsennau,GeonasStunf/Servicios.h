@@ -28,6 +28,7 @@ public:
 	void Pausar();
 	void Reanudar();
 	void VerificarPais();
-	void RegistrarenRegistro(Servicios* servicio);
+	//void RegistrarenRegistro(Servicios* servicio);//?
+	//
 };
 

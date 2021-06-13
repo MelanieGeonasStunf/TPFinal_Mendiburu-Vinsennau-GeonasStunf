@@ -20,7 +20,9 @@ private:
 public:
 	Juegos(const string clave, const string nombre, Paises* paises, int NivelFinal);
 	virtual ~Juegos();
+
 	RegistroJuegos* RegistrarenRegistro();
+
 	void GuardarProgreso();
 
 };

@@ -23,7 +23,7 @@ class Plataforma
 private:
 	int CantidadUsuariosConectados;
 	
-	cListaT <Usuarios>* ListaUsuariosxDia;
+	//cListaT <Usuarios>* ListaUsuariosxDia;
 	const string Nombre;
 	int UsuariosxSemana;
 	
@@ -45,11 +45,27 @@ public:
 	cListaT <Audio> *MasEscuchados(tm Periodo);
 	cListaT <Juegos> *MasJugados(tm Periodo);
 	cListaT <AudioVisual> *MasVistos(tm Periodo);
-	void PromedioConectadosDia();
-	void PromedioConectadosSemana();
+	//Periodo->pasar dos fechas o que te devuelva unicamente lo de la ultima semana.
+
+	void PromedioConectadosenSemanaxDia();
+
 	void VerResumen ();//da resumen de la semana
 
 	//Usuarios* get
-	
+	void EditarCuenta();
+	/*
+	* 2 OPCIONES:
+	* -Eliminar Cuenta.
+	* -Cambiar tipo usuario.
+	*/
+	//para mi: tiene que recibir el usuario y el tipo que se quiere cambiar
+	//hacer enum con tipos de usuarios-> solo se puede elegir esas opciones
+	//tendria que ser global o ir solo en usuario (no virtual)
+	//el usuario que queremos cambiar es el que llama a la funicion y es el mismo que recibe por parametro
+	//despues adentro si podemos hacer una funcion si queremos-> que haria igual?
+	//comparamos el tipo que recibimos con todos los tipos hasta que sean iguales
+	//si no hay ninguno igual -> throw que no se pudo editar nada-> si tenemos el enum haria falta?
+	//si coincide con alguno: -> dynamic_cast para saber el tipo de usuario que era originalmente.
+	//hacer copia del usuario y cambiar el tipo.->ni idea
 };
 

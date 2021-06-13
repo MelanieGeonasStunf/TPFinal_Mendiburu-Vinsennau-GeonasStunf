@@ -69,6 +69,9 @@
     <ClInclude Include="Archivos.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TipoUsuario.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Audio.cpp">

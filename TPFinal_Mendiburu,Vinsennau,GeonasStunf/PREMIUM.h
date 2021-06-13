@@ -27,5 +27,5 @@ public:
 	void DescargarAyV(Servicios* servicio);
 	void Registrarse();
 	void SeleccionarServicio(cListaT <Servicios>* servicio);
-	void EditarCuenta();
+
 };
