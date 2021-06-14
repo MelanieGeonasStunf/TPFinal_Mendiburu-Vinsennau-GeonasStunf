@@ -19,6 +19,7 @@ Usuarios::Usuarios(int Edad, Paises Pais, string Password, const string Name):Us
 	this->Password = Password;
 	servicio = NULL;//no pasamos servicio?- lo seteamos despues?
 	cantConexSemana = 0;
+	Eliminado = false;
 }
 
 Usuarios::~Usuarios(){
@@ -85,6 +86,11 @@ void Usuarios::Registrarse(){
 
 void Usuarios::SeleccionarServicio(cListaT<Servicios>* servicio)
 {
+}
+
+void Usuarios::setEliminado(bool elim)
+{
+	Eliminado = elim;
 }
 
 bool Usuarios::VerificarContrasena()

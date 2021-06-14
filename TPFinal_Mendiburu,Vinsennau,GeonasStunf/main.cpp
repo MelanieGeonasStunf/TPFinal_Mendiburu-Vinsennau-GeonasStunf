@@ -101,6 +101,7 @@ int main()
 
 	if (semana == true)
 		Labflix->VerResumen();
+	//una vez pasada la semana no olvidar eliminar a todos los usuarios con Eliminado=true!!!
 
 	system("pause");
 

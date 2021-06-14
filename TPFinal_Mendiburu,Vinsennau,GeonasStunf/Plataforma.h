@@ -18,6 +18,10 @@
 #include "RegistroAyV.h"
 #include "RegistroJuegos.h"
 
+class FREE;
+class BASIC;
+class PREMIUM;
+
 class Plataforma
 {
 private:
@@ -52,7 +56,8 @@ public:
 	void VerResumen ();//da resumen de la semana
 
 	//Usuarios* get
-	void EditarCuenta();
+	void EditarCuenta(Usuarios*user, int tipo, bool eliminar);//no me toma el enum!
+	//eliminar-> true: elimina usuario (el tipo recibido es el original), false-> cambia el tipo
 	/*
 	* 2 OPCIONES:
 	* -Eliminar Cuenta.

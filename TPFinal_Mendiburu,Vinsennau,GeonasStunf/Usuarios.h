@@ -12,6 +12,7 @@
 #include "Servicios.h"
 #include "cListaT.h"
 #include "RegUsuarios.h"
+#include"TipoUsuario.h"
 
 class Plataforma;
 class PREMIUM;
@@ -53,7 +54,7 @@ public:
 	//getters y setters
 	void setFHcierre(tm cierre);
 	void setFHinicio(tm inicio);
-
+	void setEliminado(bool elim);
 	//AGREGADO:
 	bool VerificarContrasena();//verifica que cumpla requisitos-> ya hecha!
 	/*
