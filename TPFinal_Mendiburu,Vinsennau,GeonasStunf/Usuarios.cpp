@@ -26,7 +26,11 @@ Usuarios::~Usuarios(){
 }
 
 void Usuarios::CerrarSesion(){
-
+	if (!Estado)
+		throw new exception("\nNunca debería pasar esto.");//vemos que hacemos
+	Estado = false;
+	setFHcierre();//vemos que hacemos
+	RegUsuarios* regu = RegistrarenRegistro();
 }
 
 
@@ -47,15 +51,22 @@ void Usuarios::IniciarSesion(Plataforma* plataforma){
 		if (plataforma->m_Usuarios->vector[pos]->Password == Password)
 		{
 			Estado = true;//se inicia sesion
-			RegU + RegistrarenRegistro();//hay que hacer la lista oublic o un get
+			setFHinicio();//le hacemos el local time?? 
+			cListaT<RegUsuarios>* RegU = plataforma->getRgUsuarios();
+			*RegU + RegistrarenRegistro();//hay que hacer la lista oublic o un get
 			//no quiero programar mas por favor
 			//plataforma->
 			//
 			cantConexSemana++;
+			Casos2(this, plataforma);
 		}
 			
 	}
 }
+//idea! Hcemos un local time de inicio de registro del susuario y despues par setear el final 
+//le agregamos un rand entre 0,24 y 10 horas que sea equivalente al tiempo de conección del usuario. De esta forma 
+//no nos va a quedar el mismo tiempo de inicio que final oalgo así, igual hay que hacer que llegue a pasar una semana
+//sin que necesariamente pase
 
 
 RegUsuarios* Usuarios::RegistrarenRegistro(){

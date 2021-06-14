@@ -48,7 +48,7 @@ public:
 	//Periodo->pasar dos fechas o que te devuelva unicamente lo de la ultima semana.
 
 	void PromedioConectadosenSemanaxDia();
-
+	
 	void VerResumen ();//da resumen de la semana
 
 	//Usuarios* get
@@ -67,5 +67,7 @@ public:
 	//si no hay ninguno igual -> throw que no se pudo editar nada-> si tenemos el enum haria falta?
 	//si coincide con alguno: -> dynamic_cast para saber el tipo de usuario que era originalmente.
 	//hacer copia del usuario y cambiar el tipo.->ni idea
+	//seters y geters
+	cListaT<RegUsuarios>* getRgUsuarios() { return RegU; }
 };
 

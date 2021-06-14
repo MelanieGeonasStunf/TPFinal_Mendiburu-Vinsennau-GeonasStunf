@@ -44,46 +44,60 @@ int Menu2()
 	return opcion;
 }
 
-void Casos1(Usuarios* user, Plataforma* plataforma)
+void Casos1(Usuarios* user, Plataforma* plataforma)//lo hice en do while para que sea en loop
 {
-	int opcion = Menu1();
+	int opcion;
 	int opcion2;
-	switch (opcion)
-	{
-	case 1:
-		try
+	do {
+		opcion = Menu1();
+		switch (opcion)
 		{
-			user->IniciarSesion(plataforma);
+		case 1:
+			try
+			{
+				user->IniciarSesion(plataforma);
+			}
+			catch (string exc)//si agarra excepcion significa que no se inicio sesion bien
+			{//catch (e.what)!!
+				cout << exc << endl;
+				cout << "1) Desea registrarse?" << endl <<
+					"2) Desea salir?" << endl;
+				opcion2 = 1 + rand() % 3;
+				if (opcion == 1)
+					user->Registrarse();
+				else
+					throw 3;//para que lo agarre en el main
+			}
+			break;
+
+		case 2:user->Registrarse();
+			break;
+		case 3:throw 3;
 		}
-		catch (string exc)//si agarra excepcion significa que no se inicio sesion bien
-		{//catch (e.what)!!
-			cout << exc << endl;
-			cout << "1) Desea registrarse?" << endl <<
-				"2) Desea salir?" << endl;
-			opcion2 = 1 + rand() % 3;
-			if (opcion == 1)
-				user->Registrarse();
-			else
-				throw 3;//para que lo agarre en el main
-		}
-		break;
-		
-	case 2:user->Registrarse();
-		break;
-	case 3:throw 3;
-	}
+	} while (opcion != 3);
 }
 
 void Casos2(Usuarios* user, Plataforma* plataforma)
 {
-	int opcion = Menu2();
-	switch (opcion)
-	{
-	case 1:user->SeleccionarServicio(plataforma->m_Servicios);
-		break;
-	case 2:plataforma->EditarCuenta();
-		break;
-	case 3:user->CerrarSesion();
-		break;
-	}
+	int opcion;
+	//se hace infinitamenete
+	do {
+		opcion = Menu2();
+		switch (opcion)
+		{
+		case 1:user->SeleccionarServicio(plataforma->m_Servicios);
+			break;
+		case 2:plataforma->EditarCuenta();
+			break;
+		case 3:
+			try {
+				user->CerrarSesion();
+			}
+			catch (...)
+			{
+				cout << "\nNo se puedo cerrear sesión" << endl;
+			}
+			break;
+		}
+	} while (opcion != 2);
 }
