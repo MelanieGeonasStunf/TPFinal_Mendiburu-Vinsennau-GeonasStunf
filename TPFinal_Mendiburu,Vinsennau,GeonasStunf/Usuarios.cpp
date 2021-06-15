@@ -97,11 +97,15 @@ RegUsuarios* Usuarios::RegistrarenRegistro(){
 }
 
 
-void Usuarios::Registrarse(Usuarios* user, Plataforma* plataforma){
-	
-	m_Usuarios + user;
+void Usuarios::Registrarse(Usuarios* user, Plataforma* plataforma){//me parece que este metodo debería ser de plataforma, 
+		//o no es necesario pasar el user pq podemos usar el puntero this!
+	if (user == NULL)
+		throw new exception("\nNo se pudo registrar el usuario ingresado.");
+	if((plataforma->m_Usuarios->BuscarItem1(UserName))!=-1)
+		throw new exception("\nEl nombre de usuario ingresado ya posee una cuenta" );//en este caso el usuario ya esta registrado
+	*(plataforma->m_Usuarios) + user;
 	Estado = true;//se inicia sesion
-	setFHinicio();
+	setFHinicio();//capaz podemos directamente iniciar sesion y nos salteamos esta parte
 	cListaT<RegUsuarios>* RegU = plataforma->getRgUsuarios();
 	*RegU + RegistrarenRegistro();
 	cantConexSemana++;
@@ -114,10 +118,16 @@ void Usuarios::SeleccionarServicio(cListaT<Servicios>* servicio)
 
 void Usuarios::setFHcierre(tm cierre)
 {
+	//le podemos ir pasando un parametro de tiempo que se le suma
+	//por ej (entre iniciar sesion y seleccionar servicio le sumamos aprox 10 segundos)
+	//despues le sumamos el tiempo que uso el servicio 
+	//despues le sumamos otro tiempo que implique el cierre de la aplicacion, osea cuando cierra sesion 
+	//no se si estaria mal suponer que el usuario se va a desconectar inmediatamente después de usar todo
 }
 
 void Usuarios::setFHinicio(tm inicio)
 {
+	//le hacemos lo de local time
 }
 
 void Usuarios::setEliminado(bool elim)
@@ -173,3 +183,5 @@ void Usuarios::SeleccionarServicio(cListaT <Servicios>* serv)
 	}
 	//si la edad>18 no tiene ninguna restriccion
 }
+//capaz podemos hacer un metodo de usuario que verifique cual es el tipo de usuario, como que haga toda la parte del dynamic cast
+//y retorne el enum del tipo de usuario, la podriamos usar en varios metodos y ahorrarnos lineas de codigo

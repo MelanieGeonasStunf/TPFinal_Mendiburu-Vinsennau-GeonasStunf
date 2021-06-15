@@ -71,17 +71,34 @@ void Casos1(Usuarios* user, Plataforma* plataforma)//lo hice en do while para qu
 					"2) Desea salir?" << endl;
 				opcion2 = 1 + rand() % 3;
 				if (opcion == 1)
-					user->Registrarse(user, plataforma); //deberiamos ver que el username no se repita???
+					try {
+					user->Registrarse(user, plataforma);
+				}
+				catch (exception* e)
+				{
+
+					cout << e->what();
+				}//deberiamos ver que el username no se repita??? sii
 				else
 					throw 3;//para que lo agarre en el main
 			}
 			break;
 
-		case 2:user->Registrarse(user, plataforma);
+		case 2: {
+			try {
+				user->Registrarse(user, plataforma);
+			}
+			catch (exception* e)
+			{
+
+				cout << e->what();
+			}
 			break;
+		}
 		case 3:throw 3;
 		}
 	} while (opcion != 3);
+
 }
 
 void Casos2(Usuarios* user, Plataforma* plataforma)
