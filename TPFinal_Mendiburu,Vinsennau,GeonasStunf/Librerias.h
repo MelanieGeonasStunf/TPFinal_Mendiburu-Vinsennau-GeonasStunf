@@ -8,5 +8,6 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <cstddef>  
+#include <cstring>
 
 using namespace std;

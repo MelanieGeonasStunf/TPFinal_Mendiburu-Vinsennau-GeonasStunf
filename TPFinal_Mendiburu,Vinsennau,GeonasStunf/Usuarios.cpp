@@ -125,6 +125,11 @@ void Usuarios::setEliminado(bool elim)
 	Eliminado = elim;
 }
 
+Paises Usuarios::getPais()
+{
+	return Pais;
+}
+
 bool Usuarios::VerificarContrasena()
 {
 	/*
@@ -145,5 +150,16 @@ bool Usuarios::VerificarContrasena()
 		
 	return false;
 }
+//PROBAR!
 
-
+void Usuarios::SeleccionarServicio(cListaT <Servicios>* serv)
+{
+	try
+	{
+		servicio->VerificarPais(this);
+	}
+	catch (exception& e)
+	{
+		throw e.what();
+	}
+}

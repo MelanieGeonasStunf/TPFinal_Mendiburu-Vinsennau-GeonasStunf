@@ -19,9 +19,9 @@ public:
 	FREE(Usuarios& user);
 
 	void Anuncios();
-	void LimiteTiempo();
+	void LimiteTiempo();//cada 10 min llama a anuncios (o menos tiempo para no esperar 10 min)
 	void Registrarse();
-	void SeleccionarServicio(cListaT<Servicios>*servicio);
+	//void SeleccionarServicio(cListaT<Servicios>*servicio);->era virtual
 	void VariarLista();
 
 

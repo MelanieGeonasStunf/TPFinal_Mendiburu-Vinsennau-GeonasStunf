@@ -110,7 +110,7 @@ void Plataforma::EditarCuenta(Usuarios* user, int tipo, bool eliminar)
 		}
 		else
 		{
-			throw exception("Ese tipo no se encuentra disponible o ya sos el tipo de usuario:( ");//ya es de ese tipo
+			throw exception("Ese tipo no se encuentra disponible o ya sos el tipo de usuario");//ya es de ese tipo
 		}
 	}
 	//para mi: tiene que recibir el usuario y el tipo que se quiere cambiar

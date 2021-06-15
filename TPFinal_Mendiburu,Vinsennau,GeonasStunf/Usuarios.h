@@ -33,10 +33,15 @@ private:
 	const string UserName;
 	Servicios* servicio;//servicio que esta usando el usuario en el momento.
 	int cantConexSemana;
-	bool Eliminado;//
-	//si es true-> iniciar sesion ->no puede iniciar
+	bool Eliminado;////si es true-> iniciar sesion ->no puede iniciar
 	//termina la semana-> en el main nos fijamos que usuarios estan en true y los eliminamos (delete)
 	//si es false-> no pasa nada
+
+	//int tiempoconex;->cuenta el tiempo de conexion del usuario que nos va a servir para setear el horario
+	//del cierre de sesion y para limitar a los usuarios FREE.
+	
+
+	
 public:
 	Usuarios(int Edad, Paises Pais,string Password, const string Name);
 	virtual ~Usuarios();
@@ -52,20 +57,20 @@ public:
 	virtual void Registrarse(Usuarios* user, Plataforma* plataforma);//->registra usuario!=iniciar sesion
 	//tendria que ser virtual pura?-> esta en todos los hijos
 
-	virtual void SeleccionarServicio(cListaT <Servicios> *servicio)=0;
+	void SeleccionarServicio(cListaT <Servicios> *serv);
+	/*se fija si el servicio que esta en la lista que le paso por parametro
+	*/
+	//porque es virtual?-> no es igual para cualquier usuario?-> solo se verifica que este en el pais
+	//hay alguna restriccion con free/premium?
 	
 	//getters y setters
 	void setFHcierre(tm cierre);
-	void setFHinicio(tm inicio);
+	void setFHinicio(tm inicio);//PROBLEMA!!
 	void setEliminado(bool elim);
+
+	Paises getPais();
+
 	//AGREGADO:
 	bool VerificarContrasena();//verifica que cumpla requisitos-> ya hecha!
-	/*
-	* REQUISITOS:
-	* - +8 caracteres
-	* - Mayuscula
-	* - Numero
-	* - Simbolo
-	* - Sin espacios
-	*/
+	
 };

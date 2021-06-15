@@ -6,12 +6,13 @@
 ///////////////////////////////////////////////////////////
 
 #include "Servicios.h"
+#include "Usuarios.h"
 
-
-Servicios::Servicios(const string clave,  const string nombre, Paises* paises): 
+Servicios::Servicios(const string clave,  const string nombre,int cantP, Paises* paises): 
 	Clave(clave), Nombre(nombre)
 {
-	this->paises = paises;
+	this->cantP = cantP;
+	this->paises[cantP] = paises[cantP];//no se si ta bien
 }
 
 
@@ -45,12 +46,32 @@ void Servicios::Pausar(){
 
 
 void Servicios::Reanudar(){
-
+	
 }
 
 
-void Servicios::VerificarPais(){
+void Servicios::VerificarPais(Usuarios*user){
+	/*
+	usuario tiene servicio=>
+	usuario*pepito=new us (..., servicio*,...)
+	=>En seleccionarservicio-> servicio->verificarpais();
+	=>verificarpais()
+	{if(user->pais == pais[i])-> for recorre lista paises
+	puede tener servicio
+	if(i=n paises)
+	no puede tener servicio->throw
+	}
 
+	*/
+	for (int i = 0; i < cantP; i++)
+	{
+		if (user->getPais() == paises[i])
+		{
+			return;
+		}
+	}
+	//si llega aca significa que el servicio no esta disponible en el pais del usuario
+	throw exception("Servicio no disponible :(");
 }
 
 

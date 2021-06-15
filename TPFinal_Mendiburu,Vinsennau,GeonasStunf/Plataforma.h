@@ -57,6 +57,7 @@ public:
 
 	//Usuarios* get
 	void EditarCuenta(Usuarios*user, int tipo, bool eliminar);//no me toma el enum!
+	//THROW!!!!
 	//void CambiarTipo(Usuarios* user, int tipo);
 	// 
 	// 

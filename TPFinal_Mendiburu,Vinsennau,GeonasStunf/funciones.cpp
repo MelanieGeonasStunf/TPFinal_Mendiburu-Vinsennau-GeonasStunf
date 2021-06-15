@@ -7,7 +7,14 @@ bool tick()
 
 void Encriptar(string clave)
 {
-
+	/*int largo = clave.length();
+	int n = 1;
+	for (int i = 1; i < largo; i++) {
+		int x = i - 1;
+		n = numero();
+		clave[x] = clave[x] + n;
+	}*/
+	//return clave;->cambiar a string funcion
 }
 
 int Menu1()
