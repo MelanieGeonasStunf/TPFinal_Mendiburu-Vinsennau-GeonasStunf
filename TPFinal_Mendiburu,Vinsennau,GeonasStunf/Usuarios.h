@@ -40,6 +40,7 @@ private:
 public:
 	Usuarios(int Edad, Paises Pais,string Password, const string Name);
 	virtual ~Usuarios();
+	Usuarios(Usuarios& user);
 
 	void CerrarSesion();
 	void IniciarSesion(Plataforma* plataforma);//llamamos a casos y a menu2 ->virtual?

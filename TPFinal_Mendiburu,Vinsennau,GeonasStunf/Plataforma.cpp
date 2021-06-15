@@ -81,21 +81,27 @@ void Plataforma::EditarCuenta(Usuarios* user, int tipo, bool eliminar)
 		{
 			t = 0;
 		}
-		if (dynamic_cast<FREE*>(user) != NULL)
+		if (dynamic_cast<BASIC*>(user) != NULL)
 		{
 			t = 1;
 		}
-		if (dynamic_cast<FREE*>(user) != NULL)
+		if (dynamic_cast<PREMIUM*>(user) != NULL)
 		{
 			t = 2;
 		}
 		if (tipo == Free && t!=0)
 		{
 			//hacemos funcion que copia al usuario y lo pasa a free
+			FREE* cambiado = new FREE(*user);
 		}
 		else if (tipo == basic && t!=1)
 		{
-
+			if (tipo == 2)//significa que era premium y ya tengo datos de una tarjeta.
+			{
+				//pido datos de tarjeta del usuario premium y lo pongo en constructor
+				//BASIC*cambiado=new 
+			}
+			//BASIC* cambiado = new BASIC(*user, 0);//tendriamos que pedir datos de una tarjeta!!!
 		}
 		else if (tipo == premium && t!=2)
 		{
@@ -116,4 +122,9 @@ void Plataforma::EditarCuenta(Usuarios* user, int tipo, bool eliminar)
 	//si coincide con alguno: -> dynamic_cast para saber el tipo de usuario que era originalmente.
 	//hacer copia del usuario y cambiar el tipo.->ni idea
 }
+
+/*void Plataforma::CambiarTipo(Usuarios* user, int tipo)
+{
+	Usuarios* nuevo = new Usuarios(*user);
+}*/
 

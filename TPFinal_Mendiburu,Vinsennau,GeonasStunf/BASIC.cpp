@@ -19,6 +19,11 @@ BASIC::~BASIC(){
 
 }
 
+BASIC::BASIC(Usuarios& user, string tarjeta):Usuarios(user)
+{
+	this->tarjeta = tarjeta;
+}
+
 
 void BASIC::Registrarse(){
 

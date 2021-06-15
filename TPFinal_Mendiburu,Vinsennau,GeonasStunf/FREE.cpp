@@ -20,6 +20,10 @@ FREE::~FREE(){
 
 }
 
+FREE::FREE(Usuarios& user):Usuarios(user)
+{
+}
+
 
 
 

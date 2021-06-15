@@ -16,6 +16,7 @@ class FREE : public Usuarios
 public:
 	FREE(int Edad, Paises Pais, string Password, const string Name);
 	virtual ~FREE();
+	FREE(Usuarios& user);
 
 	void Anuncios();
 	void LimiteTiempo();

@@ -26,6 +26,12 @@ Usuarios::~Usuarios(){
 
 }
 
+Usuarios::Usuarios(Usuarios& user) :Edad(user.Edad), Estado(user.Estado),
+Pais(user.Pais), Password(user.Password), servicio(user.servicio), cantConexSemana(user.cantConexSemana),
+Eliminado(user.Eliminado)//,Name(user.Name)??
+{
+}
+
 void Usuarios::CerrarSesion(){
 	if (!Estado)
 		throw new exception("\nNunca debería pasar esto.");//vemos que hacemos
