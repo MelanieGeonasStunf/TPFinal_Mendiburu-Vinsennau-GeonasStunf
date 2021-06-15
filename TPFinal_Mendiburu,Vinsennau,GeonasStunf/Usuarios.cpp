@@ -14,7 +14,7 @@
 
 Usuarios::Usuarios(int Edad, Paises Pais, string Password, const string Name):UserName(Name)
 {
-	Estado = false;//usuario empieza desconectado o conectado?
+	Estado = false;//usuario empieza desconectado
 	this->Pais = Pais;
 	this->Password = Password;
 	servicio = NULL;//no pasamos servicio?- lo seteamos despues?
@@ -78,7 +78,7 @@ void Usuarios::IniciarSesion(Plataforma* plataforma){
 
 RegUsuarios* Usuarios::RegistrarenRegistro(){
 	//hacemos un registro y en el constructor le pasamos por parametros a reg usuarios los datos del usuario
-	RegUsuarios* reg;//CREO QUE TIENE QUE SER VIRTUAL PARA PODER PONER EL TIPO 
+	RegUsuarios* reg;
 		
 	
 	if (dynamic_cast<PREMIUM*>(this)!= NULL )
@@ -97,11 +97,26 @@ RegUsuarios* Usuarios::RegistrarenRegistro(){
 }
 
 
-void Usuarios::Registrarse(){
-
+void Usuarios::Registrarse(Usuarios* user, Plataforma* plataforma){
+	
+	m_Usuarios + user;
+	Estado = true;//se inicia sesion
+	setFHinicio();
+	cListaT<RegUsuarios>* RegU = plataforma->getRgUsuarios();
+	*RegU + RegistrarenRegistro();
+	cantConexSemana++;
+	Casos2(this, plataforma);
 }
 
 void Usuarios::SeleccionarServicio(cListaT<Servicios>* servicio)
+{
+}
+
+void Usuarios::setFHcierre(tm cierre)
+{
+}
+
+void Usuarios::setFHinicio(tm inicio)
 {
 }
 

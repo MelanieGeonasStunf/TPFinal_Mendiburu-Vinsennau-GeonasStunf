@@ -55,6 +55,7 @@ cListaT<AudioVisual>* Plataforma::MasVistos(tm Periodo){
 
 void Plataforma::PromedioConectadosenSemanaxDia()
 {
+
 }
 
 

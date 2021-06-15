@@ -24,6 +24,5 @@ public:
 	void BuscarTipoUsuario();
 	//setear fecha aparte
 
-
 };
 

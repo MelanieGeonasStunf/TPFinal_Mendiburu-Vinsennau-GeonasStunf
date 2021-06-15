@@ -64,13 +64,13 @@ void Casos1(Usuarios* user, Plataforma* plataforma)//lo hice en do while para qu
 					"2) Desea salir?" << endl;
 				opcion2 = 1 + rand() % 3;
 				if (opcion == 1)
-					user->Registrarse();
+					user->Registrarse(user, plataforma); //deberiamos ver que el username no se repita???
 				else
 					throw 3;//para que lo agarre en el main
 			}
 			break;
 
-		case 2:user->Registrarse();
+		case 2:user->Registrarse(user, plataforma);
 			break;
 		case 3:throw 3;
 		}
@@ -95,7 +95,7 @@ void Casos2(Usuarios* user, Plataforma* plataforma)
 			}
 			catch (...)
 			{
-				cout << "\nNo se puedo cerrear sesión" << endl;
+				cout << "\nNo se pudo cerrar sesión" << endl;
 			}
 			break;
 		}
