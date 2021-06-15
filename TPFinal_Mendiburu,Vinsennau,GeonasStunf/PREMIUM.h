@@ -26,6 +26,6 @@ public:
 	void AumentarCalidad();
 	void DescargarAyV(Servicios* servicio);
 	void Registrarse();
-	void SeleccionarServicio(cListaT <Servicios>* servicio);
+	//void SeleccionarServicio(cListaT <Servicios>* servicio);
 
 };

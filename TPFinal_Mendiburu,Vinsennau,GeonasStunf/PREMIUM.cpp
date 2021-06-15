@@ -43,6 +43,4 @@ void PREMIUM::Registrarse(){
 
 }
 
-void PREMIUM::SeleccionarServicio(cListaT<Servicios>* servicio)
-{
-}
+

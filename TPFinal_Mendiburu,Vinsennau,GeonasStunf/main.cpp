@@ -16,6 +16,10 @@ del servicio aumenta.
 */
 int main()
 {
+	//ANTES DE DESESPERAR-> fijarse si constructores / destructores estan bien :| 
+
+
+
 	srand(time(NULL));
 	Plataforma* Labflix = new Plataforma();
 	// creamos archivo

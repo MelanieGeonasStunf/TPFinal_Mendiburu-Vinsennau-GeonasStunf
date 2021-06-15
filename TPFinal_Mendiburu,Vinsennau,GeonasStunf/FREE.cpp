@@ -42,9 +42,6 @@ void FREE::Registrarse(){
 
 }
 
-void FREE::SeleccionarServicio(cListaT<Servicios>* servicio)
-{
-}
 
 void FREE::VariarLista(){
 

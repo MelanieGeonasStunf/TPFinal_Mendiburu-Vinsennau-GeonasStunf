@@ -8,11 +8,12 @@
 #include "Servicios.h"
 #include "Usuarios.h"
 
-Servicios::Servicios(const string clave,  const string nombre,int cantP, Paises* paises): 
+Servicios::Servicios(const string clave,  const string nombre,int cantP, Paises* paises, RangoEtareo rango): 
 	Clave(clave), Nombre(nombre)
 {
 	this->cantP = cantP;
 	this->paises[cantP] = paises[cantP];//no se si ta bien
+	rangoE = rango;
 }
 
 
@@ -30,8 +31,15 @@ void Servicios::Apagar(){
 }
 
 
-void Servicios::ChequearEdad(){
+int Servicios::ChequearEdad(){
 
+	if (rangoE == nino)
+		return 0;
+	if (rangoE == adolescente)
+		return 1;
+	if (rangoE == adulto)
+		return 2;
+	//== return rangoE;
 }
 
 

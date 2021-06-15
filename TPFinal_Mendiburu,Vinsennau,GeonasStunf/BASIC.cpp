@@ -29,7 +29,5 @@ void BASIC::Registrarse(){
 
 }
 
-void BASIC::SeleccionarServicio(cListaT<Servicios>* servicio)
-{
-}
+
 

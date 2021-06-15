@@ -24,7 +24,7 @@ public:
 	//verifica contra correcta -> la llama iniciar sesion e iria a la lista de registros??
 
 
-	void SeleccionarServicio(cListaT<Servicios>* servicio);
+	//void SeleccionarServicio(cListaT<Servicios>* servicio);
 	//elije un servicio de la lista de servicios
 
 

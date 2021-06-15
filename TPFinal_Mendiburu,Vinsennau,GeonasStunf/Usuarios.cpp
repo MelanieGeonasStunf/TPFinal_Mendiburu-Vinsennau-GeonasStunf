@@ -162,4 +162,14 @@ void Usuarios::SeleccionarServicio(cListaT <Servicios>* serv)
 	{
 		throw e.what();
 	}
+	int rangoEtareo = servicio->ChequearEdad();
+	if (Edad < 13 && rangoEtareo != 0)
+	{
+		throw exception("No tiene la edad suficiente para utilizar este servicio");
+	}
+	if (Edad < 18 && rangoEtareo == 2)
+	{
+		throw exception("No tiene la edad suficiente para utilizar este servicio");
+	}
+	//si la edad>18 no tiene ninguna restriccion
 }

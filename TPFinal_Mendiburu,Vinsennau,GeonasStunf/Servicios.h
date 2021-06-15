@@ -10,6 +10,12 @@
 #include "Librerias.h"
 #include "Paises.h"
 
+enum RangoEtareo{nino, adolescente, adulto};
+/*
+* nino<13 anos
+* adolescente<18
+* adulto>18
+*/
 class Usuarios;
 class Servicios
 {
@@ -19,23 +25,27 @@ private:
 	const string Nombre;
 	Paises* paises;	
 	int cantP;
+	RangoEtareo rangoE;
 
 public:
-	Servicios(const string clave, const string nombre,int cantP, Paises* paises);
+	Servicios(const string clave, const string nombre,int cantP, Paises* paises, RangoEtareo rango);
 	virtual ~Servicios();
 
+	
+	int ChequearEdad();
+	void VerificarPais(Usuarios* user);//
+
+	
 	void Apagar();
-	void ChequearEdad();
+	void Iniciar();
+	void Pausar();
+	void Reanudar();
 	/*Podemos hacer como un "menu"->
 	* si toca " ": inicia un texto.
 	* si toca " " y ya se inicio: pausa
 	* si toca " ": cuando estaba en pausa: reinicia
 	* si toca "b": se apaga (de bye)
 	*/
-	void Iniciar();
-	void Pausar();
-	void Reanudar();
-	void VerificarPais(Usuarios*user);//
 
 
 	//void RegistrarenRegistro(Servicios* servicio);//?
