@@ -249,13 +249,21 @@ unsigned int cListaT<T>::getItemPos(string clave)
 }
 
 template<class T>
-void operator<<(ostream& o, cListaT<T>& object)//CORREGIR
+ostream& operator<<(ostream& out, cListaT<T>& object)//CORREGIR
 {
-	o << object.toString() << endl;
+	out << object.toString() << endl;
+	return out;
 }
 
 template<class T>
-inline T* cListaT<T>::operator[](unsigned int pos)
+istream& operator>>(istream& in, cListaT<T>& object)//CORREGIR
+{
+	/*out << object.toString();
+	return out;*/
+}
+
+template<class T>
+T* cListaT<T>::operator[](unsigned int pos)
 {
 	return vector[pos];
 }

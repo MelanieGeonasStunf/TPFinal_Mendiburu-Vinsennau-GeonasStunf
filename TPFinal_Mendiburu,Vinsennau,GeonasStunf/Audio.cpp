@@ -15,7 +15,7 @@ Audio::Audio(const string clave, const string nombre, int cantP, Paises* paises,
 }
 void Audio::IniciarServicio(Usuarios* user)
 { 
-	/*user->setFHcierre(/*agrego 10s por ejemplo*/);/*
+	/*user->setFHcierre(/*agrego 10s por ejemplo);*//*
 	int option = 0;
 	//option=0;//nada
 	//option=1;//pausar

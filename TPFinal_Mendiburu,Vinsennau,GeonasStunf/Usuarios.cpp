@@ -42,7 +42,6 @@ void Usuarios::CerrarSesion(){
 
 
 void Usuarios::IniciarSesion(Plataforma* plataforma){
-	//Llamamos a Menu2 y Casos2
 	int pos = -1;
 	if (plataforma != NULL)
 	{
@@ -60,12 +59,8 @@ void Usuarios::IniciarSesion(Plataforma* plataforma){
 			Estado = true;//se inicia sesion
 			setFHinicio();//le hacemos el local time?? 
 			cListaT<RegUsuarios>* RegU = plataforma->getRgUsuarios();
-			*RegU + RegistrarenRegistro();//hay que hacer la lista oublic o un get
-			//no quiero programar mas por favor
-			//plataforma->
-			//
+			*RegU + RegistrarenRegistro();
 			cantConexSemana++;
-			//Casos2(this, plataforma);
 		}
 			
 	}
@@ -112,13 +107,6 @@ void Usuarios::Registrarse(Usuarios* user, Plataforma* plataforma){//me parece q
 	
 }
 
-void Usuarios::SeleccionarServicio(cListaT<Servicios>* servicio)
-{
-	int pos = rand() % servicio->getCA();
-	if((servicio[pos])!=NULL)
-	{}
-
-}
 
 void Usuarios::setFHcierre(tm cierre)
 {
@@ -173,10 +161,12 @@ bool Usuarios::VerificarContrasena()
 
 void Usuarios::SeleccionarServicio(cListaT <Servicios>* serv)
 {
-	int pos = rand() % serv->getCA();
+	int pos = rand() % (serv->getCA());
+	//int pos = 1;
+
 	if ((serv[pos]) != NULL)
 	{
-		servicio = serv[pos];
+		servicio = new Servicios(serv[pos]);
 		try
 		{
 			servicio->VerificarPais(this);
@@ -194,7 +184,7 @@ void Usuarios::SeleccionarServicio(cListaT <Servicios>* serv)
 		{
 			throw exception("No tiene la edad suficiente para utilizar este servicio");
 		}
-		servicio->Iniciar(this);
+		//servicio->Iniciar(this);
 	}
 	//si la edad>18 no tiene ninguna restriccion
 }

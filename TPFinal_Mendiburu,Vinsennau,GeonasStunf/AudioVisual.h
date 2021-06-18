@@ -31,6 +31,7 @@ public:
 	void VelocidadReproduccion(int velocidad);
 	void setCalidad(bool hd) { HD = hd; }
 	void GuardartiempoRep(RegistroAyV* reg);
+	void IniciarServicio();
 	
 	RegistroAyV* RegistrarenRegistro(Usuarios* user);
 };

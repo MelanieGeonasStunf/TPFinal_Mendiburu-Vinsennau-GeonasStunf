@@ -27,5 +27,6 @@ public:
 
 	RegistroJuegos* RegistrarenRegistro(string userName);
 	void GuardarProgreso(RegistroJuegos* reg);
+	void IniciarServicio();
 
 };

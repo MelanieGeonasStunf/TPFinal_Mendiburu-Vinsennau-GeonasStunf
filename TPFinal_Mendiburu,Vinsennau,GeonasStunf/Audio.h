@@ -17,7 +17,7 @@ public:
     void FastForward();
     void Record();
     void VelocidadReproduccion(int velocidad);
-    void IniciarServicio( Usuarios* user);
+    void IniciarServicio();
 
     RegistroAyV* RegistrarenRegistro(Usuarios* user);
 };

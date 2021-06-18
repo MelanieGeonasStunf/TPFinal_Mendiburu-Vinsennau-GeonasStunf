@@ -1,4 +1,7 @@
 #include "funciones.h"
+#include "Juegos.h"
+#include "Audio.h"
+#include "AudioVisual.h"
 
 bool tick()
 {
@@ -129,5 +132,26 @@ void Casos2(Usuarios* user, Plataforma* plataforma)
 }
 void ReproducirServicio(Usuarios*user,Plataforma*plataforma)
 {
+//ponemos el anuncio
+	user->servicio->IniciarServicio(user);
+	//dynamic cast
+	if (dynamic_cast<Juegos*>(user->servicio) != NULL)
+	{
+		user->servicio->IniciarServicio();
+		do{
+
+		}while(user->servicio->)
+
+	}
+	if (dynamic_cast<AudioVisual*>(user->servicio) != NULL)
+	{
+		user->servicio->IniciarServicio();
+
+	}
+	if (dynamic_cast<Audio*>(user->servicio) != NULL)
+	{
+		user->servicio->IniciarServicio();
+	}
+
 
 }

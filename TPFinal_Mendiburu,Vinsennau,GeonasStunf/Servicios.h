@@ -20,6 +20,7 @@ class Usuarios;
 class Servicios
 {
 private:
+	friend void ReproducirServicio(Usuarios* user, Plataforma* plataforma);
 	const string Clave;
 	//tm duracion;
 	const string Nombre;
@@ -31,15 +32,16 @@ private:
 
 public:
 	Servicios(const string clave, const string nombre,int cantP, Paises* paises, RangoEtareo rango);
+	Servicios(Servicios& copia) :Clave(copia.Clave), Nombre(copia.Nombre), cantP(copia.cantP), rangoE(copia.rangoE){};
 	virtual ~Servicios();
 
 	
 	int ChequearEdad();
 	void VerificarPais(Usuarios* user);//
 
-	//hacemos virtual??
+
 	void Apagar();
-	virtual void IniciarServicio( Usuarios* user)=0;
+	virtual void IniciarServicio()=0;
 	void Pausar();
 	void Reanudar();
 	/*Podemos hacer como un "menu"->
@@ -49,8 +51,5 @@ public:
 	* si toca "b": se apaga (de bye)
 	*/
 
-
-	//void RegistrarenRegistro(Servicios* servicio);//?
-	//
 };
 

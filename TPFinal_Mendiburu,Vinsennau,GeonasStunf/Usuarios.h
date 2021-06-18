@@ -14,6 +14,7 @@
 #include "RegUsuarios.h"
 #include "funciones.h"
 #include "TipoUsuario.h"
+//#include "cListaT.h"
 
 class Plataforma;
 class PREMIUM;
@@ -35,6 +36,7 @@ private:
 	const string UserName;
 	Servicios* servicio;//servicio que esta usando el usuario en el momento.
 	int cantConexSemana;
+	friend void ReproducirServicio(Usuarios* user, Plataforma* plataforma);
 	bool Eliminado;////si es true-> iniciar sesion ->no puede iniciar
 	//termina la semana-> en el main nos fijamos que usuarios estan en true y los eliminamos (delete)
 	//si es false-> no pasa nada
@@ -51,7 +53,7 @@ public:
 	Usuarios(Usuarios& user);
 
 	void CerrarSesion();
-	void IniciarSesion(Plataforma* plataforma);//llamamos a casos y a menu2 ->virtual?
+	void IniciarSesion(Plataforma* plataforma)//llamamos a casos y a menu2 ->virtual?
 	//tiene que verificar que la contrasena y el user sean correctos->verificar en m_Usuarios de plataforma
 
 	RegUsuarios* RegistrarenRegistro();//plataforma usa el registro
