@@ -26,6 +26,8 @@ private:
 	Paises* paises;	
 	int cantP;
 	RangoEtareo rangoE;
+	//poner hora inicio
+	bool Reproduciendo;//true se esta reproduciendo
 
 public:
 	Servicios(const string clave, const string nombre,int cantP, Paises* paises, RangoEtareo rango);
@@ -35,9 +37,9 @@ public:
 	int ChequearEdad();
 	void VerificarPais(Usuarios* user);//
 
-	
+	//hacemos virtual??
 	void Apagar();
-	void Iniciar();
+	virtual void IniciarServicio( Usuarios* user)=0;
 	void Pausar();
 	void Reanudar();
 	/*Podemos hacer como un "menu"->

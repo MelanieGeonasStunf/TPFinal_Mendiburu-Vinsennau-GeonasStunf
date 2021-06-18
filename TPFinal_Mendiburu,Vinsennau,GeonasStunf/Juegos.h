@@ -9,20 +9,23 @@
 
 #include "Servicios.h"
 #include "Librerias.h"
-#include "RegistroJuegos.h"
+
+class RegistroJuegos;
 
 class Juegos : public Servicios
 {
 private:
+	
 	int NivelFinal;
+	bool Finalizado;//completo todos los niveles?
+
 	//string NombreJuego;->nombre ya esta en servicios
 
 public:
-	Juegos(const string clave, const string nombre, Paises* paises, int NivelFinal);
+	Juegos(const string clave, const string nombre, int cantP, Paises* paises, RangoEtareo rango, int NivelFinal);
 	virtual ~Juegos();
 
-	RegistroJuegos* RegistrarenRegistro();
-
-	void GuardarProgreso();
+	RegistroJuegos* RegistrarenRegistro(string userName);
+	void GuardarProgreso(RegistroJuegos* reg);
 
 };

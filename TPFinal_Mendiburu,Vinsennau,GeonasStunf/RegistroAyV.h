@@ -7,26 +7,25 @@
 
 #pragma once
 
-#include "AudioVisual.h"
-#include "Audio.h"
 #include "Librerias.h"
-#include"cListaT.h"
+#include "Audio.h"
+#include "AudioVisual.h"
 
 class RegistroAyV
 {
 
 private:
 	tm Fecha;
-	cListaT<AudioVisual>* ListadeRecientesAyV;
-	cListaT <Audio>* ListaRecientesA;//tenia doble puntero y le saque uno
-	int MinutodeReproduccion;
+	tm tiempoReproduccion;
+	bool Visto;//vio + 30% ->lo vio
 	const string UserName;
+	friend class Audio;
+	friend class AudioVisual;
 
 public:
 	RegistroAyV(const string Name);
 	virtual ~RegistroAyV();
 
-	RegistroAyV* RegistrarenRegistro();
 
 };
 

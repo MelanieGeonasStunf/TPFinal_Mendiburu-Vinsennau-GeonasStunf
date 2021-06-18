@@ -11,15 +11,16 @@
 class RegistroJuegos
 {
 private:
+	friend class Juegos;
 	int CantidadPartidasGanadas;
 	tm Fecha;
 	tm FechaUltimaJugada;
-	int Nivel;
+	int Nivel;//aumenta en guardar progreso de juegos
 	const string UserName;
 	//no le tendriamos que pasar juegos?
 
 public:
-	RegistroJuegos(const string Name);
+	RegistroJuegos(const string Namecnst ,string UserName);
 	virtual ~RegistroJuegos();
 };
 

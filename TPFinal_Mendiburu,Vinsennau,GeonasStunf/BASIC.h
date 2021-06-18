@@ -20,8 +20,7 @@ public:
 	BASIC(int Edad, Paises Pais, string Password, const string Name, string tarjeta);
 	virtual ~BASIC();
 	BASIC(Usuarios& user, string tarjeta);
-	void Registrarse();// ni idea-> era para registrarse en donde?
-	//verifica contra correcta -> la llama iniciar sesion e iria a la lista de registros??
+	
 
 
 	//void SeleccionarServicio(cListaT<Servicios>* servicio);

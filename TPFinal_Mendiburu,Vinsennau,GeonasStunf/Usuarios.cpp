@@ -65,7 +65,7 @@ void Usuarios::IniciarSesion(Plataforma* plataforma){
 			//plataforma->
 			//
 			cantConexSemana++;
-			Casos2(this, plataforma);
+			//Casos2(this, plataforma);
 		}
 			
 	}
@@ -109,11 +109,15 @@ void Usuarios::Registrarse(Usuarios* user, Plataforma* plataforma){//me parece q
 	cListaT<RegUsuarios>* RegU = plataforma->getRgUsuarios();
 	*RegU + RegistrarenRegistro();
 	cantConexSemana++;
-	Casos2(this, plataforma);
+	
 }
 
 void Usuarios::SeleccionarServicio(cListaT<Servicios>* servicio)
 {
+	int pos = rand() % servicio->getCA();
+	if((servicio[pos])!=NULL)
+	{}
+
 }
 
 void Usuarios::setFHcierre(tm cierre)
@@ -127,7 +131,12 @@ void Usuarios::setFHcierre(tm cierre)
 
 void Usuarios::setFHinicio(tm inicio)
 {
-	//le hacemos lo de local time
+	/*time_t rawtime;
+	tm* info;
+	time(&rawtime);
+	info = localtime(&rawtime);
+	FechayHoraInicio = *info;
+	*/
 }
 
 void Usuarios::setEliminado(bool elim)
@@ -164,22 +173,28 @@ bool Usuarios::VerificarContrasena()
 
 void Usuarios::SeleccionarServicio(cListaT <Servicios>* serv)
 {
-	try
+	int pos = rand() % serv->getCA();
+	if ((serv[pos]) != NULL)
 	{
-		servicio->VerificarPais(this);
-	}
-	catch (exception& e)
-	{
-		throw e.what();
-	}
-	int rangoEtareo = servicio->ChequearEdad();
-	if (Edad < 13 && rangoEtareo != 0)
-	{
-		throw exception("No tiene la edad suficiente para utilizar este servicio");
-	}
-	if (Edad < 18 && rangoEtareo == 2)
-	{
-		throw exception("No tiene la edad suficiente para utilizar este servicio");
+		servicio = serv[pos];
+		try
+		{
+			servicio->VerificarPais(this);
+		}
+		catch (exception& e)
+		{
+			throw e.what();
+		}
+		int rangoEtareo = servicio->ChequearEdad();
+		if (Edad < 13 && rangoEtareo != 0)
+		{
+			throw exception("No tiene la edad suficiente para utilizar este servicio");
+		}
+		if (Edad < 18 && rangoEtareo == 2)
+		{
+			throw exception("No tiene la edad suficiente para utilizar este servicio");
+		}
+		servicio->Iniciar(this);
 	}
 	//si la edad>18 no tiene ninguna restriccion
 }

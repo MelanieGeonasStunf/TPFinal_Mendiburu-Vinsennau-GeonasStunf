@@ -29,18 +29,14 @@ FREE::FREE(Usuarios& user):Usuarios(user)
 
 
 void FREE::Anuncios(){
-
+//imprimimos algo en la pantalla?
 }
 
 
 void FREE::LimiteTiempo(){
-
+	//hacer contador que limite el tiempo -> por dia?/hora?/...
 }
 
-
-void FREE::Registrarse(){
-
-}
 
 
 void FREE::VariarLista(){

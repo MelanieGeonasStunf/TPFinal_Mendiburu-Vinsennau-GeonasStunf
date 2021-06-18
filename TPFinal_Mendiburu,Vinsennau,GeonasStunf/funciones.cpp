@@ -5,16 +5,15 @@ bool tick()
 	return 0;
 }
 
-void Encriptar(string clave)
+string Encriptar(string clave)
 {
-	/*int largo = clave.length();
-	int n = 1;
-	for (int i = 1; i < largo; i++) {
-		int x = i - 1;
-		n = numero();
-		clave[x] = clave[x] + n;
-	}*/
-	//return clave;->cambiar a string funcion
+	int largo = clave.length();
+	string encript;
+	for(int i=0; i<largo;i++)
+	{
+		encript[i]='*';
+	}
+	return encript;
 }
 
 int Menu1()
@@ -63,6 +62,7 @@ void Casos1(Usuarios* user, Plataforma* plataforma)//lo hice en do while para qu
 			try
 			{
 				user->IniciarSesion(plataforma);
+				Casos2(user, plataforma);
 			}
 			catch (string exc)//si agarra excepcion significa que no se inicio sesion bien
 			{//catch (e.what)!!
@@ -72,7 +72,8 @@ void Casos1(Usuarios* user, Plataforma* plataforma)//lo hice en do while para qu
 				opcion2 = 1 + rand() % 3;
 				if (opcion == 1)
 					try {
-					user->Registrarse(user, plataforma);
+					user->Registrarse(user, plataforma);//suponemos que al registrarse se inicia sesion 
+					Casos2(user, plataforma);
 				}
 				catch (exception* e)
 				{
@@ -87,6 +88,7 @@ void Casos1(Usuarios* user, Plataforma* plataforma)//lo hice en do while para qu
 		case 2: {
 			try {
 				user->Registrarse(user, plataforma);
+				Casos2(user, plataforma);
 			}
 			catch (exception* e)
 			{
@@ -124,4 +126,8 @@ void Casos2(Usuarios* user, Plataforma* plataforma)
 			break;
 		}
 	} while (opcion != 2);
+}
+void ReproducirServicio(Usuarios*user,Plataforma*plataforma)
+{
+
 }

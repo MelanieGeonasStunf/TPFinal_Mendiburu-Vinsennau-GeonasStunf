@@ -1,4 +1,4 @@
-///////////////////////////////////////////////////////////
+`///////////////////////////////////////////////////////////
 //  Plataforma.cpp
 //  Implementation of the Class Plataforma
 //  Created on:      01-Jun-2021 10:49:52 AM
@@ -10,7 +10,7 @@
 #include "BASIC.h"
 #include "PREMIUM.h"
 
-Plataforma::Plataforma():Nombre("Labfliz")
+Plataforma::Plataforma():Nombre("Labflix")
 {
 	this->CantidadUsuariosConectados=0;
 	//ListaUsuariosxDia = new cListaT<Usuarios>;
@@ -94,11 +94,17 @@ void Plataforma::EditarCuenta(Usuarios* user, int tipo, bool eliminar)
 		{
 			//hacemos funcion que copia al usuario y lo pasa a free
 			FREE* cambiado = new FREE(*user);
+			if (tipo == 2)//significa que era premium 
+			{
+				//de premium a free->baja calidad
+			}
 		}
 		else if (tipo == basic && t!=1)
 		{
 			if (tipo == 2)//significa que era premium y ya tengo datos de una tarjeta.
 			{
+				//de premium a basic->baja calidad
+
 				//pido datos de tarjeta del usuario premium y lo pongo en constructor
 				//BASIC*cambiado=new 
 			}
@@ -106,7 +112,7 @@ void Plataforma::EditarCuenta(Usuarios* user, int tipo, bool eliminar)
 		}
 		else if (tipo == premium && t!=2)
 		{
-
+			//no olvidar de mejorar la calidad a 1080!!->llamar a funicion de audiovisual MejorarCalidad
 		}
 		else
 		{

@@ -6,7 +6,7 @@
 bool tick();
 //cuenta para saber cuantos dias pasaron de la semana->para cortar el main cuando se termina la semana
 
-void Encriptar(string clave);//encripta claves y nros de tarjeta
+string Encriptar(string clave);//encripta claves y nros de tarjeta
 int Menu1();
 int Menu2();
 //menu cambiar a int?

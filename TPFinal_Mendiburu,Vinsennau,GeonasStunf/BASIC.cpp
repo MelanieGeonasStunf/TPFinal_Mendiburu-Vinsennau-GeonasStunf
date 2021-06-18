@@ -25,9 +25,7 @@ BASIC::BASIC(Usuarios& user, string tarjeta):Usuarios(user)
 }
 
 
-void BASIC::Registrarse(){
 
-}
 
 
 

@@ -13,12 +13,14 @@
 #include "cListaT.h"
 #include "RegUsuarios.h"
 #include "funciones.h"
-#include"TipoUsuario.h"
+#include "TipoUsuario.h"
 
 class Plataforma;
 class PREMIUM;
 class BASIC;
 class FREE;
+class Audiovisual;
+class Audio;
 
 class Usuarios
 {
@@ -39,7 +41,8 @@ private:
 
 	//int tiempoconex;->cuenta el tiempo de conexion del usuario que nos va a servir para setear el horario
 	//del cierre de sesion y para limitar a los usuarios FREE.
-	
+	cListaT<AudioVisual>* ListadeRecientesAyV;
+	cListaT <Audio>* ListaRecientesA;//tenia doble puntero y le saque uno
 
 	
 public:
@@ -54,13 +57,12 @@ public:
 	RegUsuarios* RegistrarenRegistro();//plataforma usa el registro
 	//friend? -> se supone que esta funcion la llama regUsuarios?
 
-	virtual void Registrarse(Usuarios* user, Plataforma* plataforma);//->registra usuario!=iniciar sesion
+	void Registrarse(Usuarios* user, Plataforma* plataforma);//->registra usuario!=iniciar sesion
 	//tendria que ser virtual pura?-> esta en todos los hijos
 
 	void SeleccionarServicio(cListaT <Servicios> *serv);
 	/*se fija si el servicio que esta en la lista que le paso por parametro
 	*/
-	//porque es virtual?-> no es igual para cualquier usuario?-> solo se verifica que este en el pais
 	//hay alguna restriccion con free/premium?
 	
 	//getters y setters

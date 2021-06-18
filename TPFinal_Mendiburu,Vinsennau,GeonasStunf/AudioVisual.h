@@ -10,21 +10,27 @@
 #include "Servicios.h"
 #include "Librerias.h"
 
+class RegistroAyV;
+
 class AudioVisual : public Servicios
 {
 
 private:
-	int Calidad;
+	bool HD;//true para usuarios premium nada mas
 	int TipoAudioVisual;
 	tm duracion;
 
 public:
-	AudioVisual(const string clave,  const string nombre, Paises* paises, tm duracion ,int Tipo );
+	AudioVisual(const string clave, const string nombre, int cantP, Paises* paises, 
+		RangoEtareo rango, tm duracion ,int Tipo );
 	virtual ~AudioVisual();
 
 	void FastBackward();
-	void FastForward();
+	void FastForward(float velocidad, tm tiempo);
 	void Record();
 	void VelocidadReproduccion(int velocidad);
-	void MejorarCalidad(int calidad);
+	void setCalidad(bool hd) { HD = hd; }
+	void GuardartiempoRep(RegistroAyV* reg);
+	
+	RegistroAyV* RegistrarenRegistro(Usuarios* user);
 };

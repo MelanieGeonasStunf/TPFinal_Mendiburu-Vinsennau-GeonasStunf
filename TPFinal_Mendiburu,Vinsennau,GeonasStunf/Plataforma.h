@@ -1,4 +1,4 @@
-   x///////////////////////////////////////////////////////////
+   ///////////////////////////////////////////////////////////
 //  Plataforma.h
 //  Implementation of the Class Plataforma
 //  Created on:      01-Jun-2021 10:49:51 AM
@@ -76,6 +76,7 @@ public:
 	//si no hay ninguno igual -> throw que no se pudo editar nada-> si tenemos el enum haria falta?
 	//si coincide con alguno: -> dynamic_cast para saber el tipo de usuario que era originalmente.
 	//hacer copia del usuario y cambiar el tipo.->ni idea
+	
 	//seters y geters
 	cListaT<RegUsuarios>* getRgUsuarios() { return RegU; }
 };

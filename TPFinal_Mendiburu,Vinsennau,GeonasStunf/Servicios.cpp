@@ -43,10 +43,6 @@ int Servicios::ChequearEdad(){
 }
 
 
-void Servicios::Iniciar(){
-
-}
-
 
 void Servicios::Pausar(){
 

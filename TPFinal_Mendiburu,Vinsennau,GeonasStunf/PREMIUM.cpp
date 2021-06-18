@@ -26,21 +26,9 @@ PREMIUM::~PREMIUM(){
 }
 
 
-
-
-
-void PREMIUM::AumentarCalidad(){
-
-}
-
-
 void PREMIUM::DescargarAyV(Servicios* servicio){
-
+	ListaDescargas + servicio;
 }
 
-
-void PREMIUM::Registrarse(){
-
-}
 
 

@@ -12,7 +12,6 @@
 
 class FREE : public Usuarios
 {
-	//le tendriamos que poner algun atributo?
 public:
 	FREE(int Edad, Paises Pais, string Password, const string Name);
 	virtual ~FREE();
@@ -20,7 +19,6 @@ public:
 
 	void Anuncios();
 	void LimiteTiempo();//cada 10 min llama a anuncios (o menos tiempo para no esperar 10 min)
-	void Registrarse();
 	//void SeleccionarServicio(cListaT<Servicios>*servicio);->era virtual
 	void VariarLista();
 
