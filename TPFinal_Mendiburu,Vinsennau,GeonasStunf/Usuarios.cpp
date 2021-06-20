@@ -11,6 +11,9 @@
 #include "TipoUsuario.h"
 #include "FREE.h"
 #include "BASIC.h"
+#include "Audio.h"
+#include "AudioVisual.h"
+#include "Juegos.h"
 
 Usuarios::Usuarios(int Edad, Paises Pais, string Password, const string Name):UserName(Name)
 {
@@ -164,9 +167,21 @@ void Usuarios::SeleccionarServicio(cListaT <Servicios>* serv)
 	int pos = rand() % (serv->getCA());
 	//int pos = 1;
 
-	if ((serv[pos]) != NULL)
+	if ((*serv)[pos] != NULL)
 	{
-		servicio = new Servicios(serv[pos]);
+		if (dynamic_cast<Juegos*>((*serv)[pos])!=NULL)
+		{
+			servicio = new Juegos((*serv)[pos]);
+		}
+		if (dynamic_cast<AudioVisual*>((*serv)[pos]!=NULL))
+		{
+			servicio = new AudioVisual((*serv)[pos]);
+		}
+		if (dynamic_cast<Audio*>((*serv)[pos]!=NULL))
+		{
+			servicio = new Audio((*serv)[pos]);
+		}
+		
 		try
 		{
 			servicio->VerificarPais(this);

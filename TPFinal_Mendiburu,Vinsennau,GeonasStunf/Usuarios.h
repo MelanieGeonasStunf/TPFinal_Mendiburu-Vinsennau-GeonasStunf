@@ -53,7 +53,7 @@ public:
 	Usuarios(Usuarios& user);
 
 	void CerrarSesion();
-	void IniciarSesion(Plataforma* plataforma)//llamamos a casos y a menu2 ->virtual?
+	void IniciarSesion(Plataforma* plataforma);//llamamos a casos y a menu2 ->virtual?
 	//tiene que verificar que la contrasena y el user sean correctos->verificar en m_Usuarios de plataforma
 
 	RegUsuarios* RegistrarenRegistro();//plataforma usa el registro

@@ -8,9 +8,12 @@ class Audio :
     public Servicios
 {
     tm duracion;
+    tm tiempoInicio;
+
 public:
     Audio(const string clave, const string nombre, int cantP, Paises* paises, RangoEtareo rango,
         tm duracion);
+    Audio(Audio& audio);
     virtual ~Audio();
 
     void FastBackward();
@@ -18,6 +21,7 @@ public:
     void Record();
     void VelocidadReproduccion(int velocidad);
     void IniciarServicio();
+    tm getTInicio() { return tiempoInicio; }
 
     RegistroAyV* RegistrarenRegistro(Usuarios* user);
 };

@@ -13,10 +13,16 @@ AudioVisual::AudioVisual(const string clave, const string nombre, int cantP,
 	Paises* paises, RangoEtareo rango, tm duracion, int Tipo )
 	:Servicios( clave, nombre, cantP, paises,rango)
 {
+	this->tiempoInicio = { 0,0,0 };
 	this->duracion = duracion;
 	TipoAudioVisual = Tipo;//tendriamos que poner el tipo como enum o dejarlo en int?
 	HD = false;
 
+}
+
+AudioVisual::AudioVisual(AudioVisual& ayv):Servicios(ayv), HD(ayv.HD),
+TipoAudioVisual(ayv.TipoAudioVisual),duracion(ayv.duracion)
+{
 }
 
 AudioVisual::~AudioVisual(){
@@ -83,9 +89,6 @@ void AudioVisual::GuardartiempoRep(RegistroAyV* reg)
 				reg->Visto = true;
 			}
 		}
-			
-
-	
 		return;
 	}
 	
@@ -125,6 +128,16 @@ void AudioVisual::GuardartiempoRep(RegistroAyV* reg)
 		reg->Visto = true;
 	}
 
+}
+
+void AudioVisual::IniciarServicio()
+{
+	time_t rawtime;
+	tm* info;
+	time(&rawtime);
+	info = localtime(&rawtime);
+	tiempoInicio = *info;
+	
 }
 
 

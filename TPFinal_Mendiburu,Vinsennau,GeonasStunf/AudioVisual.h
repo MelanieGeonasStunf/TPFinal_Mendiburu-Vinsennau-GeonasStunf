@@ -19,10 +19,12 @@ private:
 	bool HD;//true para usuarios premium nada mas
 	int TipoAudioVisual;
 	tm duracion;
+	tm tiempoInicio;//cuenta el tiempo en que empieza a ver-> nos sirve para saber si vio todo el video
 
 public:
 	AudioVisual(const string clave, const string nombre, int cantP, Paises* paises, 
 		RangoEtareo rango, tm duracion ,int Tipo );
+	AudioVisual(AudioVisual& ayv);
 	virtual ~AudioVisual();
 
 	void FastBackward();
@@ -32,6 +34,8 @@ public:
 	void setCalidad(bool hd) { HD = hd; }
 	void GuardartiempoRep(RegistroAyV* reg);
 	void IniciarServicio();
+	tm getTInicio() { return tiempoInicio; }
 	
 	RegistroAyV* RegistrarenRegistro(Usuarios* user);
+	tm getDuracion() { return duracion; }
 };

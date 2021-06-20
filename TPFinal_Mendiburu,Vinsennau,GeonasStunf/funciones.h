@@ -9,6 +9,7 @@ bool tick();
 string Encriptar(string clave);//encripta claves y nros de tarjeta
 int Menu1();
 int Menu2();
+long int PasarAseg(tm tiempo);
 //menu cambiar a int?
 /*
 1. Iniciar sesion -> cambia estado a conectado y vuelve a menu principal

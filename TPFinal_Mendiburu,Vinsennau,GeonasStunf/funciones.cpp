@@ -130,27 +130,78 @@ void Casos2(Usuarios* user, Plataforma* plataforma)
 		}
 	} while (opcion != 2);
 }
-void ReproducirServicio(Usuarios*user,Plataforma*plataforma)
+
+long int PasarAseg(tm tiempo)
 {
-//ponemos el anuncio
-	user->servicio->IniciarServicio(user);
+	long int tSeg = tiempo.tm_sec + tiempo.tm_min * 60 + tiempo.tm_hour * 3600;
+	return tSeg;
+}
+void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
+{
+	//ponemos el anuncio
 	//dynamic cast
-	if (dynamic_cast<Juegos*>(user->servicio) != NULL)
+
+	Juegos* juego1 = dynamic_cast<Juegos*>(user->servicio);
+	if (juego1 != NULL)
 	{
-		user->servicio->IniciarServicio();
-		do{
-
-		}while(user->servicio->)
-
+		juego1->IniciarServicio();
+		RegistroJuegos* regJ;
+		regJ = juego1->RegistrarenRegistro(user->UserName);
+		do {
+			juego1->GuardarProgreso(regJ);
+		} while (!juego1->getEstado());
 	}
-	if (dynamic_cast<AudioVisual*>(user->servicio) != NULL)
+	AudioVisual* audiov1 = dynamic_cast<AudioVisual*>(user->servicio);
+	if (audiov1!= NULL)
 	{
-		user->servicio->IniciarServicio();
+		audiov1->IniciarServicio();
+		long int TiempoReal = PasarAseg(audiov1->getDuracion());
+		time_t i;
+		time_t f;
+		do
+		{
+		// string exc = "Fechas ingresadas no disponibles";
+			
+			if (GetKeyState(VK_SHIFT) & 0x8000)
+			{
+				// Shift down
+			}
+			tm inicio;
+			inicio.tm_year= (audiov1->getTInicio()).tm_year - 1900;
+			tm* I = &inicio;
+			time_t rawtime;
+			time(&rawtime);
+			tm*F = localtime(&rawtime);
+			i= mktime(I);
+			f = mktime(F);
+
+		} while (difftime(f,i)<=TiempoReal);
 
 	}
 	if (dynamic_cast<Audio*>(user->servicio) != NULL)
 	{
-		user->servicio->IniciarServicio();
+			//audiov1->IniciarServicio();
+		long int TiempoReal = PasarAseg(audiov1->getDuracion());
+		time_t i;
+		time_t f;
+		do
+		{
+		// string exc = "Fechas ingresadas no disponibles";
+			
+			if (GetKeyState(VK_SHIFT) & 0x8000)
+			{
+				// Shift down
+			}
+			tm inicio;
+			inicio.tm_year= (audiov1->getTInicio()).tm_year - 1900;
+			tm* I = &inicio;
+			time_t rawtime;
+			time(&rawtime);
+			tm*F = localtime(&rawtime);
+			i= mktime(I);
+			f = mktime(F);
+
+		} while (difftime(f,i)<=TiempoReal);
 	}
 
 

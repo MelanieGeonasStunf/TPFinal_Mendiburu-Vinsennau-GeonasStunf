@@ -15,6 +15,12 @@ Juegos::Juegos(const string clave, const string nombre, int cantP, Paises* paise
 	Finalizado = false;
 }
 
+Juegos::Juegos(Juegos& juego) :Servicios(juego)
+{
+NivelFinal=juego.NivelFinal;
+Finalizado = juego.Finalizado;
+}
+
 Juegos::~Juegos(){
 
 }
@@ -24,10 +30,10 @@ void Juegos::GuardarProgreso(RegistroJuegos* reg){
 	if (nro == 0)
 	{
 		(reg->Nivel)++;
-		if (NivelFinal == reg->Nivel)
+		if (NivelFinal == reg->Nivel) {
 			Finalizado = true;
+		}
 	}
-
 }
 RegistroJuegos* Juegos::RegistrarenRegistro(string userName){
 	RegistroJuegos*reg = new RegistroJuegos * (this->Nombre,userName);

@@ -23,10 +23,12 @@ private:
 
 public:
 	Juegos(const string clave, const string nombre, int cantP, Paises* paises, RangoEtareo rango, int NivelFinal);
+	Juegos(Juegos& juego);
 	virtual ~Juegos();
 
 	RegistroJuegos* RegistrarenRegistro(string userName);
 	void GuardarProgreso(RegistroJuegos* reg);
 	void IniciarServicio();
+	bool getEstado()  { return estado;  };
 
 };

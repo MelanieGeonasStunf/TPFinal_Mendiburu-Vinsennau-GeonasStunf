@@ -12,24 +12,18 @@ Audio::Audio(const string clave, const string nombre, int cantP, Paises* paises,
 	:Servicios(clave, nombre, cantP, paises, rango)
 {
 	this->duracion = duracion;
+	this->tiempoInicio = { 0,0,0 };
 }
-void Audio::IniciarServicio(Usuarios* user)
+Audio::Audio(Audio& audio):Servicios(audio), duracion(audio.duracion)
+{
+}
+void Audio::IniciarServicio()
 { 
-	/*user->setFHcierre(/*agrego 10s por ejemplo);*//*
-	int option = 0;
-	//option=0;//nada
-	//option=1;//pausar
-	//option=2;//adelantar
-	do {
-		int option = 1 + rand() % 4;
-		switch (option)
-		{
-		case 1:
-		case 2:
-		case 3:
-		}
-	} while (option != 3);
-	RegistroAyV* reg = RegistrarenRegistro(user);*/
+	time_t rawtime;
+	tm* info;
+	time(&rawtime);
+	info = localtime(&rawtime);
+	tiempoInicio = *info;
 }
 
 Audio::~Audio(){
