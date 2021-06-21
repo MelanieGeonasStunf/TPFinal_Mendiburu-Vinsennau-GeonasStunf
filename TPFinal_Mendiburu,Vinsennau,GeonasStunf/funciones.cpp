@@ -6,7 +6,11 @@
 
 bool tick()
 {
-	return 0;
+	time_t rawtime;
+	time(&rawtime);
+	tm* hoy = localtime(&rawtime);
+	if (hoy->tm_hour == 0 && hoy->tm_min == 0 && hoy->tm_wday == 1)//si es lunes 
+		return true;
 }
 
 string Encriptar(string clave)
@@ -149,9 +153,10 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 	* APAGAR: escape (Esc)
 	* 
 	*/
-	if (dynamic_cast<FREE*>(user)!=NULL)
+	FREE* usuarioF = dynamic_cast<FREE*>(user);
+	if (usuarioF!=NULL)
 	{
-		user->Anuncios();//no se porque no lo toma :( -> tendria que ser virtual?
+		usuarioF->Anuncios();//no se porque no lo toma :( -> tendria que ser virtual?
 	}
 
 	Juegos* juego1 = dynamic_cast<Juegos*>(user->servicio);
@@ -180,6 +185,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			
 			if (GetKeyState(VK_SPACE) & 0x8000)//PAUSA-> tendriamos que poner el espacio
 			{
+				//podemos poner todo esto adentro de pausa sino, no se si es necesario el system pause
 				// Shift down
 				user->servicio->Pausar();
 				t = clock();//empieza a contar el tiempo
@@ -221,7 +227,8 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			f = mktime(F);
 
 		} while (difftime(f,i)<=TiempoReal);
-
+		RegistroAyV*regAyV=audiov1->RegistrarenRegistro(user);
+		*(plataforma->getRgAyV()) + regAyV;
 	}
 	Audio* audio = dynamic_cast<Audio*>(user->servicio);
 	if (dynamic_cast<Audio*>(audio) != NULL)
@@ -266,6 +273,8 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			f = mktime(F);
 
 		} while (difftime(f,i)<=TiempoReal);
+		RegistroAyV* regA = audio->RegistrarenRegistro(user);
+		*(plataforma->getRgAyV()) + regA;
 	}
 
 

@@ -79,5 +79,6 @@ public:
 	
 	//seters y geters
 	cListaT<RegUsuarios>* getRgUsuarios() { return RegU; }
+	cListaT<RegistroAyV>* getRgAyV() { return RegAyV; }
 };
 
