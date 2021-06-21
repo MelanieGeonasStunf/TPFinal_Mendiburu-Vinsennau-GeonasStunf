@@ -152,6 +152,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 	if (dynamic_cast<FREE*>(user)!=NULL)
 	{
 		user->Anuncios();//no se porque no lo toma :( -> tendria que ser virtual?
+		//no funciona pq Anuncios() es un metodo de FREE, no de Usuarios->ponemos el metodo en usuarios?
 	}
 
 	Juegos* juego1 = dynamic_cast<Juegos*>(user->servicio);
