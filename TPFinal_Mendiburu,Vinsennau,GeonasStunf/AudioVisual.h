@@ -28,11 +28,11 @@ public:
 	virtual ~AudioVisual();
 
 	void FastBackward();
-	void FastForward(float velocidad, tm tiempo);
+	void FastForward();
 	void Record();
 	void VelocidadReproduccion(int velocidad);
 	void setCalidad(bool hd) { HD = hd; }
-	void GuardartiempoRep(RegistroAyV* reg);
+	void GuardartiempoRep(RegistroAyV* reg, int seg);
 	void IniciarServicio();
 	tm getTInicio() { return tiempoInicio; }
 	

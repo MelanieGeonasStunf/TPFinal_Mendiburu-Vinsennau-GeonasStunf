@@ -7,6 +7,8 @@
 
 #include "AudioVisual.h"
 #include "RegistroAyV.h"
+#include "funciones.h"
+
 class Usuario;
 
 AudioVisual::AudioVisual(const string clave, const string nombre, int cantP, 
@@ -38,9 +40,9 @@ void AudioVisual::FastBackward(){
 }
 
 
-void AudioVisual::FastForward(float velocidad, tm tiempo){
+void AudioVisual::FastForward(){
 	//tiempo es el tiempo que quiere hacer fast forward.
-	int seg = difftime(0, mktime(&tiempo));//chequear si funciona
+	/*int seg = difftime(0, mktime(&tiempo));//chequear si funciona
 	//float min = seg * 60;
 	int seg2 = difftime(0, mktime(&duracion));
 
@@ -49,7 +51,7 @@ void AudioVisual::FastForward(float velocidad, tm tiempo){
 		//hace fast forward de todo el video
 
 	}
-
+*/
 	
 
 }
@@ -65,11 +67,14 @@ void AudioVisual::VelocidadReproduccion(int velocidad){
 }
 
 
-void AudioVisual::GuardartiempoRep(RegistroAyV* reg)
+void AudioVisual::GuardartiempoRep(RegistroAyV* reg, int seg)
 {
 	//int seg = rand() % duracion.tm_sec;
 	//int min = rand() % duracion.tm_min;
-	int hs = rand() % duracion.tm_hour;
+	long int durSeg = PasarAseg(duracion);
+	if (0.3 * durSeg >= seg)
+		reg->Visto = true;
+	/*int hs = rand() % duracion.tm_hour;
 	if (hs == duracion.tm_hour)
 	{
 		int min = rand() % duracion.tm_min;
@@ -146,5 +151,5 @@ RegistroAyV* AudioVisual::RegistrarenRegistro(Usuarios* user)
 	RegistroAyV* reg;
 	reg = new RegistroAyV(user->FechayHoraCierre, tiempoReproduccion, user->UserName);
 
-	return reg;
+	return reg;*/
 }

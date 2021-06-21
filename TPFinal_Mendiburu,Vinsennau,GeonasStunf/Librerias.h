@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <ctime>
+#include <time.h>
 #include <conio.h>
 #include<Windows.h>
 #include<MMSystem.h>
@@ -9,6 +10,7 @@
 #include <ctype.h>
 #include <cstddef>  
 #include <cstring>
+#include <math.h>
 
 using namespace std;
 

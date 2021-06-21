@@ -23,6 +23,8 @@ public:
     void IniciarServicio();
     tm getTInicio() { return tiempoInicio; }
 
+    void GuardartiempoRep(RegistroAyV* reg);
+
     RegistroAyV* RegistrarenRegistro(Usuarios* user);
 };
 

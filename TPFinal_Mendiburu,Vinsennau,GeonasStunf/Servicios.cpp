@@ -45,28 +45,22 @@ int Servicios::ChequearEdad(){
 
 
 void Servicios::Pausar(){
-
+	system("pause");//se reanuda cuando aprieta enter
+	/*tendriamos que contar el tiempo que tarda para apretar enter?
+	*/
+	/*
+	* sleep(2000)//espera 20 segundos para reanudar.
+	*/
 }
 
 
 void Servicios::Reanudar(){
-	
+	//reanuda el contador de tiempo
 }
 
 
 void Servicios::VerificarPais(Usuarios*user){
-	/*
-	usuario tiene servicio=>
-	usuario*pepito=new us (..., servicio*,...)
-	=>En seleccionarservicio-> servicio->verificarpais();
-	=>verificarpais()
-	{if(user->pais == pais[i])-> for recorre lista paises
-	puede tener servicio
-	if(i=n paises)
-	no puede tener servicio->throw
-	}
-
-	*/
+	
 	for (int i = 0; i < cantP; i++)
 	{
 		if (user->getPais() == paises[i])

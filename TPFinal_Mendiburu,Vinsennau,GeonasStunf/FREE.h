@@ -17,8 +17,9 @@ public:
 	virtual ~FREE();
 	FREE(Usuarios& user);
 
-	void Anuncios();
-	void LimiteTiempo();//cada 10 min llama a anuncios (o menos tiempo para no esperar 10 min)
+	void Anuncios();//podemos ver si puede ser algun sonido
+
+	void LimiteTiempo();
 	//void SeleccionarServicio(cListaT<Servicios>*servicio);->era virtual
 	void VariarLista();
 
