@@ -9,7 +9,7 @@
 #include "RegistroAyV.h"
 #include "funciones.h"
 
-class Usuario;
+class Usuarios;
 
 AudioVisual::AudioVisual(const string clave, const string nombre, int cantP, 
 	Paises* paises, RangoEtareo rango, tm duracion, int Tipo )

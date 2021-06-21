@@ -173,7 +173,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 	if (audiov1!= NULL)
 	{
 		audiov1->IniciarServicio();
-		RegistroAyV* regAV;
+		RegistroAyV* regAV; //para que esta esto??????
 		long int TiempoReal = PasarAseg(audiov1->getDuracion());
 		time_t i;
 		time_t f;
@@ -201,12 +201,12 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			if (GetKeyState(VK_UP) & 0x8000)//flecha arriba
 			{
 				audiov1->FastForward();//siempre adelantamos 10 seg
-				//TiempoReal += 10;
+				//TiempoReal -= 10;
 			}
 			if (GetKeyState(VK_DOWN) & 0x8000)//flecha abajo
 			{
 				audiov1->FastBackward();
-				//TiempoReal -= 10;
+				//TiempoReal += 10;
 			}
 			/*
 			mas opciones !!-> NO OLVIDAR
@@ -235,7 +235,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 	{
 		audio->IniciarServicio();
 		RegistroAyV* regA;
-		long int TiempoReal = PasarAseg(audiov1->getDuracion());
+		long int TiempoReal = PasarAseg(audio->getDuracion());
 		time_t i;
 		time_t f;
 		clock_t t;
@@ -260,7 +260,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			{
 				user->servicio->Apagar();
 				//tenemos que llamar a la funcion que controla si vio 30% 
-				audiov1->GuardartiempoRep(regA, seg);
+				audio->GuardartiempoRep(regA, seg);
 			}
 
 			tm inicio;
@@ -273,7 +273,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			f = mktime(F);
 
 		} while (difftime(f,i)<=TiempoReal);
-		RegistroAyV* regA = audio->RegistrarenRegistro(user);
+		regA = audio->RegistrarenRegistro(user);
 		*(plataforma->getRgAyV()) + regA;
 	}
 

@@ -71,7 +71,8 @@ public:
 	void setFHcierre(tm cierre);
 	void setFHinicio(tm inicio);//PROBLEMA!!
 	void setEliminado(bool elim);
-	string getUserName() { return UserName; }
+	string getUserName() { return UserName; };
+	tm getFechayHoraCierre() { return FechayHoraCierre; };
 
 	Paises getPais();
 

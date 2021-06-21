@@ -78,7 +78,7 @@ public:
 	//hacer copia del usuario y cambiar el tipo.->ni idea
 	
 	//seters y geters
-	cListaT<RegUsuarios>* getRgUsuarios() { return RegU; }
+	cListaT<RegUsuarios>* getRgUsuarios() { return RegU; };
 	cListaT<RegistroAyV>* getRgAyV() { return RegAyV; }
 };
 

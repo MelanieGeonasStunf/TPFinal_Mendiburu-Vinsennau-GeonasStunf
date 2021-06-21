@@ -9,6 +9,7 @@
 
 #include "Librerias.h"
 #include "Paises.h"
+#include "Plataforma.h" //INCLUI PLATAFORMA PQ SINO NO ME LO TOMABA, ESTA BIEN? O HAY QUE HACER CLASS PLATAFORMA?
 
 enum RangoEtareo{nino, adolescente, adulto};
 /*

@@ -17,7 +17,7 @@ class AudioVisual : public Servicios
 
 private:
 	bool HD;//true para usuarios premium nada mas
-	int TipoAudioVisual;
+	int TipoAudioVisual; //ES UN ENUM?
 	tm duracion;
 	tm tiempoInicio;//cuenta el tiempo en que empieza a ver-> nos sirve para saber si vio todo el video
 
