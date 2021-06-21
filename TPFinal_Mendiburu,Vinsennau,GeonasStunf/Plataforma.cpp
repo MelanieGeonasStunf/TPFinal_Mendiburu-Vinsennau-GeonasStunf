@@ -55,7 +55,7 @@ cListaT<AudioVisual>* Plataforma::MasVistos(tm Periodo){
 
 void Plataforma::PromedioConectadosenSemanaxDia()
 {
-
+	int cant = UsuariosxSemana / 7;
 }
 
 
@@ -130,8 +130,4 @@ void Plataforma::EditarCuenta(Usuarios* user, int tipo, bool eliminar)
 	//hacer copia del usuario y cambiar el tipo.->ni idea
 }
 
-/*void Plataforma::CambiarTipo(Usuarios* user, int tipo)
-{
-	Usuarios* nuevo = new Usuarios(*user);
-}*/
 
