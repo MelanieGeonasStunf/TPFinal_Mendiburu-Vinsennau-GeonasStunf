@@ -1,10 +1,3 @@
-///////////////////////////////////////////////////////////
-//  Usuarios.cpp
-//  Implementation of the Class Usuarios
-//  Created on:      01-Jun-2021 10:49:54 AM
-//  Original author: gstun
-///////////////////////////////////////////////////////////
-
 #include "Usuarios.h"
 #include "Plataforma.h"
 #include "PREMIUM.h"

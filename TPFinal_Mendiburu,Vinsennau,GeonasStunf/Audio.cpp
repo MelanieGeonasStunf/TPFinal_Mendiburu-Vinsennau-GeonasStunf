@@ -1,10 +1,3 @@
-///////////////////////////////////////////////////////////
-//  Audio.cpp
-//  Implementation of the Class Audio
-//  Created on:      01-Jun-2021 10:50:03 AM
-//  Original author: gstun
-///////////////////////////////////////////////////////////
-
 #include "Audio.h"
 #include "RegistroAyV.h"
 #include "funciones.h"

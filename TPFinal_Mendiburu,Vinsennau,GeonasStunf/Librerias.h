@@ -20,4 +20,5 @@ using namespace std;
 * -Funciones chiquitas de cada servicio y usuario
 * -Ver manejo de excepciones
 * -Iniciar Servicio-> solo setearia el tiempo inicio  no?
+* -Hay que chequear la edad para cuando reproducimos el servicio
 */

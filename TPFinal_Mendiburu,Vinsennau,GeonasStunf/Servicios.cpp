@@ -1,10 +1,3 @@
-///////////////////////////////////////////////////////////
-//  Servicios.cpp
-//  Implementation of the Class Servicios
-//  Created on:      01-Jun-2021 10:49:56 AM
-//  Original author: gstun
-///////////////////////////////////////////////////////////
-
 #include "Servicios.h"
 #include "Usuarios.h"
 

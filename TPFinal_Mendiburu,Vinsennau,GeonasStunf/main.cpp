@@ -34,7 +34,7 @@ int main()
 	*Labflix->m_Servicios + audio1;
 
 	Paises paisAV[7] = { Chile, EstadosUnidos, Bolivia, Paraguay, Venezuela , Canada, Peru};
-	AudioVisual* audioyvideo1 = new AudioVisual("911", "Sobreviviendo Favaloro", 7, paisAV, adulto,{ 12, 5, 02 },/*NO SE QUE PONER DE TIPO/*);
+	AudioVisual* audioyvideo1 = new AudioVisual("911", "Sobreviviendo Favaloro", 7, paisAV, adulto,{ 12, 5, 02 },/*NO SE QUE PONER DE TIPO*/);
 	*Labflix->m_Servicios + audioyvideo1;
 
 	FREE* usuarioFree = new FREE(19, Francia, "EstaLoco00!", "Damian");

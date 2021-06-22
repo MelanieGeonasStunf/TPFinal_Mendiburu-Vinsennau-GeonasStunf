@@ -1,10 +1,3 @@
-   ///////////////////////////////////////////////////////////
-//  Plataforma.h
-//  Implementation of the Class Plataforma
-//  Created on:      01-Jun-2021 10:49:51 AM
-//  Original author: gstun
-///////////////////////////////////////////////////////////
-
 #pragma once
 
 #include "Servicios.h"

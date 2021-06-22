@@ -1,10 +1,3 @@
-///////////////////////////////////////////////////////////
-//  AudioVisual.cpp
-//  Implementation of the Class AudioVisual
-//  Created on:      01-Jun-2021 10:50:04 AM
-//  Original author: gstun
-///////////////////////////////////////////////////////////
-
 #include "AudioVisual.h"
 #include "RegistroAyV.h"
 #include "funciones.h"
@@ -162,3 +155,4 @@ void AudioVisual::IniciarServicio()
 	info = localtime(&rawtime);
 	tiempoInicio = *info;
 }
+

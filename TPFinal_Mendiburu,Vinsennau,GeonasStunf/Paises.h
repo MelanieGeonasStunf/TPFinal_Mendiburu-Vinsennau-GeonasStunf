@@ -1,10 +1,3 @@
-///////////////////////////////////////////////////////////
-//  Paises.h
-//  Implementation of the Enumeration Paises
-//  Created on:      01-Jun-2021 10:50:17 AM
-//  Original author: gstun
-///////////////////////////////////////////////////////////
-
 #pragma once
 
 #include "Librerias.h"

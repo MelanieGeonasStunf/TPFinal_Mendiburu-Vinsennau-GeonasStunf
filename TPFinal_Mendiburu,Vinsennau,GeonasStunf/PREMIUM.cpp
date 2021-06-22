@@ -1,10 +1,3 @@
-///////////////////////////////////////////////////////////
-//  PREMIUM.cpp
-//  Implementation of the Class PREMIUM
-//  Created on:      01-Jun-2021 10:50:00 AM
-//  Original author: gstun
-///////////////////////////////////////////////////////////
-
 #include "PREMIUM.h"
 #define costoP 300.00
 
