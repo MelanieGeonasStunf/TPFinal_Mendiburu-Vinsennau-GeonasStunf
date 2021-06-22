@@ -16,9 +16,9 @@ public:
     Audio(Audio& audio);
     virtual ~Audio();
 
-    void FastBackward();
-    void FastForward();
-    void Record();
+    void FastBackward();//flecha abajo
+    void FastForward();//flecha arriba
+    void Record();//R
     void VelocidadReproduccion(int velocidad);
     void IniciarServicio();
     tm getTInicio() { return tiempoInicio; }

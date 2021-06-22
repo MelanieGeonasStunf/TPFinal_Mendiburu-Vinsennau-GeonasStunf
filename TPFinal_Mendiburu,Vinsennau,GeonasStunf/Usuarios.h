@@ -57,8 +57,6 @@ public:
 	//tiene que verificar que la contrasena y el user sean correctos->verificar en m_Usuarios de plataforma
 
 	RegUsuarios* RegistrarenRegistro();//plataforma usa el registro
-	//friend? -> se supone que esta funcion la llama regUsuarios?
-
 	void Registrarse(Usuarios* user, Plataforma* plataforma);//->registra usuario!=iniciar sesion
 	//tendria que ser virtual pura?-> esta en todos los hijos
 

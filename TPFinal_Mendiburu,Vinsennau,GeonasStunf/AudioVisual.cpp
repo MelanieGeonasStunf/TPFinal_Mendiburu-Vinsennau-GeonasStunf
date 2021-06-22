@@ -153,3 +153,12 @@ RegistroAyV* AudioVisual::RegistrarenRegistro(Usuarios* user)
 
 	return reg;*/
 }
+
+void AudioVisual::IniciarServicio()
+{
+	time_t rawtime;
+	tm* info;
+	time(&rawtime);
+	info = localtime(&rawtime);
+	tiempoInicio = *info;
+}

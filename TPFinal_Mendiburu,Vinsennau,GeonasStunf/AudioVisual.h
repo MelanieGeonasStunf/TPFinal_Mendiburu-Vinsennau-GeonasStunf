@@ -27,14 +27,16 @@ public:
 	AudioVisual(AudioVisual& ayv);
 	virtual ~AudioVisual();
 
-	void FastBackward();
-	void FastForward();
-	void Record();
-	void VelocidadReproduccion(int velocidad);
 	void setCalidad(bool hd) { HD = hd; }
-	void GuardartiempoRep(RegistroAyV* reg, int seg);
-	void IniciarServicio();
 	tm getTInicio() { return tiempoInicio; }
+
+	void FastBackward();//flecha abajo
+	void FastForward();//flecha arriba
+	void Record();//R-> la verdad que ni idea con lo que podemos hacer aca
+	void VelocidadReproduccion(int velocidad);//-> la vamos a hacer al final?
+	void GuardartiempoRep(RegistroAyV* reg, int seg);
+	void IniciarServicio();//empieza a contar el tiempo 
+	
 	
 	RegistroAyV* RegistrarenRegistro(Usuarios* user);
 	tm getDuracion() { return duracion; }

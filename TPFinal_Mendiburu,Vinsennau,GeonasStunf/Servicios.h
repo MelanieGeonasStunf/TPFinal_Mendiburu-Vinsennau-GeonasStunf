@@ -45,12 +45,7 @@ public:
 	virtual void IniciarServicio()=0;
 	void Pausar();
 	void Reanudar();
-	/*Podemos hacer como un "menu"->
-	* si toca " ": inicia un texto.
-	* si toca " " y ya se inicio: pausa
-	* si toca " ": cuando estaba en pausa: reinicia
-	* si toca "b": se apaga (de bye)
-	*/
+
 
 };
 

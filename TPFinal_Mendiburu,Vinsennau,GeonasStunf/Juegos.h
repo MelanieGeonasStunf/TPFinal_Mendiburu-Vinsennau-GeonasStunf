@@ -28,7 +28,7 @@ public:
 
 	RegistroJuegos* RegistrarenRegistro(string userName);
 	void GuardarProgreso(RegistroJuegos* reg);
-	void IniciarServicio();
+	void IniciarServicio();//que haria?
 	bool getEstado()  { return estado;  }; //estado de que?
 
 };
