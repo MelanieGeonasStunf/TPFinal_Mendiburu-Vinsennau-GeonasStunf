@@ -1,10 +1,3 @@
-///////////////////////////////////////////////////////////
-//  Juegos.h
-//  Implementation of the Class Juegos
-//  Created on:      01-Jun-2021 10:50:01 AM
-//  Original author: gstun
-///////////////////////////////////////////////////////////
-
 #pragma once
 
 #include "Servicios.h"
@@ -28,7 +21,7 @@ public:
 
 	RegistroJuegos* RegistrarenRegistro(string userName);
 	void GuardarProgreso(RegistroJuegos* reg);
-	void IniciarServicio();
-	bool getEstado()  { return estado;  };
+	void IniciarServicio();//que haria?
+	bool getEstado()  { return estado;  }; //estado de que?
 
 };

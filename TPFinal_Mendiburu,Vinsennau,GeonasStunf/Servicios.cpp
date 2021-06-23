@@ -1,10 +1,3 @@
-///////////////////////////////////////////////////////////
-//  Servicios.cpp
-//  Implementation of the Class Servicios
-//  Created on:      01-Jun-2021 10:49:56 AM
-//  Original author: gstun
-///////////////////////////////////////////////////////////
-
 #include "Servicios.h"
 #include "Usuarios.h"
 
@@ -27,7 +20,7 @@ Servicios::~Servicios(){
 
 
 void Servicios::Apagar(){
-
+	Reproduciendo = false;
 }
 
 
@@ -45,12 +38,8 @@ int Servicios::ChequearEdad(){
 
 
 void Servicios::Pausar(){
-	system("pause");//se reanuda cuando aprieta enter
-	/*tendriamos que contar el tiempo que tarda para apretar enter?
-	*/
-	/*
-	* sleep(2000)//espera 20 segundos para reanudar.
-	*/
+	//system("pause");//se reanuda cuando aprieta enter-> y vuelve a contar el tiempo
+
 }
 
 

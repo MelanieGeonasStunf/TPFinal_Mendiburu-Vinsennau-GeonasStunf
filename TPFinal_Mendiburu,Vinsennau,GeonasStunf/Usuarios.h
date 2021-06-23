@@ -1,10 +1,3 @@
-///////////////////////////////////////////////////////////
-//  Usuarios.h
-//  Implementation of the Class Usuarios
-//  Created on:      01-Jun-2021 10:49:54 AM
-//  Original author: gstun
-///////////////////////////////////////////////////////////
-
 #pragma once
 
 #include "Librerias.h"
@@ -57,8 +50,6 @@ public:
 	//tiene que verificar que la contrasena y el user sean correctos->verificar en m_Usuarios de plataforma
 
 	RegUsuarios* RegistrarenRegistro();//plataforma usa el registro
-	//friend? -> se supone que esta funcion la llama regUsuarios?
-
 	void Registrarse(Usuarios* user, Plataforma* plataforma);//->registra usuario!=iniciar sesion
 	//tendria que ser virtual pura?-> esta en todos los hijos
 
@@ -71,7 +62,8 @@ public:
 	void setFHcierre(tm cierre);
 	void setFHinicio(tm inicio);//PROBLEMA!!
 	void setEliminado(bool elim);
-	string getUserName() { return UserName; }
+	string getUserName() { return UserName; };
+	tm getFechayHoraCierre() { return FechayHoraCierre; };
 
 	Paises getPais();
 

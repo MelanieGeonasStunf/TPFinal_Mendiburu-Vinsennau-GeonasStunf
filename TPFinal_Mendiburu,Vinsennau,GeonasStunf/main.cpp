@@ -26,15 +26,15 @@ int main()
 	//Leemos archivo
 	Labflix->m_Servicios = new cListaT<Servicios>;
 	Paises paisJ[4] = { Francia, Colombia, Argentina, España };
-	Juegos* juego1 = new Juegos("789","Pacwomen",paisJ, 2021);
+	Juegos* juego1 = new Juegos("789", "Pacwomen", 4, paisJ, nino ,2021);
 	*Labflix->m_Servicios + juego1;
 
 	Paises paisA[5] = { Chile, Colombia, Argentina, España, Venezuela };
-	Audio* audio1 = new Audio("382", "New Rules", paisA, { 44, 03, 00 });
+	Audio* audio1 = new Audio("382", "New Rules", 5, paisA, adolescente, { 44, 03, 00 });
 	*Labflix->m_Servicios + audio1;
 
 	Paises paisAV[7] = { Chile, EstadosUnidos, Bolivia, Paraguay, Venezuela , Canada, Peru};
-	Audio* audioyvideo1 = new Audio("911", "Sobreviviendo Favaloro", paisAV, { 12, 5, 02 });
+	AudioVisual* audioyvideo1 = new AudioVisual("911", "Sobreviviendo Favaloro", 7, paisAV, adulto,{ 12, 5, 02 },/*NO SE QUE PONER DE TIPO*/);
 	*Labflix->m_Servicios + audioyvideo1;
 
 	FREE* usuarioFree = new FREE(19, Francia, "EstaLoco00!", "Damian");

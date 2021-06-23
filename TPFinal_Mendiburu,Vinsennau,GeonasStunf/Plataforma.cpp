@@ -1,10 +1,3 @@
-`///////////////////////////////////////////////////////////
-//  Plataforma.cpp
-//  Implementation of the Class Plataforma
-//  Created on:      01-Jun-2021 10:49:52 AM
-//  Original author: gstun
-///////////////////////////////////////////////////////////
-
 #include "Plataforma.h"
 #include "FREE.h"
 #include "BASIC.h"

@@ -1,14 +1,8 @@
-///////////////////////////////////////////////////////////
-//  Servicios.h
-//  Implementation of the Class Servicios
-//  Created on:      01-Jun-2021 10:49:56 AM
-//  Original author: gstun
-///////////////////////////////////////////////////////////
-
 #pragma once
 
 #include "Librerias.h"
 #include "Paises.h"
+#include "Plataforma.h" //INCLUI PLATAFORMA PQ SINO NO ME LO TOMABA, ESTA BIEN? O HAY QUE HACER CLASS PLATAFORMA?
 
 enum RangoEtareo{nino, adolescente, adulto};
 /*
@@ -17,6 +11,7 @@ enum RangoEtareo{nino, adolescente, adulto};
 * adulto>18
 */
 class Usuarios;
+
 class Servicios
 {
 private:
@@ -44,12 +39,7 @@ public:
 	virtual void IniciarServicio()=0;
 	void Pausar();
 	void Reanudar();
-	/*Podemos hacer como un "menu"->
-	* si toca " ": inicia un texto.
-	* si toca " " y ya se inicio: pausa
-	* si toca " ": cuando estaba en pausa: reinicia
-	* si toca "b": se apaga (de bye)
-	*/
+
 
 };
 

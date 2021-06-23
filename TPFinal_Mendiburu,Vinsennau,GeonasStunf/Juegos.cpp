@@ -1,10 +1,3 @@
-///////////////////////////////////////////////////////////
-//  Juegos.cpp
-//  Implementation of the Class Juegos
-//  Created on:      01-Jun-2021 10:50:02 AM
-//  Original author: gstun
-///////////////////////////////////////////////////////////
-
 #include "Juegos.h"
 #include "RegistroJuegos.h"
 
@@ -36,7 +29,7 @@ void Juegos::GuardarProgreso(RegistroJuegos* reg){
 	}
 }
 RegistroJuegos* Juegos::RegistrarenRegistro(const string userName){
-	RegistroJuegos* reg = new RegistroJuegos(userName);//wtf
+	RegistroJuegos* reg = new RegistroJuegos(userName);//wtf  //jajajajaja no se
 	return reg;
 
 }

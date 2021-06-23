@@ -1,15 +1,8 @@
-///////////////////////////////////////////////////////////
-//  AudioVisual.cpp
-//  Implementation of the Class AudioVisual
-//  Created on:      01-Jun-2021 10:50:04 AM
-//  Original author: gstun
-///////////////////////////////////////////////////////////
-
 #include "AudioVisual.h"
 #include "RegistroAyV.h"
 #include "funciones.h"
 
-class Usuario;
+class Usuarios;
 
 AudioVisual::AudioVisual(const string clave, const string nombre, int cantP, 
 	Paises* paises, RangoEtareo rango, tm duracion, int Tipo )
@@ -153,3 +146,13 @@ RegistroAyV* AudioVisual::RegistrarenRegistro(Usuarios* user)
 
 	return reg;*/
 }
+
+void AudioVisual::IniciarServicio()
+{
+	time_t rawtime;
+	tm* info;
+	time(&rawtime);
+	info = localtime(&rawtime);
+	tiempoInicio = *info;
+}
+
