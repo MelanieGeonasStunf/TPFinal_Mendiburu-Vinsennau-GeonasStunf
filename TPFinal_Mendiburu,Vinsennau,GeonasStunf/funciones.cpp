@@ -153,6 +153,12 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 	* APAGAR: escape (Esc)
 	* 
 	*/
+	cout << "-------------------" << endl <<
+		"-Pausa: SPACE BAR" << endl <<
+		"-Reanudar: SPACE BAR" << endl <<
+		"-Apagar: ESC" << endl <<
+		"----------------------" << endl;
+
 	FREE* usuarioF = dynamic_cast<FREE*>(user);
 	if (usuarioF!=NULL)
 	{
@@ -170,10 +176,22 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 		} while (!juego1->getEstado());
 	}
 	AudioVisual* audiov1 = dynamic_cast<AudioVisual*>(user->servicio);
+	/*
+	* PAUSAR: ESPACIO
+	* REANUDAR: ESPACIO
+	* RECORD: R
+	* FAST F: flecha arriba
+	* FAST B: flecha abajo
+	*/
 	if (audiov1!= NULL)
 	{
+		cout<<"-Fast forward: flecha arriba" << endl <<
+			"-Fast Backward: flecha abajo" << endl <<
+			"-Record: R" << endl <<
+			"----------------------" << endl;
 		audiov1->IniciarServicio();
-		RegistroAyV* regAV;
+		RegistroAyV* regAV; //para que esta esto?????? -> en guardartiempoRep lo necesitamos-> 
+		//determina si vio 30% y lo cuenta como visto/ no visto
 		long int TiempoReal = PasarAseg(audiov1->getDuracion());
 		time_t i;
 		time_t f;
@@ -201,12 +219,12 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			if (GetKeyState(VK_UP) & 0x8000)//flecha arriba
 			{
 				audiov1->FastForward();//siempre adelantamos 10 seg
-				//TiempoReal += 10;
+				//TiempoReal -= 10;
 			}
 			if (GetKeyState(VK_DOWN) & 0x8000)//flecha abajo
 			{
 				audiov1->FastBackward();
-				//TiempoReal -= 10;
+				//TiempoReal += 10;
 			}
 			/*
 			mas opciones !!-> NO OLVIDAR
@@ -216,6 +234,21 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 				user->servicio->Apagar();
 				//tenemos que llamar a la funcion que controla si vio 30% 
 				audiov1->GuardartiempoRep(regAV, seg);
+			}
+			if (GetKeyState(VK_UP) & 0x8000)//flecha arriba
+			{
+				audiov1->FastForward();//siempre adelantamos 10 seg
+				//TiempoReal -= 10;
+			}
+			if (GetKeyState(VK_DOWN) & 0x8000)//flecha abajo
+			{
+				audiov1->FastBackward();
+				//TiempoReal += 10;
+			}
+			//
+			if (GetKeyState('R') & 0x8000)//letra R
+			{
+				audiov1->Record();//
 			}
 			tm inicio;
 			inicio.tm_year= (audiov1->getTInicio()).tm_year - 1900;
@@ -233,9 +266,13 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 	Audio* audio = dynamic_cast<Audio*>(user->servicio);
 	if (dynamic_cast<Audio*>(audio) != NULL)
 	{
+		cout << "-Fast forward: flecha arriba" << endl <<
+			"-Fast Backward: flecha abajo" << endl <<
+			"-Record: R" << endl <<
+			"----------------------" << endl;
 		audio->IniciarServicio();
 		RegistroAyV* regA;
-		long int TiempoReal = PasarAseg(audiov1->getDuracion());
+		long int TiempoReal = PasarAseg(audio->getDuracion());
 		time_t i;
 		time_t f;
 		clock_t t;
@@ -260,7 +297,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			{
 				user->servicio->Apagar();
 				//tenemos que llamar a la funcion que controla si vio 30% 
-				audiov1->GuardartiempoRep(regA, seg);
+				audio->GuardartiempoRep(regA, seg);
 			}
 
 			tm inicio;
@@ -273,7 +310,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			f = mktime(F);
 
 		} while (difftime(f,i)<=TiempoReal);
-		RegistroAyV* regA = audio->RegistrarenRegistro(user);
+		regA = audio->RegistrarenRegistro(user);
 		*(plataforma->getRgAyV()) + regA;
 	}
 
