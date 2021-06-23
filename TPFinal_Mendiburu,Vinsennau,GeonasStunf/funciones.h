@@ -1,7 +1,7 @@
 #pragma once
 #include "Plataforma.h"
 #include "Librerias.h"
-#include "Usuarios.h"
+
 
 bool tick();
 //cuenta para saber cuantos dias pasaron de la semana->para cortar el main cuando se termina la semana

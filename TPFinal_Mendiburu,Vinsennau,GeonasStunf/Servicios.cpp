@@ -1,5 +1,6 @@
 #include "Servicios.h"
 #include "Usuarios.h"
+#include "Plataforma.h"
 
 Servicios::Servicios(const string clave,  const string nombre,int cantP, Paises* paises, RangoEtareo rango): 
 	Clave(clave), Nombre(nombre)
