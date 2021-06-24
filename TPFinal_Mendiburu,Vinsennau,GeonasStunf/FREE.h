@@ -1,12 +1,12 @@
 #pragma once
 
 #include "Usuarios.h"
-#include "Librerias.h"
+
 
 class FREE : public Usuarios
 {
 public:
-	FREE(int Edad, Paises Pais, string Password, const string Name);
+	FREE(int Edad, Paises Pais, string Password, const string Name,string* tarjeta=NULL);
 	virtual ~FREE();
 	FREE(Usuarios& user);
 

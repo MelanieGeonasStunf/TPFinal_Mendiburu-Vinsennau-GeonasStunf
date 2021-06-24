@@ -10,8 +10,8 @@
 #include "RegUsuarios.h"
 #include "RegistroAyV.h"
 #include "RegistroJuegos.h"
-
-class FREE;
+#include "FREE.h"
+//class FREE;
 class BASIC;
 class PREMIUM;
 

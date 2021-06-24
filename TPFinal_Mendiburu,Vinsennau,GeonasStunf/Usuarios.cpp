@@ -17,6 +17,9 @@ Usuarios::Usuarios(int Edad, Paises Pais, string Password, const string Name, st
 	servicio = NULL;//no pasamos servicio?- lo seteamos despues?
 	cantConexSemana = 0;
 	Eliminado = false;
+	this->Edad = Edad;
+	FechayHoraCierre = { 0,0,0 };
+	FechayHoraInicio = { 0,0,0 };
 }
 
 Usuarios::~Usuarios(){

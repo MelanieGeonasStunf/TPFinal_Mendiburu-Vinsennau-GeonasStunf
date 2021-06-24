@@ -2,6 +2,7 @@
 
 #include "Usuarios.h"
 #include "Librerias.h"
+
 class Plataforma;
 class BASIC : public Usuarios
 {

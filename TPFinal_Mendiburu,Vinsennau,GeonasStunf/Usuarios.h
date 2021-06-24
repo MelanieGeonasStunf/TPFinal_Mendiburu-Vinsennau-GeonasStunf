@@ -1,18 +1,19 @@
 #pragma once
 
-#include "Librerias.h"
+//#include "Librerias.h"
 #include "Paises.h"
 #include "Servicios.h"
 #include "RegUsuarios.h"
 #include "funciones.h"
 #include "TipoUsuario.h"
 #include "cListaT.h"
-#include "AudioVisual.h"
+//#include "AudioVisual.h"
 
 class Plataforma;
 class PREMIUM;
 class BASIC;
 class FREE;
+class AudioVisual;
 //class Audiovisual;
 class Audio;
 

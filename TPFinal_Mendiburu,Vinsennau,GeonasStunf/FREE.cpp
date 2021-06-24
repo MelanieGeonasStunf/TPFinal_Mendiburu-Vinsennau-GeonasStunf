@@ -1,8 +1,8 @@
 #include "FREE.h"
 
 
-FREE::FREE(int Edad, Paises Pais, string Password, const string Name):
-	Usuarios(Edad, Pais, Password, Name, tarjeta)
+FREE::FREE(int Edad, Paises Pais, string Password, const string Name,string* tarjeta):
+	Usuarios(Edad, Pais, Password, Name,tarjeta)
 {
 
 }

@@ -29,9 +29,3 @@ void BASIC::Registrarse(Plataforma* plataforma)
 	*RegU + RegistrarenRegistro();
 	cantConexSemana++;
 }
-
-
-
-
-
-
