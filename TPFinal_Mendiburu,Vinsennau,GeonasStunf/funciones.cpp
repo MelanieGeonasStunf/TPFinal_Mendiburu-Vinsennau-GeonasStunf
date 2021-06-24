@@ -160,7 +160,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 		"-Reanudar: SPACE BAR" << endl <<
 		"-Apagar: ESC" << endl <<
 		"----------------------" << endl;
-
+	RegistroAyV* regA=NULL;
 	FREE* usuarioF = dynamic_cast<FREE*>(user);
 	if (usuarioF!=NULL)
 	{
@@ -185,6 +185,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 	* FAST F: flecha arriba
 	* FAST B: flecha abajo
 	*/
+	RegistroAyV* regAV = NULL;
 	if (audiov1!= NULL)
 	{
 		cout<<"-Fast forward: flecha arriba" << endl <<
@@ -192,9 +193,9 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			"-Record: R" << endl <<
 			"----------------------" << endl;
 		audiov1->IniciarServicio();
-		RegistroAyV* regAV=NULL; //para que esta esto?????? -> en guardartiempoRep lo necesitamos-> 
 		//determina si vio 30% y lo cuenta como visto/ no visto
 		long int TiempoReal = PasarAseg(audiov1->getDuracion());
+		
 		time_t i;
 		time_t f;
 		clock_t t;
@@ -262,8 +263,8 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			f = mktime(F);
 
 		} while (difftime(f,i)<=TiempoReal);
-		RegistroAyV*regAyV=audiov1->RegistrarenRegistro(user);
-		*(plataforma->getRgAyV()) + regAyV;
+		regAV=audiov1->RegistrarenRegistro(user);
+		*(plataforma->getRgAyV()) + regAV;
 	}
 	Audio* audio = dynamic_cast<Audio*>(user->servicio);
 	if (dynamic_cast<Audio*>(audio) != NULL)
@@ -273,7 +274,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			"-Record: R" << endl <<
 			"----------------------" << endl;
 		audio->IniciarServicio();
-		RegistroAyV* regA;
+		//RegistroAyV* regA;
 		long int TiempoReal = PasarAseg(audio->getDuracion());
 		time_t i;
 		time_t f;

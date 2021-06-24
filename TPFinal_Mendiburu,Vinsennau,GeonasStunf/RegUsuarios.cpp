@@ -1,8 +1,8 @@
 #include "RegUsuarios.h"
 
+int RegUsuarios::counter = 0;
 
-
-RegUsuarios::RegUsuarios(const string Name, int TipoUsuario):UserName(Name)
+RegUsuarios::RegUsuarios(const string Name, int TipoUsuario):UserName(Name), clave(to_string(counter))
 {
 	this->TipoUsuario = TipoUsuario;
 }

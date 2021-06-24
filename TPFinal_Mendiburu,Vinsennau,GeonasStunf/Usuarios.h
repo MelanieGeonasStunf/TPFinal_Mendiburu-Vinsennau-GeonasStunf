@@ -20,7 +20,7 @@ class Audio;
 class Usuarios
 {
 
-private:
+protected:
 	int Edad;
 	bool Estado;
 	tm FechayHoraCierre;
@@ -51,7 +51,7 @@ public:
 	//tiene que verificar que la contrasena y el user sean correctos->verificar en m_Usuarios de plataforma
 
 	RegUsuarios* RegistrarenRegistro();//plataforma usa el registro
-	void Registrarse(Usuarios* user, Plataforma* plataforma);//->registra usuario!=iniciar sesion
+	virtual void Registrarse(Usuarios* user, Plataforma* plataforma) = 0;//->registra usuario!=iniciar sesion
 	//tendria que ser virtual pura?-> esta en todos los hijos
 
 	void SeleccionarServicio(cListaT <Servicios> *serv);
@@ -63,7 +63,7 @@ public:
 	void setFHcierre();
 	void setFHinicio();//PROBLEMA!!
 	void setEliminado(bool elim);
-	string getUserName() { return UserName; };
+	string getclave() { return UserName; };
 	tm getFechayHoraCierre() { return FechayHoraCierre; };
 
 	Paises getPais();

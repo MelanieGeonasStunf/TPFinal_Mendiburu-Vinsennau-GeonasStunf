@@ -16,6 +16,7 @@ public:
 	PREMIUM(int Edad, Paises Pais, string Password, const string Name, string tarjeta="");
 	virtual ~PREMIUM();
 
+	void Registrarse( Plataforma* plataforma);
 	void DescargarAyV(Servicios* servicio);
 	//void SeleccionarServicio(cListaT <Servicios>* servicio);
 	void setTarjeta() { cin >> tarjeta; }//confiamos en meli 

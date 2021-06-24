@@ -11,6 +11,7 @@
 #include <cstddef>  
 #include <cstring>
 #include <math.h>
+#include "cListaT.h"
 
 using namespace std;
 enum Servicio { audio, audioVisual, juego};

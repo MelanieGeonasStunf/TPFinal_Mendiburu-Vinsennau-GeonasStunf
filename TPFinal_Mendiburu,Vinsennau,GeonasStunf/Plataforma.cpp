@@ -63,7 +63,8 @@ void Plataforma::EditarCuenta(Usuarios* user, int tipo, bool eliminar)
 	* 2 OPCIONES:
 	* -Eliminar Cuenta.
 	* -Cambiar tipo usuario.
-	*/int t;
+	*/
+	int t;
 	if (eliminar == true)
 	{
 		user->setEliminado(true);//=> se elimina al final de la semana para no tener problemas de memoria.

@@ -7,6 +7,8 @@ class RegUsuarios
 {
 private:
 	tm Fecha;
+	static int counter;
+	const string clave;
 	int TipoUsuario;
 	const string UserName;
 	//no tendria que haber lista de usuarios?
@@ -15,6 +17,7 @@ public:
 	virtual ~RegUsuarios();
 	
 	void BuscarTipoUsuario();
+	string getclave() { return clave; }
 	//setear fecha aparte
 
 };

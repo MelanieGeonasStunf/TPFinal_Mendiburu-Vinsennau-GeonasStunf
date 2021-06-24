@@ -69,7 +69,7 @@ void Usuarios::IniciarSesion(Plataforma* plataforma){
 
 RegUsuarios* Usuarios::RegistrarenRegistro(){
 	//hacemos un registro y en el constructor le pasamos por parametros a reg usuarios los datos del usuario
-	RegUsuarios* reg;
+	RegUsuarios* reg=NULL;
 		
 	
 	if (dynamic_cast<PREMIUM*>(this)!= NULL )
@@ -88,20 +88,7 @@ RegUsuarios* Usuarios::RegistrarenRegistro(){
 }
 
 
-void Usuarios::Registrarse(Usuarios* user, Plataforma* plataforma){//me parece que este metodo debería ser de plataforma, 
-		//o no es necesario pasar el user pq podemos usar el puntero this!
-	if (user == NULL)
-		throw new exception("\nNo se pudo registrar el usuario ingresado.");
-	if((plataforma->m_Usuarios->BuscarItem1(UserName))!=-1)
-		throw new exception("\nEl nombre de usuario ingresado ya posee una cuenta" );//en este caso el usuario ya esta registrado
-	*(plataforma->m_Usuarios) + user;
-	Estado = true;//se inicia sesion
-	setFHinicio();//capaz podemos directamente iniciar sesion y nos salteamos esta parte
-	cListaT<RegUsuarios>* RegU = plataforma->getRgUsuarios();
-	*RegU + RegistrarenRegistro();
-	cantConexSemana++;
-	
-}
+
 
 
 void Usuarios::setFHcierre()
@@ -166,18 +153,20 @@ void Usuarios::SeleccionarServicio(cListaT <Servicios>* serv)
 
 	if ((*serv)[pos] != NULL)
 	{
-		if (dynamic_cast<Juegos*>((*serv)[pos])!=NULL)
+		Juegos* aux = dynamic_cast<Juegos*>((*serv)[pos]);
+		if (aux!=NULL)
 		{
-			Juegos aux = *serv[pos];
-			servicio = new Juegos(*((*serv)[pos]));
+			servicio = new Juegos(*aux);
 		}
-		if (dynamic_cast<AudioVisual*>((*serv)[pos]!=NULL))
+		AudioVisual* aux1 = dynamic_cast<AudioVisual*>((*serv)[pos]);
+		if (aux1!=NULL)
 		{
-			servicio = new AudioVisual((*serv)[pos]);
+			servicio = new AudioVisual(*aux1);
 		}
-		if (dynamic_cast<Audio*>((*serv)[pos]!=NULL))
+		Audio* aux2 = dynamic_cast<Audio*>((*serv)[pos]);
+		if (aux2!=NULL)
 		{
-			servicio = new Audio((*serv)[pos]);
+			servicio = new Audio(*aux2);
 		}
 		
 		try
