@@ -5,12 +5,18 @@
 #include "FREE.h"
 #include "Usuarios.h"
 
-bool tick()
+tm setLocalTime()
 {
 	time_t rawtime;
 	time(&rawtime);
 	tm* hoy = localtime(&rawtime);
-	if (hoy->tm_hour == 0 && hoy->tm_min == 0 && hoy->tm_wday == 1)//si es lunes 
+	return *hoy;
+}
+
+bool tick()
+{
+	tm hoy = setLocalTime();
+	if (hoy.tm_hour == 0 && hoy.tm_min == 0 && hoy.tm_wday == 1)//si es lunes 
 		return true;
 	return false;
 }
@@ -82,14 +88,13 @@ void Casos1(Usuarios* user, Plataforma* plataforma)//lo hice en do while para qu
 				opcion2 = 1 + rand() % 3;
 				if (opcion == 1)
 					try {
-					user->Registrarse(user, plataforma);//suponemos que al registrarse se inicia sesion 
+					user->Registrarse(plataforma);//suponemos que al registrarse se inicia sesion 
 					Casos2(user, plataforma);
 				}
 				catch (exception* e)
 				{
-
 					cout << e->what();
-				}//deberiamos ver que el username no se repita??? sii
+				}
 				else
 					throw 3;//para que lo agarre en el main
 			}
@@ -97,7 +102,7 @@ void Casos1(Usuarios* user, Plataforma* plataforma)//lo hice en do while para qu
 
 		case 2: {
 			try {
-				user->Registrarse(user, plataforma);
+				user->Registrarse(plataforma);
 				Casos2(user, plataforma);
 			}
 			catch (exception* e)
@@ -202,12 +207,12 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 		int seg = 0;
 		do
 		{
-		// string exc = "Fechas ingresadas no disponibles";
+	
 			
 			if (GetKeyState(VK_SPACE) & 0x8000)//PAUSA-> tendriamos que poner el espacio
 			{
 				//podemos poner todo esto adentro de pausa sino, no se si es necesario el system pause
-				// Shift down
+		
 				user->servicio->Pausar();
 				t = clock();//empieza a contar el tiempo
 				//solo se puede reanudar si esta pausado!
@@ -236,6 +241,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			{
 				user->servicio->Apagar();
 				//tenemos que llamar a la funcion que controla si vio 30% 
+
 				audiov1->GuardartiempoRep(regAV, seg);
 			}
 			if (GetKeyState(VK_UP) & 0x8000)//flecha arriba
@@ -251,7 +257,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			//
 			if (GetKeyState('R') & 0x8000)//letra R
 			{
-				audiov1->Record();//
+				audiov1->Record();
 			}
 			tm inicio;
 			inicio.tm_year= (audiov1->getTInicio()).tm_year - 1900;
@@ -316,6 +322,5 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 		regA = audio->RegistrarenRegistro(user);
 		*(plataforma->getRgAyV()) + regA;
 	}
-
-
 }
+

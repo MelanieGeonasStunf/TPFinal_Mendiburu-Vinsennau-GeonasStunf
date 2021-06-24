@@ -22,7 +22,6 @@ enum Servicio { audio, audioVisual, juego};
 * -Funciones chiquitas de cada servicio y usuario
 * -Ver manejo de excepciones
 * -Iniciar Servicio-> solo setearia el tiempo inicio  no?
-* -Juego.h que es estado????
 * -Hay que chequear la edad para cuando reproducimos el servicio
 * -Hacer registrarse virtual
 * -Hacer los to string

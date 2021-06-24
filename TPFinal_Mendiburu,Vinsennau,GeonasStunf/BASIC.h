@@ -10,9 +10,9 @@ private:
 	string tarjeta;
 
 public:
-	BASIC(int Edad, Paises Pais, string Password, const string Name, string tarjeta="");
+	BASIC(int Edad, Paises Pais, string Password, const string Name, string tarjeta);
 	virtual ~BASIC();
-	BASIC(Usuarios& user, string tarjeta);
+	BASIC(Usuarios& user);
 	
 
 	void Registrarse(Plataforma* plataforma);

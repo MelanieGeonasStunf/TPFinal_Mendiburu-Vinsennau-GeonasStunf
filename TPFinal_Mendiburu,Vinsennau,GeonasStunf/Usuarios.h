@@ -34,7 +34,7 @@ protected:
 	bool Eliminado;////si es true-> iniciar sesion ->no puede iniciar
 	//termina la semana-> en el main nos fijamos que usuarios estan en true y los eliminamos (delete)
 	//si es false-> no pasa nada
-
+	string* tarjeta;
 	//int tiempoconex;->cuenta el tiempo de conexion del usuario que nos va a servir para setear el horario
 	//del cierre de sesion y para limitar a los usuarios FREE.
 	cListaT<AudioVisual>* ListadeRecientesAyV;
@@ -42,7 +42,7 @@ protected:
 
 	
 public:
-	Usuarios(int Edad, Paises Pais,string Password, const string Name);
+	Usuarios(int Edad, Paises Pais,string Password, const string Name, string* tarjeta=NULL);
 	virtual ~Usuarios();
 	Usuarios(Usuarios& user);
 
@@ -51,7 +51,7 @@ public:
 	//tiene que verificar que la contrasena y el user sean correctos->verificar en m_Usuarios de plataforma
 
 	RegUsuarios* RegistrarenRegistro();//plataforma usa el registro
-	virtual void Registrarse(Usuarios* user, Plataforma* plataforma) = 0;//->registra usuario!=iniciar sesion
+	virtual void Registrarse(Plataforma* plataforma) = 0;//->registra usuario!=iniciar sesion
 	//tendria que ser virtual pura?-> esta en todos los hijos
 
 	void SeleccionarServicio(cListaT <Servicios> *serv);
@@ -71,4 +71,6 @@ public:
 	//AGREGADO:
 	bool VerificarContrasena();//verifica que cumpla requisitos-> ya hecha!
 	
+	void setTarjeta() { cin >> *tarjeta; }
+	istream& operator>>(istream& in);
 };

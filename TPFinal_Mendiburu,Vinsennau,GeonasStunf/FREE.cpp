@@ -2,7 +2,7 @@
 
 
 FREE::FREE(int Edad, Paises Pais, string Password, const string Name):
-	Usuarios(Edad, Pais, Password, Name)
+	Usuarios(Edad, Pais, Password, Name, tarjeta)
 {
 
 }

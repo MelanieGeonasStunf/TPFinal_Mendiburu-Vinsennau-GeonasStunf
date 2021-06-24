@@ -3,18 +3,16 @@
 
 float BASIC::CostoBasic = CostoB;
 BASIC::BASIC(int Edad, Paises Pais, string Password, const string Name, string tarjeta):
-	Usuarios(Edad, Pais, Password, Name)
+Usuarios(Edad, Pais, Password, Name)
 {
-	this->tarjeta = tarjeta;
 }
 
 BASIC::~BASIC(){
 
 }
 
-BASIC::BASIC(Usuarios& user, string tarjeta):Usuarios(user)
+BASIC::BASIC(Usuarios& user):Usuarios(user)
 {
-	this->tarjeta = tarjeta;
 }
 
 

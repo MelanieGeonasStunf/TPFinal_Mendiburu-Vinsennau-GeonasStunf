@@ -8,11 +8,12 @@
 #include "AudioVisual.h"
 #include "Juegos.h"
 
-Usuarios::Usuarios(int Edad, Paises Pais, string Password, const string Name):UserName(Name)
+Usuarios::Usuarios(int Edad, Paises Pais, string Password, const string Name, string* tarjeta):UserName(Name)
 {
 	Estado = false;//usuario empieza desconectado
 	this->Pais = Pais;
 	this->Password = Password;
+	this->tarjeta = NULL;
 	servicio = NULL;//no pasamos servicio?- lo seteamos despues?
 	cantConexSemana = 0;
 	Eliminado = false;
@@ -192,3 +193,13 @@ void Usuarios::SeleccionarServicio(cListaT <Servicios>* serv)
 }
 //capaz podemos hacer un metodo de usuario que verifique cual es el tipo de usuario, como que haga toda la parte del dynamic cast
 //y retorne el enum del tipo de usuario, la podriamos usar en varios metodos y ahorrarnos lineas de codigo
+
+
+istream& Usuarios::operator>>(istream& in) {
+	cout << "\nIngrese el numero de la tarjeta: " << endl;
+	int numero;
+	in >> numero;
+	return in;
+}
+
+

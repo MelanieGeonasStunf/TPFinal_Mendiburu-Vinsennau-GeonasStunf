@@ -18,5 +18,7 @@ private:
 public:
 	RegistroJuegos(const string Namecnst ,string UserName);
 	virtual ~RegistroJuegos();
+
+	tm getFechaUltJ() { return FechaUltimaJugada; }
 };
 

@@ -40,7 +40,7 @@ public:
 
 	void EstadisticasPorContenido();
 	cListaT <Audio> *MasEscuchados(tm Periodo);
-	cListaT <Juegos> *MasJugados(tm Periodo);
+	cListaT <Juegos> *MasJugados(tm FechaI, tm FechaF);
 	cListaT <AudioVisual> *MasVistos(tm Periodo);
 	//Periodo->pasar dos fechas o que te devuelva unicamente lo de la ultima semana.
 

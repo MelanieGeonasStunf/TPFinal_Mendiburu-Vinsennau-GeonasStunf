@@ -18,7 +18,7 @@ private:
 	friend class AudioVisual;
 
 public:
-	RegistroAyV(const string Name);
+	RegistroAyV(tm tiemporep, const string Name,bool visto);
 	virtual ~RegistroAyV();
 
 	string getclave() const { return clave; };
