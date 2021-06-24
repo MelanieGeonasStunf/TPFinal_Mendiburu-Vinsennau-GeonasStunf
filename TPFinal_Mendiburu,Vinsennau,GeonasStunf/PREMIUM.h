@@ -2,8 +2,8 @@
 
 #include "Usuarios.h"
 #include "Servicios.h"
-#include "Librerias.h"
-#include "cListaT.h"
+//#include "Librerias.h"
+//#include "cListaT.h"
 
 class PREMIUM : public Usuarios
 {

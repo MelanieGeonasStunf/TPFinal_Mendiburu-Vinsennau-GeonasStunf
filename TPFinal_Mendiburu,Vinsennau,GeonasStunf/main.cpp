@@ -19,6 +19,7 @@ int main()
 	//ANTES DE DESESPERAR-> fijarse si constructores / destructores estan bien :| 
 
 
+	tm FechaInicio = setLocalTime();
 
 	srand(time(NULL));
 	Plataforma* Labflix = new Plataforma();
@@ -104,8 +105,9 @@ int main()
 
 	} while (semana==false);
 
+	tm FechaFin = setLocalTime();
 	if (semana == true)
-		Labflix->VerResumen();
+		Labflix->VerResumen(FechaInicio, FechaFin);
 	//una vez pasada la semana no olvidar eliminar a todos los usuarios con Eliminado=true!!!
 
 	system("pause");

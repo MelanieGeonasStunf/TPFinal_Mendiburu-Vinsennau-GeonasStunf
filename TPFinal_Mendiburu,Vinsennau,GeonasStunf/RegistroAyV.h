@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Librerias.h"
+//#include "Librerias.h"
 #include "Audio.h"
 #include "AudioVisual.h"
 

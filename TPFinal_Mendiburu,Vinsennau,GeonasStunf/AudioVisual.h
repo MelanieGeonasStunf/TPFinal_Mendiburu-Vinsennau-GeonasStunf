@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Servicios.h"
-#include "Librerias.h"
+//#include "Librerias.h"
 
 class RegistroAyV;
 
@@ -28,7 +28,7 @@ public:
 	void FastForward(long int& time,long int&TiempoR);//flecha arriba
 	void Record();//R-> la verdad que ni idea con lo que podemos hacer aca
 	void VelocidadReproduccion(int velocidad);//-> la vamos a hacer al final?
-	void GuardartiempoRep(RegistroAyV* reg, int seg);
+	bool GuardartiempoRep( int seg);
 	void IniciarServicio();//empieza a contar el tiempo 
 	
 	

@@ -20,3 +20,5 @@ long int PasarAseg(tm tiempo);
 */
 void Casos1(Usuarios*user, Plataforma* plataforma);// recibe opcion del menu-> tira un throw
 void Casos2(Usuarios* user, Plataforma* plataforma);
+
+tm setLocalTime();

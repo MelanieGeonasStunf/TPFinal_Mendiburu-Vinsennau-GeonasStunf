@@ -245,20 +245,21 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			{
 				user->servicio->Apagar();
 				//tenemos que llamar a la funcion que controla si vio 30% 
-				regAV=audiov1->RegistrarenRegistro(user);
-				audiov1->GuardartiempoRep(regAV, TiempoReal-TiempoModificado);
+				bool ok=audiov1->GuardartiempoRep(TiempoReal-tiempoModificado);
+				regAV=audiov1->RegistrarenRegistro(user,ok);
+				
 				*(plataforma->getRgAyV()) + regAV;
 				return;
 			}
 			if (GetKeyState(VK_UP) & 0x8000)//flecha arriba
 			{
-				audiov1->FastForward();//siempre adelantamos 10 seg
-				//TiempoReal -= 10;
+				audiov1->FastForward(tiempoModificado, TiempoReal);//siempre adelantamos 10 seg
+				
 			}
 			if (GetKeyState(VK_DOWN) & 0x8000)//flecha abajo
 			{
-				audiov1->FastBackward();
-				//TiempoReal += 10;
+				audiov1->FastBackward(tiempoModificado, TiempoReal);
+				
 			}
 			//
 			if (GetKeyState('R') & 0x8000)//letra R
@@ -275,8 +276,9 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			f = mktime(F);
 
 		} while (difftime(f,i)<=TiempoReal);
-		regAV=audiov1->RegistrarenRegistro(user);
-		audiov1->GuardartiempoRep(regAV,TiempoReal-tiempoModificado);
+		bool ok= audiov1->GuardartiempoRep(TiempoReal - tiempoModificado);
+		regAV=audiov1->RegistrarenRegistro(user, ok);
+		
 		*(plataforma->getRgAyV()) + regAV;
 	}
 	Audio* audio = dynamic_cast<Audio*>(user->servicio);
@@ -315,7 +317,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			{
 				user->servicio->Apagar();
 				//tenemos que llamar a la funcion que controla si vio 30% 
-				regA = audio->RegistrarenRegistro(user,audio->GuardartiempoRep(regA, TiempoReal-tiempoModificado));
+				regA = audio->RegistrarenRegistro(user,audio->GuardartiempoRep(TiempoReal-tiempoModificado));
 				*(plataforma->getRgAyV()) + regA;
 			}
 
@@ -329,7 +331,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			f = mktime(F);
 
 		} while (difftime(f,i)<=TiempoReal);
-		regA = audio->RegistrarenRegistro(user,audio->GuardartiempoRep(regA, TiempoReal-tiempoModificado));
+		regA = audio->RegistrarenRegistro(user,audio->GuardartiempoRep(TiempoReal-tiempoModificado));
 		*(plataforma->getRgAyV()) + regA;
 	}
 }

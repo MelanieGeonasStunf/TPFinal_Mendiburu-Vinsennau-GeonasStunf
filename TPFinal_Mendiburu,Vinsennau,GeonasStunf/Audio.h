@@ -25,7 +25,7 @@ public:
     tm getTInicio() { return tiempoInicio; }
     tm getDuracion() { return duracion; }
 
-    void GuardartiempoRep(RegistroAyV* reg, int seg);
+    bool GuardartiempoRep( int seg);
 
     RegistroAyV* RegistrarenRegistro(Usuarios* user,bool visto);
 

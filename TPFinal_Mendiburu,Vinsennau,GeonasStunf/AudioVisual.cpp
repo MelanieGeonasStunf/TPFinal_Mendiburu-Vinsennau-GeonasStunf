@@ -63,13 +63,14 @@ void AudioVisual::VelocidadReproduccion(int velocidad){
 }
 
 
-void AudioVisual::GuardartiempoRep(RegistroAyV* reg, int seg)
+bool AudioVisual::GuardartiempoRep( int seg)
 {
 	//int seg = rand() % duracion.tm_sec;
 	//int min = rand() % duracion.tm_min;
 	long int durSeg = PasarAseg(duracion);
 	if (0.3 * durSeg >= seg)
-		reg->Visto = true;
+		return true;
+	return false;
 	/*int hs = rand() % duracion.tm_hour;
 	if (hs == duracion.tm_hour)
 	{

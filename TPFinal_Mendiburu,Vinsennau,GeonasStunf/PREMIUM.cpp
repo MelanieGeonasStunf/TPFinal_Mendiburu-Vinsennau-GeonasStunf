@@ -25,7 +25,10 @@ void PREMIUM::DescargarAyV(Servicios* servicio){
 
 ostream& PREMIUM::operator<<(ostream& out)
 {
-Servicios& P=
+	Usuarios& P=*this;
+	//out<<P;
+	//out<<tostring();
+	return out;
 }
 
 void PREMIUM::Registrarse(Plataforma* plataforma){

@@ -1,5 +1,5 @@
 #include "Plataforma.h"
-#include "FREE.h"
+//#include "FREE.h"
 #include "BASIC.h"
 #include "PREMIUM.h"
 
@@ -63,7 +63,7 @@ string* Plataforma::MasEscuchados(tm FechaI, tm FechaF){
 	int mE1 = -1;
 
 	int cont = 0;//cuenta cuantos juegos estan dentro del periodo pedido
-	cListaT<RegistroAyV>* VistosEnPeriodo;
+	cListaT<RegistroAyV>* VistosEnPeriodo = NULL;
 
 	for (int i = 0; i < cantAudio; i++)
 	{
@@ -161,7 +161,7 @@ string* Plataforma::MasJugados(tm FechaI, tm FechaF) {
 	int mJ1 = -1;
 
 	int cont = 0;//cuenta cuantos juegos estan dentro del periodo pedido
-	cListaT<RegistroJuegos>* JugadosEnPeriodo;
+	cListaT<RegistroJuegos>* JugadosEnPeriodo = NULL;
 
 	for (int i = 0; i < cantJuegos; i++)
 	{
@@ -259,7 +259,7 @@ string* Plataforma::MasVistos(tm FechaI, tm FechaF)
 	int mV1 = -1;
 
 	int cont = 0;//cuenta cuantos juegos estan dentro del periodo pedido
-	cListaT<RegistroAyV>* VistosEnPeriodo;
+	cListaT<RegistroAyV>* VistosEnPeriodo = NULL;
 
 	for (int i = 0; i < cantVideos; i++)
 	{

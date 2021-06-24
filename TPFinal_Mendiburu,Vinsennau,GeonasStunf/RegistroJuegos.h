@@ -9,10 +9,12 @@ private:
 	friend class Juegos;
 	string Nombre;
 	int CantidadPartidasGanadas;
+	const string clave;
 	//tm Fecha;
 	tm FechaUltimaJugada;
 	int Nivel;//aumenta en guardar progreso de juegos
 	const string UserName;
+	static int counter;
 	//no le tendriamos que pasar juegos?
 
 public:
