@@ -20,7 +20,14 @@ PREMIUM::~PREMIUM(){
 
 
 void PREMIUM::DescargarAyV(Servicios* servicio){
-	ListaDescargas + servicio;
+	*ListaDescargas + servicio;
+}
+
+istream& PREMIUM::operator>>(istream& in){
+	cout << "\nIngrese el numero de la tarjeta: " << endl;
+	int numero;  
+	in >> numero;
+	return in;
 }
 
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Usuarios.h"
+
 #include "Librerias.h"
 
 class RegUsuarios

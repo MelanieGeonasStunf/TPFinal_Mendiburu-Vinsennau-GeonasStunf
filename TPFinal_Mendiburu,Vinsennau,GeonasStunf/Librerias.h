@@ -13,6 +13,7 @@
 #include <math.h>
 
 using namespace std;
+enum Servicio { audio, audioVisual, juego};
 
 /*POR TERMINAR:
 * -Estadisticas
@@ -22,4 +23,8 @@ using namespace std;
 * -Iniciar Servicio-> solo setearia el tiempo inicio  no?
 * -Juego.h que es estado????
 * -Hay que chequear la edad para cuando reproducimos el servicio
+* -Hacer registrarse virtual
+* -Hacer los to string
+* -Poner los imprimir e el main
+* -Cout hijos, y padres
 */

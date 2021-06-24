@@ -104,8 +104,13 @@ void Usuarios::Registrarse(Usuarios* user, Plataforma* plataforma){//me parece q
 }
 
 
-void Usuarios::setFHcierre(tm cierre)
+void Usuarios::setFHcierre()
 {
+	time_t rawtime;
+	tm* info;
+	time(&rawtime);
+	info = localtime(&rawtime);
+	FechayHoraCierre= *info;
 	//le podemos ir pasando un parametro de tiempo que se le suma
 	//por ej (entre iniciar sesion y seleccionar servicio le sumamos aprox 10 segundos)
 	//despues le sumamos el tiempo que uso el servicio 
@@ -113,14 +118,13 @@ void Usuarios::setFHcierre(tm cierre)
 	//no se si estaria mal suponer que el usuario se va a desconectar inmediatamente después de usar todo
 }
 
-void Usuarios::setFHinicio(tm inicio)
+void Usuarios::setFHinicio()
 {
-	/*time_t rawtime;
+	time_t rawtime;
 	tm* info;
 	time(&rawtime);
 	info = localtime(&rawtime);
 	FechayHoraInicio = *info;
-	*/
 }
 
 void Usuarios::setEliminado(bool elim)
@@ -164,7 +168,8 @@ void Usuarios::SeleccionarServicio(cListaT <Servicios>* serv)
 	{
 		if (dynamic_cast<Juegos*>((*serv)[pos])!=NULL)
 		{
-			servicio = new Juegos((*serv)[pos]);
+			Juegos aux = *serv[pos];
+			servicio = new Juegos(*((*serv)[pos]));
 		}
 		if (dynamic_cast<AudioVisual*>((*serv)[pos]!=NULL))
 		{

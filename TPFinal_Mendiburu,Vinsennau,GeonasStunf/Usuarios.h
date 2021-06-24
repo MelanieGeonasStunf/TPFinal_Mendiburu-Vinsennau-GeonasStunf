@@ -7,13 +7,14 @@
 #include "RegUsuarios.h"
 #include "funciones.h"
 #include "TipoUsuario.h"
-//#include "cListaT.h"
+#include "cListaT.h"
+#include "AudioVisual.h"
 
 class Plataforma;
 class PREMIUM;
 class BASIC;
 class FREE;
-class Audiovisual;
+//class Audiovisual;
 class Audio;
 
 class Usuarios
@@ -59,8 +60,8 @@ public:
 	//hay alguna restriccion con free/premium?
 	
 	//getters y setters
-	void setFHcierre(tm cierre);
-	void setFHinicio(tm inicio);//PROBLEMA!!
+	void setFHcierre();
+	void setFHinicio();//PROBLEMA!!
 	void setEliminado(bool elim);
 	string getUserName() { return UserName; };
 	tm getFechayHoraCierre() { return FechayHoraCierre; };

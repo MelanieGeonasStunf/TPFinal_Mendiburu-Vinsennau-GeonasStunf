@@ -29,7 +29,7 @@ void Juegos::GuardarProgreso(RegistroJuegos* reg){
 	}
 }
 RegistroJuegos* Juegos::RegistrarenRegistro(const string userName){
-	RegistroJuegos* reg = new RegistroJuegos(userName);//wtf  //jajajajaja no se
+	RegistroJuegos* reg = new RegistroJuegos(this->Nombre, userName);//wtf  //jajajajaja no se
 	return reg;
 
 }

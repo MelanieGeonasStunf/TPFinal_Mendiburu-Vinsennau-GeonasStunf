@@ -12,6 +12,7 @@ bool tick()
 	tm* hoy = localtime(&rawtime);
 	if (hoy->tm_hour == 0 && hoy->tm_min == 0 && hoy->tm_wday == 1)//si es lunes 
 		return true;
+	return false;
 }
 
 string Encriptar(string clave)
@@ -191,7 +192,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			"-Record: R" << endl <<
 			"----------------------" << endl;
 		audiov1->IniciarServicio();
-		RegistroAyV* regAV; //para que esta esto?????? -> en guardartiempoRep lo necesitamos-> 
+		RegistroAyV* regAV=NULL; //para que esta esto?????? -> en guardartiempoRep lo necesitamos-> 
 		//determina si vio 30% y lo cuenta como visto/ no visto
 		long int TiempoReal = PasarAseg(audiov1->getDuracion());
 		time_t i;

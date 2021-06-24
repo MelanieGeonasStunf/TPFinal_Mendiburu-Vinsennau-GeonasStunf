@@ -55,7 +55,7 @@ void Plataforma::PromedioConectadosenSemanaxDia()
 
 
 void Plataforma::VerResumen(){
-
+	//imprimimos todo :)
 }
 
 void Plataforma::EditarCuenta(Usuarios* user, int tipo, bool eliminar)
@@ -63,14 +63,14 @@ void Plataforma::EditarCuenta(Usuarios* user, int tipo, bool eliminar)
 	* 2 OPCIONES:
 	* -Eliminar Cuenta.
 	* -Cambiar tipo usuario.
-	*/
+	*/int t;
 	if (eliminar == true)
 	{
 		user->setEliminado(true);//=> se elimina al final de la semana para no tener problemas de memoria.
 	}
 	else//editamos la cuenta.
 	{
-		int t;//dependiendo el tipo del usuario es 0,1,2 (corresponde con el enum)
+		//dependiendo el tipo del usuario es 0,1,2 (corresponde con el enum)
 		if (dynamic_cast<FREE*>(user) != NULL)
 		{
 			t = 0;

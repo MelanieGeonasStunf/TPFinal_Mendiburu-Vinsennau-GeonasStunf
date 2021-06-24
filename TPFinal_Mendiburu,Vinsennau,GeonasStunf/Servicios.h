@@ -14,7 +14,7 @@ class Usuarios;
 
 class Servicios
 {
-private:
+protected:
 	friend void ReproducirServicio(Usuarios* user, Plataforma* plataforma);
 	const string Clave;
 	//tm duracion;
@@ -40,6 +40,6 @@ public:
 	void Pausar();
 	void Reanudar();
 
-
+	string getclave()const { return Clave; };
 };
 

@@ -7,6 +7,7 @@ class RegistroJuegos
 {
 private:
 	friend class Juegos;
+	string Nombre;
 	int CantidadPartidasGanadas;
 	tm Fecha;
 	tm FechaUltimaJugada;

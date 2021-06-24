@@ -13,10 +13,11 @@ private:
 	string tarjeta;
 	
 public:
-	PREMIUM(int Edad, Paises Pais, string Password, const string Name, string tarjeta);
+	PREMIUM(int Edad, Paises Pais, string Password, const string Name, string tarjeta="");
 	virtual ~PREMIUM();
 
 	void DescargarAyV(Servicios* servicio);
 	//void SeleccionarServicio(cListaT <Servicios>* servicio);
-
+	void setTarjeta() { cin >> tarjeta; }//confiamos en meli 
+	istream& operator>>(istream& in);
 };

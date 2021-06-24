@@ -8,6 +8,8 @@ class RegistroAyV
 {
 
 private:
+	static int counter;
+	const string clave;
 	tm Fecha;
 	tm tiempoReproduccion;
 	bool Visto;//vio + 30% ->lo vio
@@ -18,6 +20,8 @@ private:
 public:
 	RegistroAyV(const string Name);
 	virtual ~RegistroAyV();
+
+	string getclave() const { return clave; };
 
 
 };
