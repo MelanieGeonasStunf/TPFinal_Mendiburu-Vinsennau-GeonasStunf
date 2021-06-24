@@ -60,11 +60,11 @@ public:
 	
 	//getters y setters
 	void setFHcierre(tm cierre);
-	void setFHinicio(tm inicio);//PROBLEMA!!
+	void setFHinicio();//PROBLEMA!!
 	void setEliminado(bool elim);
 	string getUserName() { return UserName; };
 	tm getFechayHoraCierre() { return FechayHoraCierre; };
-
+	int getEdad() { return Edad; }
 	Paises getPais();
 
 	//AGREGADO:

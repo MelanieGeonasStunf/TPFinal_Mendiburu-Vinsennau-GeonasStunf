@@ -113,14 +113,13 @@ void Usuarios::setFHcierre(tm cierre)
 	//no se si estaria mal suponer que el usuario se va a desconectar inmediatamente después de usar todo
 }
 
-void Usuarios::setFHinicio(tm inicio)
+void Usuarios::setFHinicio()
 {
-	/*time_t rawtime;
+	time_t rawtime;
 	tm* info;
 	time(&rawtime);
 	info = localtime(&rawtime);
 	FechayHoraInicio = *info;
-	*/
 }
 
 void Usuarios::setEliminado(bool elim)
@@ -162,15 +161,18 @@ void Usuarios::SeleccionarServicio(cListaT <Servicios>* serv)
 
 	if ((*serv)[pos] != NULL)
 	{
-		if (dynamic_cast<Juegos*>((*serv)[pos])!=NULL)
+		Juegos* aux = dynamic_cast<Juegos*>((*serv)[pos]);
+		if (aux!=NULL)
 		{
-			servicio = new Juegos((*serv)[pos]);
+			servicio = new Juegos(aux);
 		}
-		if (dynamic_cast<AudioVisual*>((*serv)[pos]!=NULL))
+		AudioVisual* aux1 = dynamic_cast<AudioVisual*>((*serv)[pos]);
+		if (aux1!=NULL))
 		{
 			servicio = new AudioVisual((*serv)[pos]);
 		}
-		if (dynamic_cast<Audio*>((*serv)[pos]!=NULL))
+		Audio* aux2 = dynamic_cast<Audio*>((*serv)[pos]);
+		if (aux2!=NULL))
 		{
 			servicio = new Audio((*serv)[pos]);
 		}

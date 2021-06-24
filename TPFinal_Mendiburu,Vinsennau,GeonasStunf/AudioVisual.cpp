@@ -154,5 +154,6 @@ void AudioVisual::IniciarServicio()
 	time(&rawtime);
 	info = localtime(&rawtime);
 	tiempoInicio = *info;
+
 }
 
