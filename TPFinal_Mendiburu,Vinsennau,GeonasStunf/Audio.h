@@ -9,6 +9,7 @@ class Audio :
 {
     tm duracion;
     tm tiempoInicio;
+    int cantEscxPer;
 
 public:
     Audio(const string clave, const string nombre, int cantP, Paises* paises, RangoEtareo rango,
@@ -16,8 +17,8 @@ public:
     Audio(Audio& audio);
     virtual ~Audio();
 
-    void FastBackward();//flecha abajo
-    void FastForward();//flecha arriba
+    void FastBackward(long int& time,long int&TiempoR);//flecha abajo
+    void FastForward(long int& time,long int&TiempoR);//flecha arriba
     void Record();//R
     void VelocidadReproduccion(int velocidad);
     void IniciarServicio();
@@ -26,6 +27,9 @@ public:
 
     void GuardartiempoRep(RegistroAyV* reg, int seg);
 
-    RegistroAyV* RegistrarenRegistro(Usuarios* user);
+    RegistroAyV* RegistrarenRegistro(Usuarios* user,bool visto);
+
+    int getCant() { return cantEscxPer; }
+    void setCant() { cantEscxPer++; }
 };
 

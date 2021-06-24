@@ -3,12 +3,13 @@
 
 
 int RegistroAyV::counter = 0;
-RegistroAyV::RegistroAyV(tm tiemporep, const string Name, bool visto):UserName(Name),clave(to_string(counter))
+RegistroAyV::RegistroAyV(string nom, const string Name, bool visto) :UserName(Name), clave(to_string(counter))
 {
-	counter++;}
+	counter++;
 	Fecha = setLocalTime();
-	tm tiempoReproduccion;
+	//tm tiempoReproduccion;
 	Visto=visto;//vio + 30% ->lo vio
+	Nombre = nom;
 }
 
 RegistroAyV::~RegistroAyV(){

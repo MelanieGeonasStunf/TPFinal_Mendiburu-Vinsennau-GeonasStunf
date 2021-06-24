@@ -187,12 +187,10 @@ void Usuarios::SeleccionarServicio(cListaT <Servicios>* serv)
 		{
 			throw exception("No tiene la edad suficiente para utilizar este servicio");
 		}
-		//servicio->Iniciar(this);
 	}
 	//si la edad>18 no tiene ninguna restriccion
 }
-//capaz podemos hacer un metodo de usuario que verifique cual es el tipo de usuario, como que haga toda la parte del dynamic cast
-//y retorne el enum del tipo de usuario, la podriamos usar en varios metodos y ahorrarnos lineas de codigo
+
 
 
 istream& Usuarios::operator>>(istream& in) {

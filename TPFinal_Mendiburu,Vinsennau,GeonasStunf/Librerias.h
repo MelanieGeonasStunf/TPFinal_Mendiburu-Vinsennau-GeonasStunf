@@ -4,8 +4,8 @@
 #include <ctime>
 #include <time.h>
 #include <conio.h>
-#include<Windows.h>
-#include<MMSystem.h>
+#include <Windows.h>
+#include <MMSystem.h>
 #include <stdio.h>
 #include <ctype.h>
 #include <cstddef>  
@@ -22,8 +22,8 @@ enum Servicio { audio, audioVisual, juego};
 * -Funciones chiquitas de cada servicio y usuario
 * -Ver manejo de excepciones
 * -Iniciar Servicio-> solo setearia el tiempo inicio  no?
-* -Hay que chequear la edad para cuando reproducimos el servicio
-* -Hacer registrarse virtual
+* -Hay que chequear la edad para cuando reproducimos el servicio !LISTO
+* -Hacer registrarse virtual !LISTO
 * -Hacer los to string
 * -Poner los imprimir e el main
 * -Cout hijos, y padres

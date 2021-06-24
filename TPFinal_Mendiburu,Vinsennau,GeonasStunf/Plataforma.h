@@ -38,15 +38,15 @@ public:
 	Plataforma();
 	virtual ~Plataforma();
 
-	void EstadisticasPorContenido(Servicios*serv);
-	cListaT <Audio> *MasEscuchados(tm FechaI, tm FechaF);
-	string* MasJugados(tm FechaI, tm FechaF);
-	cListaT <AudioVisual> *MasVistos(tm FechaI, tm FechaF);
+	void EstadisticasPorContenido(Servicios*serv, tm FechaI, tm FechaF);
+	string *MasEscuchados(tm FechaI, tm FechaF);
+	string *MasJugados(tm FechaI, tm FechaF);
+	string *MasVistos(tm FechaI, tm FechaF);
 	//Periodo->pasar dos fechas o que te devuelva unicamente lo de la ultima semana.
 
 	void PromedioConectadosenSemanaxDia();
 	
-	void VerResumen ();//da resumen de la semana
+	void VerResumen (tm FechaI, tm FechaF);//da resumen de la semana
 
 	//Usuarios* get
 	void EditarCuenta(Usuarios*user, int tipo, bool eliminar);//no me toma el enum!

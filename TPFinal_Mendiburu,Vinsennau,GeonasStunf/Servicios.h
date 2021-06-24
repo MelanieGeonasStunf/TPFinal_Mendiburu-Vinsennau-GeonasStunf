@@ -32,7 +32,7 @@ public:
 
 	
 	int ChequearEdad();
-	void VerificarPais(Usuarios* user);//
+	void VerificarPais(Usuarios* user);
 
 
 	void Apagar();

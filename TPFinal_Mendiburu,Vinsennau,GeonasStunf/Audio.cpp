@@ -7,17 +7,14 @@ Audio::Audio(const string clave, const string nombre, int cantP, Paises* paises,
 {
 	this->duracion = duracion;
 	this->tiempoInicio = { 0,0,0 };
+	cantEscxPer = 0;
 }
 Audio::Audio(Audio& audio):Servicios(audio), duracion(audio.duracion)
 {
 }
 void Audio::IniciarServicio()
 { 
-	time_t rawtime;
-	tm* info;
-	time(&rawtime);
-	info = localtime(&rawtime);
-	tiempoInicio = *info;
+	tiempoInicio = setLocalTime();
 }
 
 Audio::~Audio(){
@@ -28,24 +25,26 @@ Audio::~Audio(){
 
 
 
-void Audio::FastBackward(){
-
+void Audio::FastBackward(long int& time,long int&TiempoR){
+	time -= 10;
+	TiempoR -= 10;
 }
 
 
-void Audio::FastForward(){
-
+void Audio::FastForward(long int& time,long int&TiempoR){
+	time += 10;
+	TiempoR += 10;
 }
 
 
 void Audio::Record(){
-
+	cout << "\nGrabacion en progreso." << endl;
 }
 
 
-void Audio::VelocidadReproduccion(int velocidad){
+/*void Audio::VelocidadReproduccion(int velocidad){
 
-}
+}*/
 
 
 void Audio::GuardartiempoRep(RegistroAyV* reg, int seg)
@@ -114,38 +113,21 @@ void Audio::GuardartiempoRep(RegistroAyV* reg, int seg)
 		reg->Visto = true;
 	}
 
-}
+}*/
 
-void AudioVisual::IniciarServicio()
-{
-	time_t rawtime;
-	tm* info;
-	time(&rawtime);
-	info = localtime(&rawtime);
-	tiempoInicio = *info;
+	/*void AudioVisual::IniciarServicio()
+	{
 
-}
+		tiempoInicio = setLocalTime();
+	}*/
 
 
-RegistroAyV* AudioVisual::RegistrarenRegistro(Usuarios* user)
-{
-	RegistroAyV* reg;
-	reg = new RegistroAyV(user->FechayHoraCierre, tiempoReproduccion, user->UserName);
 
-	return reg;*/
-}
 
-RegistroAyV* Audio::RegistrarenRegistro(Usuarios* user) //no se si hay que pasarle el tiempo de reproduccion
+
+RegistroAyV* Audio::RegistrarenRegistro(Usuarios* user,bool visto) //no se si hay que pasarle el tiempo de reproduccion
 {
 	RegistroAyV* reg;
-	reg = new RegistroAyV(user->getFechayHoraCierre(), this->duracion, user->getclave());
-
-	/*
-	tm fecha;
-	cListaT<AudioVisual>* ListadeRecientesAyV;
-	cListaT <Audio>* ListaRecientesA;//tenia doble puntero y le saque uno
-	int MinutodeReproduccion;
-	const string UserName;
-	*/
-
+	reg = new RegistroAyV(Nombre, user->getclave(),visto);
+	return reg;
 }

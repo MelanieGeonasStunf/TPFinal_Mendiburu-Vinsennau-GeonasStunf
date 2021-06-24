@@ -12,7 +12,7 @@ AudioVisual::AudioVisual(const string clave, const string nombre, int cantP,
 	this->duracion = duracion;
 	TipoAudioVisual = Tipo;//tendriamos que poner el tipo como enum o dejarlo en int?
 	HD = false;
-
+	cantVisxPer = 0;
 }
 
 AudioVisual::AudioVisual(AudioVisual& ayv):Servicios(ayv), HD(ayv.HD),
@@ -28,13 +28,15 @@ AudioVisual::~AudioVisual(){
 
 
 
-void AudioVisual::FastBackward(long int& time){
-	time += 10;
+void AudioVisual::FastBackward(long int& time,long int&TiempoR){
+	time -= 10;
+	TiempoR -= 10;
 }
 
 
-void AudioVisual::FastForward(long int& time){
+void AudioVisual::FastForward(long int& time,long int&TiempoR){
 	time += 10;
+	TiempoR += 10;
 	//tiempo es el tiempo que quiere hacer fast forward.
 	/*int seg = difftime(0, mktime(&tiempo));//chequear si funciona
 	//float min = seg * 60;
@@ -52,7 +54,7 @@ void AudioVisual::FastForward(long int& time){
 
 
 void AudioVisual::Record(){
-
+	cout << "\nGrabacion en progreso." << endl;
 }
 
 
@@ -126,35 +128,18 @@ void AudioVisual::GuardartiempoRep(RegistroAyV* reg, int seg)
 		//significa que vio el 30% del video	
 		reg->Visto = true;
 	}
-
+	*/
 }
+
 
 void AudioVisual::IniciarServicio()
 {
-	time_t rawtime;
-	tm* info;
-	time(&rawtime);
-	info = localtime(&rawtime);
-	tiempoInicio = *info;
-	
+	tiempoInicio = setLocalTime();
 }
 
-
-RegistroAyV* AudioVisual::RegistrarenRegistro(Usuarios* user)
+RegistroAyV* AudioVisual::RegistrarenRegistro(Usuarios* user,bool visto)
 {
 	RegistroAyV* reg;
-	reg = new RegistroAyV(user->FechayHoraCierre, tiempoReproduccion, user->UserName);
-
-	return reg;*/
+	reg = new RegistroAyV(Nombre, user->getclave(),visto);
+	return reg;
 }
-
-void AudioVisual::IniciarServicio()
-{
-	time_t rawtime;
-	tm* info;
-	time(&rawtime);
-	info = localtime(&rawtime);
-	tiempoInicio = *info;
-
-}
-

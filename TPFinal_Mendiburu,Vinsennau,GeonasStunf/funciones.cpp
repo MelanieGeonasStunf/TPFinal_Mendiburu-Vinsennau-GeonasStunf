@@ -127,6 +127,7 @@ void Casos2(Usuarios* user, Plataforma* plataforma)
 		switch (opcion)
 		{
 		case 1:user->SeleccionarServicio(plataforma->m_Servicios);
+			ReproducirServicio(user, plataforma);
 			break;
 		case 2:plataforma->EditarCuenta(user, rand()%3, rand()%1);//elige el tipo y si se elimina al azar
 			break;
@@ -152,6 +153,7 @@ long int PasarAseg(tm tiempo)
 
 void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 {
+
 	//ponemos el anuncio
 	//dynamic cast
 	/*
@@ -229,12 +231,11 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			}
 			if (GetKeyState(VK_UP) & 0x8000)//flecha arriba
 			{
-				audiov1->FastForward(tiempoModificado);//siempre adelantamos 10 seg
-				TiempoReal -= ;
+				audiov1->FastForward(tiempoModificado,TiempoReal);//siempre adelantamos 10 seg
 			}
 			if (GetKeyState(VK_DOWN) & 0x8000)//flecha abajo
 			{
-				audiov1->FastBackward();
+				audiov1->FastBackward(tiempoModificado,TiempoReal);
 				//TiempoReal += 10;
 			}
 			/*
@@ -244,8 +245,10 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			{
 				user->servicio->Apagar();
 				//tenemos que llamar a la funcion que controla si vio 30% 
-
-				audiov1->GuardartiempoRep(regAV, seg);
+				regAV=audiov1->RegistrarenRegistro(user);
+				audiov1->GuardartiempoRep(regAV, TiempoReal-TiempoModificado);
+				*(plataforma->getRgAyV()) + regAV;
+				return;
 			}
 			if (GetKeyState(VK_UP) & 0x8000)//flecha arriba
 			{
@@ -273,6 +276,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 
 		} while (difftime(f,i)<=TiempoReal);
 		regAV=audiov1->RegistrarenRegistro(user);
+		audiov1->GuardartiempoRep(regAV,TiempoReal-tiempoModificado);
 		*(plataforma->getRgAyV()) + regAV;
 	}
 	Audio* audio = dynamic_cast<Audio*>(user->servicio);
@@ -303,13 +307,16 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 					t = clock() - t;//termina de contar el tiempo
 					user->servicio->Reanudar();
 					int seg = (t) / CLOCKS_PER_SEC;//retorna seg que estuvo pausado
+					TiempoReal += seg;
+					tiempoModificado += seg;
 				}
 			}
 			if (GetKeyState(VK_ESCAPE) & 0x8000)//APAGAR-> Esc
 			{
 				user->servicio->Apagar();
 				//tenemos que llamar a la funcion que controla si vio 30% 
-				audio->GuardartiempoRep(regA, seg);
+				regA = audio->RegistrarenRegistro(user,audio->GuardartiempoRep(regA, TiempoReal-tiempoModificado));
+				*(plataforma->getRgAyV()) + regA;
 			}
 
 			tm inicio;
@@ -322,7 +329,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			f = mktime(F);
 
 		} while (difftime(f,i)<=TiempoReal);
-		regA = audio->RegistrarenRegistro(user);
+		regA = audio->RegistrarenRegistro(user,audio->GuardartiempoRep(regA, TiempoReal-tiempoModificado));
 		*(plataforma->getRgAyV()) + regA;
 	}
 }

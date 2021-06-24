@@ -22,14 +22,132 @@ Plataforma::~Plataforma(){
 }
 
 
-void Plataforma::EstadisticasPorContenido(Servicios*serv){
+void Plataforma::EstadisticasPorContenido(Servicios*serv, tm FechaI, tm FechaF){
 
+	if (dynamic_cast<Juegos*>(serv))
+	{
+		string* MJ = MasJugados(FechaI, FechaF);
+		cout << "Mas jugados: " << endl;
+		for (int i = 0; i < 3; i++)
+		{
+			cout << "-" << MJ[i] << endl;
+		}
+	}
+	if (dynamic_cast<Audio*>(serv))
+	{
+		string* ME = MasEscuchados(FechaI, FechaF);
+		cout << "Mas escuchados: " << endl;
+		for (int i = 0; i < 3; i++)
+		{
+			cout << "-" << ME[i] << endl;
+		}
+	}
+	if (dynamic_cast<AudioVisual*>(serv))
+	{
+		string* MV = MasVistos(FechaI, FechaF);
+		cout << "Mas vistos: " << endl;
+		for (int i = 0; i < 3; i++)
+		{
+			cout << "-" << MV[i] << endl;
+		}
+	}
 }
 
+string* Plataforma::MasEscuchados(tm FechaI, tm FechaF){
 
-cListaT<Audio>* Plataforma::MasEscuchados(tm FechaI, tm FechaF){
+	int cantAudio = RegAyV->getCA();
+	//cListaT<Juegos>* masJug = new cListaT<Juegos>(5);//solo nos fijamos los 5 mas jugados
+	string* masEsc = new string[3];
+	int mE = -1;//no hay juego que se haya jugado menos de una vez
+	int mE2 = -1;
+	int mE1 = -1;
 
-	return  NULL;
+	int cont = 0;//cuenta cuantos juegos estan dentro del periodo pedido
+	cListaT<RegistroAyV>* VistosEnPeriodo;
+
+	for (int i = 0; i < cantAudio; i++)
+	{
+		//me fijo que el juego se haya jugado en el periodo de tiempo pedido
+		if (RegAyV->vector[i]->getFecha().tm_year >= FechaI.tm_year && RegAyV->vector[i]->getFecha().tm_year <= FechaF.tm_year)
+		{
+			//estan dentro de los anios pedidos
+			if (RegAyV->vector[i]->getFecha().tm_mon >= FechaI.tm_mon && RegAyV->vector[i]->getFecha().tm_mon <= FechaF.tm_mon)
+			{
+				//tienen distinto mes, tenemos que comparar el dia
+				if (RegAyV->vector[i]->getFecha().tm_mday >= FechaI.tm_mday && RegAyV->vector[i]->getFecha().tm_mday <= FechaF.tm_mday)
+				{
+					//tienen distino dia, comparamos las horas
+
+					if (RegAyV->vector[i]->getFecha().tm_hour >= FechaI.tm_hour && RegAyV->vector[i]->getFecha().tm_hour <= FechaF.tm_hour)
+					{
+						//tienen hora distinta, me fijo los minutos
+						if (RegAyV->vector[i]->getFecha().tm_min >= FechaI.tm_min && RegAyV->vector[i]->getFecha().tm_min <= FechaF.tm_min)
+						{
+							//tienen minutos distinto me fijo los segundos
+							if (RegAyV->vector[i]->getFecha().tm_sec >= FechaI.tm_sec && RegAyV->vector[i]->getFecha().tm_sec <= FechaF.tm_sec)
+							{
+								//si entra, significa que esta en el periodo de tiempo pedido
+
+								VistosEnPeriodo[VistosEnPeriodo->getCA()] = RegAyV[i];//H
+
+							}
+
+						}
+					}
+				}
+
+			}
+
+		}
+
+		//significa que no esta entre el periodo de anios pedido
+		for (int i = 0; i < VistosEnPeriodo->getCA(); i++)
+		{
+			for (int j = 0; j < m_Servicios->getCA(); j++)
+			{
+				Audio* A = dynamic_cast<Audio*>(m_Servicios->vector[j]);
+				if (A != NULL)
+				{
+					if (VistosEnPeriodo->vector[i]->getNombre() == A->getNombre())
+					{
+						A->setCant();
+					}
+
+				}
+
+
+			}
+		}
+
+		for (int i = 0; i < m_Servicios->getCA(); i++)
+		{
+			Audio* A = dynamic_cast<Audio*>(m_Servicios->vector[i]);
+			//buscamos los 5 maximos
+
+			if (A != NULL)
+			{
+				if (A->getCant() > mE)
+				{
+					masEsc[0] = A->getNombre();
+					mE = A->getCant();
+				}
+
+				if (A->getCant() >= mE1 && A->getNombre() != masEsc[0])
+				{
+					masEsc[1] = A->getNombre();
+					mE1 = A->getCant();
+				}
+				if (A->getCant() >= mE2 && A->getNombre() != masEsc[0] && A->getNombre() != masEsc[1])
+				{
+					masEsc[2] = A->getNombre();
+					mE2 = A->getCant();
+
+				}
+			}
+		}
+
+		return  masEsc;
+	}
 }
 
 
@@ -130,13 +248,13 @@ string* Plataforma::MasJugados(tm FechaI, tm FechaF) {
 }
 
 
-cListaT<AudioVisual>* Plataforma::MasVistos(tm FechaI, tm FechaF)
+string* Plataforma::MasVistos(tm FechaI, tm FechaF)
 {
 
 	int cantVideos = RegAyV->getCA();
 	//cListaT<Juegos>* masJug = new cListaT<Juegos>(5);//solo nos fijamos los 5 mas jugados
 	string* masVis = new string[3];
-	int mV = -1;
+	int mV = -1;//no hay juego que se haya jugado menos de una vez
 	int mV2 = -1;
 	int mV1 = -1;
 
@@ -183,12 +301,12 @@ cListaT<AudioVisual>* Plataforma::MasVistos(tm FechaI, tm FechaF)
 		{
 			for (int j = 0; j < m_Servicios->getCA(); j++)
 			{
-				Juegos* ju = dynamic_cast<Juegos*>(m_Servicios->vector[j]);
-				if (ju != NULL)
+				AudioVisual* AV = dynamic_cast<AudioVisual*>(m_Servicios->vector[j]);
+				if (AV != NULL)
 				{
-					if (VistosEnPeriodo->vector[i]->getNombre() == ju->getNombre())
+					if (VistosEnPeriodo->vector[i]->getNombre() == AV->getNombre())
 					{
-						ju->setCont();
+						AV->setCant();
 					}
 
 				}
@@ -196,35 +314,36 @@ cListaT<AudioVisual>* Plataforma::MasVistos(tm FechaI, tm FechaF)
 
 			}
 		}
-		mJ = -1;//no hay juego que se haya jugado menos de una vez
+
 		for (int i = 0; i < m_Servicios->getCA(); i++)
 		{
-			Juegos* ju = dynamic_cast<Juegos*>((m_Servicios->vector[i]));
+			AudioVisual* AV = dynamic_cast<AudioVisual*>(m_Servicios->vector[i]);
 			//buscamos los 5 maximos
 
-			if (ju != NULL)
+			if (AV != NULL)
 			{
-				if (ju->getCont() > mJ)
+				if (AV->getCant() > mV)
 				{
-					masJug[0] = ju->getNombre();
-					mJ = ju->getCont();
+					masVis[0] = AV->getNombre();
+					mV = AV->getCant();
 				}
 
-				if (ju->getCont() >= mJ1 && ju->getNombre() != masJug[0])
+				if (AV->getCant() >= mV1 && AV->getNombre() != masVis[0])
 				{
-					masJug[1] = ju->getNombre();
-					mJ1 = ju->getCont();
+					masVis[1] = AV->getNombre();
+					mV1 = AV->getCant();
 				}
-				if (ju->getCont() >= mJ2 && ju->getNombre() != masJug[0] && ju->getNombre() != masJug[1])
+				if (AV->getCant() >= mV2 && AV->getNombre() != masVis[0] && AV->getNombre() != masVis[1])
 				{
-					masJug[2] = ju->getNombre();
-					mJ2 = ju->getCont();
+					masVis[2] = AV->getNombre();
+					mV2 = AV->getCant();
 
 				}
 			}
 		}
 
-		return  masJug;
+		return  masVis;
+	}
 }
 
 void Plataforma::PromedioConectadosenSemanaxDia()
@@ -232,8 +351,32 @@ void Plataforma::PromedioConectadosenSemanaxDia()
 	int cant = UsuariosxSemana / 7;
 }
 
-void Plataforma::VerResumen(){
+void Plataforma::VerResumen(tm FechaI, tm FechaF){
 	//imprimimos todo :)
+	cout << "--------RESUMEN-----------" << endl;
+	string* MV = MasVistos(FechaI,FechaF);
+	string* ME = MasEscuchados(FechaI, FechaF);
+	string* MJ = MasJugados(FechaI, FechaF);
+
+	//imprimimos los 3 mas vistos, escuchados y jugados de la semana.
+	//ponemos el periodo en el main
+	cout << "Mas vistos: " << endl;
+	for (int i = 0; i < 3; i++)
+	{
+		cout << "-" << MV[i] << endl;
+	}
+	cout << "Mas escuchados: " << endl;
+	for (int i = 0; i < 3; i++)
+	{
+		cout << "-" << ME[i] << endl;
+	}
+	cout << "Mas jugados: " << endl;
+	for (int i = 0; i < 3; i++)
+	{
+		cout << "-" << MJ[i] << endl;
+	}
+
+
 }
 
 void Plataforma::EditarCuenta(Usuarios* user, int tipo, bool eliminar)

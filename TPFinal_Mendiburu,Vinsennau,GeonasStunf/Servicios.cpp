@@ -33,7 +33,6 @@ int Servicios::ChequearEdad(){
 		return 1;
 	if (rangoE == adulto)
 		return 2;
-	//== return rangoE;
 }
 
 
