@@ -160,6 +160,8 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 	* APAGAR: escape (Esc)
 	* 
 	*/
+	bool pausado = false;
+	long int tiempoModificado=0;
 	cout << "-------------------" << endl <<
 		"-Pausa: SPACE BAR" << endl <<
 		"-Reanudar: SPACE BAR" << endl <<
@@ -222,12 +224,13 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 					user->servicio->Reanudar();
 					seg = (t) / CLOCKS_PER_SEC;
 					TiempoReal += seg;
+					tiempoModificado += seg;
 				}
 			}
 			if (GetKeyState(VK_UP) & 0x8000)//flecha arriba
 			{
-				audiov1->FastForward();//siempre adelantamos 10 seg
-				//TiempoReal -= 10;
+				audiov1->FastForward(tiempoModificado);//siempre adelantamos 10 seg
+				TiempoReal -= ;
 			}
 			if (GetKeyState(VK_DOWN) & 0x8000)//flecha abajo
 			{

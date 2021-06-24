@@ -22,7 +22,7 @@ public:
 	virtual ~RegistroAyV();
 
 	string getclave() const { return clave; };
-
+	tm getFecha() { return Fecha; }
 
 };
 

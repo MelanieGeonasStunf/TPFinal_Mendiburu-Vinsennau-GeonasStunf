@@ -9,7 +9,7 @@ private:
 	friend class Juegos;
 	string Nombre;
 	int CantidadPartidasGanadas;
-	tm Fecha;
+	//tm Fecha;
 	tm FechaUltimaJugada;
 	int Nivel;//aumenta en guardar progreso de juegos
 	const string UserName;
@@ -20,5 +20,6 @@ public:
 	virtual ~RegistroJuegos();
 
 	tm getFechaUltJ() { return FechaUltimaJugada; }
+	string getNombre() { return Nombre; }
 };
 

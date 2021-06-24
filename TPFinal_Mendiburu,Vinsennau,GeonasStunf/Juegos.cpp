@@ -6,6 +6,7 @@ Juegos::Juegos(const string clave, const string nombre, int cantP, Paises* paise
 {
 	this->NivelFinal = NivelFinal;
 	Finalizado = false;
+	cantJugxPer = 0;
 }
 
 Juegos::Juegos(Juegos& juego) :Servicios(juego)

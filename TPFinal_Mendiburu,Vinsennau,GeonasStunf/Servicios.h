@@ -41,5 +41,7 @@ public:
 	void Reanudar();
 
 	string getclave()const { return Clave; };
+
+	string getNombre()const { return Nombre; };
 };
 

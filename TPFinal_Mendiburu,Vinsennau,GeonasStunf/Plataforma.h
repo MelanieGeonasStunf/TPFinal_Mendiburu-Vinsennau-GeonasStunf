@@ -38,10 +38,10 @@ public:
 	Plataforma();
 	virtual ~Plataforma();
 
-	void EstadisticasPorContenido();
-	cListaT <Audio> *MasEscuchados(tm Periodo);
-	cListaT <Juegos> *MasJugados(tm FechaI, tm FechaF);
-	cListaT <AudioVisual> *MasVistos(tm Periodo);
+	void EstadisticasPorContenido(Servicios*serv);
+	cListaT <Audio> *MasEscuchados(tm FechaI, tm FechaF);
+	string* MasJugados(tm FechaI, tm FechaF);
+	cListaT <AudioVisual> *MasVistos(tm FechaI, tm FechaF);
 	//Periodo->pasar dos fechas o que te devuelva unicamente lo de la ultima semana.
 
 	void PromedioConectadosenSemanaxDia();

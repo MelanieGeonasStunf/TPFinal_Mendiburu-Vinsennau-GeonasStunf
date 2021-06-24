@@ -11,7 +11,7 @@ private:
 	
 	int NivelFinal;
 	bool Finalizado;//completo todos los niveles?
-
+	int cantJugxPer;
 	//string NombreJuego;->nombre ya esta en servicios
 
 public:
@@ -23,5 +23,6 @@ public:
 	void GuardarProgreso(RegistroJuegos* reg);
 	void IniciarServicio();//que haria?
 	bool getEstado()  { return this->Finalizado;  }; //estado de que?
-
+	void setCont() { cantJugxPer++; }
+	int getCont() { return cantJugxPer; }
 };

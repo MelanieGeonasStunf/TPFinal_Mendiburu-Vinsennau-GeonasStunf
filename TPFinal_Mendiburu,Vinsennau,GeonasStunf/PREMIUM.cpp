@@ -23,6 +23,11 @@ void PREMIUM::DescargarAyV(Servicios* servicio){
 }
 
 
+ostream& PREMIUM::operator<<(ostream& out)
+{
+Servicios& P=
+}
+
 void PREMIUM::Registrarse(Plataforma* plataforma){
 	if (this == NULL)
 		throw new exception("\nNo se pudo registrar el usuario ingresado.");

@@ -28,12 +28,13 @@ AudioVisual::~AudioVisual(){
 
 
 
-void AudioVisual::FastBackward(){
-
+void AudioVisual::FastBackward(long int& time){
+	time += 10;
 }
 
 
-void AudioVisual::FastForward(){
+void AudioVisual::FastForward(long int& time){
+	time += 10;
 	//tiempo es el tiempo que quiere hacer fast forward.
 	/*int seg = difftime(0, mktime(&tiempo));//chequear si funciona
 	//float min = seg * 60;

@@ -18,5 +18,7 @@ public:
 
 	void Registrarse( Plataforma* plataforma);
 	void DescargarAyV(Servicios* servicio);
+	ostream& operator<<(ostream& out);
+
 	//void SeleccionarServicio(cListaT <Servicios>* servicio);
 };

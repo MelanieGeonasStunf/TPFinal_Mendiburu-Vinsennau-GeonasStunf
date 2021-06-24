@@ -22,75 +22,215 @@ Plataforma::~Plataforma(){
 }
 
 
-void Plataforma::EstadisticasPorContenido(){
+void Plataforma::EstadisticasPorContenido(Servicios*serv){
 
 }
 
 
-cListaT<Audio>* Plataforma::MasEscuchados(tm Periodo){
+cListaT<Audio>* Plataforma::MasEscuchados(tm FechaI, tm FechaF){
 
 	return  NULL;
 }
 
 
-cListaT<Juegos>* Plataforma::MasJugados(tm FechaI, tm FechaF){
+string* Plataforma::MasJugados(tm FechaI, tm FechaF) {
 
-int cantJuegos=RegJ->getCA();
-Juegos* masJug = Juegos[5];
+	int cantJuegos = RegJ->getCA();
+	//cListaT<Juegos>* masJug = new cListaT<Juegos>(5);//solo nos fijamos los 5 mas jugados
+	string* masJug = new string[3];
+	int mJ=-1;
+	int mJ2 = -1;
+	int mJ1 = -1;
 
-for(int i=0;i<cantJuegos;i++)
-{
-//me fijo que el juego se haya jugado en el periodo de tiempo pedido
-if(RegJ->vector[i]->getFechaUltJ.tm_year>=FechaI.tm_year && RegJ->vector[i]->getFechaUltJ().tm_year<=FechaF.tm_year)
-{
-	//tiene anio distinto y tenemos que comparar el mes
-	if(RegJ->vector[i]->getFechaUltJ.tm_mon>=FechaI.tm_mon && RegJ->vector[i]->getFechaUltJ().tm_mon<=FechaF.tm_mon)
+	int cont = 0;//cuenta cuantos juegos estan dentro del periodo pedido
+	cListaT<RegistroJuegos>* JugadosEnPeriodo;
+
+	for (int i = 0; i < cantJuegos; i++)
 	{
-		//tienen distinto mes, tenemos que comparar el dia
-			if(RegJ->vector[i]->getFechaUltJ.tm_mday=>FechaI.tm_mday && RegJ->vector[i]->getFechaUltJ().tm_mday<=FechaF.tm_mday)
+		//me fijo que el juego se haya jugado en el periodo de tiempo pedido
+		if (RegJ->vector[i]->getFechaUltJ().tm_year >= FechaI.tm_year && RegJ->vector[i]->getFechaUltJ().tm_year <= FechaF.tm_year)
+		{
+			//estan dentro de los anios pedidos
+			if (RegJ->vector[i]->getFechaUltJ().tm_mon >= FechaI.tm_mon && RegJ->vector[i]->getFechaUltJ().tm_mon <= FechaF.tm_mon)
 			{
-					//tienen distino dia, comparamos las horas
-	
-				if(RegJ->vector[i]->getFechaUltJ.tm_hour=>FechaI.tm_hour && RegJ->vector[i]->getFechaUltJ().tm_hour<=FechaF.tm_hour)
+				//tienen distinto mes, tenemos que comparar el dia
+				if (RegJ->vector[i]->getFechaUltJ().tm_mday >= FechaI.tm_mday && RegJ->vector[i]->getFechaUltJ().tm_mday <= FechaF.tm_mday)
 				{
-					//tienen hora distinta, me fijo los minutos
-					if(RegJ->vector[i]->getFechaUltJ.tm_min=>FechaI.tm_min && RegJ->vector[i]->getFechaUltJ().tm_min<=FechaF.tm_min)
-					{
-						//tienen minutos distinto me fijo los segundos
-						if(RegJ->vector[i]->getFechaUltJ.tm_sec>=FechaI.tm_sec && RegJ->vector[i]->getFechaUltJ().tm_sec<=FechaF.tm_sec)
-						{
-							//si entra, significa que esta en el periodo de tiempo pedido
-						}
+					//tienen distino dia, comparamos las horas
 
+					if (RegJ->vector[i]->getFechaUltJ().tm_hour >= FechaI.tm_hour && RegJ->vector[i]->getFechaUltJ().tm_hour <= FechaF.tm_hour)
+					{
+						//tienen hora distinta, me fijo los minutos
+						if (RegJ->vector[i]->getFechaUltJ().tm_min >= FechaI.tm_min && RegJ->vector[i]->getFechaUltJ().tm_min <= FechaF.tm_min)
+						{
+							//tienen minutos distinto me fijo los segundos
+							if (RegJ->vector[i]->getFechaUltJ().tm_sec >= FechaI.tm_sec && RegJ->vector[i]->getFechaUltJ().tm_sec <= FechaF.tm_sec)
+							{
+								//si entra, significa que esta en el periodo de tiempo pedido
+
+								JugadosEnPeriodo[JugadosEnPeriodo->getCA()] = RegJ[i];//H
+
+							}
+
+						}
 					}
 				}
+
 			}
-	
-	}	
+
+		}
+
+		//significa que no esta entre el periodo de anios pedido
+		for (int i = 0; i < JugadosEnPeriodo->getCA(); i++)
+		{
+			for (int j = 0; j < m_Servicios->getCA(); j++)
+			{
+				Juegos* ju = dynamic_cast<Juegos*>(m_Servicios->vector[j]);
+				if (ju != NULL)
+				{
+					if (JugadosEnPeriodo->vector[i]->getNombre() == ju->getNombre())
+					{
+						ju->setCont();
+					}
+
+				}
+
+
+			}
+		}
+		mJ = -1;//no hay juego que se haya jugado menos de una vez
+		for (int i = 0; i < m_Servicios->getCA(); i++)
+		{
+			Juegos* ju = dynamic_cast<Juegos*>((m_Servicios->vector[i]));
+			//buscamos los 5 maximos
+
+			if (ju != NULL)
+			{
+				if (ju->getCont() > mJ)
+				{
+					masJug[0] = ju->getNombre();
+					mJ = ju->getCont();
+				}
+
+				if (ju->getCont() >= mJ1 && ju->getNombre() != masJug[0])
+				{
+					masJug[1] = ju->getNombre();
+					mJ1 = ju->getCont();
+				}
+				if (ju->getCont() >= mJ2 && ju->getNombre() != masJug[0] && ju->getNombre() != masJug[1])
+				{
+					masJug[2] = ju->getNombre();
+					mJ2 = ju->getCont();
+
+				}
+			}
+		}
+	}
+		return  masJug;
 }
 
-	//significa que no esta entre el periodo de anios pedido
+
+cListaT<AudioVisual>* Plataforma::MasVistos(tm FechaI, tm FechaF)
+{
+
+	int cantVideos = RegAyV->getCA();
+	//cListaT<Juegos>* masJug = new cListaT<Juegos>(5);//solo nos fijamos los 5 mas jugados
+	string* masVis = new string[3];
+	int mV = -1;
+	int mV2 = -1;
+	int mV1 = -1;
+
+	int cont = 0;//cuenta cuantos juegos estan dentro del periodo pedido
+	cListaT<RegistroAyV>* VistosEnPeriodo;
+
+	for (int i = 0; i < cantVideos; i++)
+	{
+		//me fijo que el juego se haya jugado en el periodo de tiempo pedido
+		if (RegAyV->vector[i]->getFecha().tm_year >= FechaI.tm_year && RegAyV->vector[i]->getFecha().tm_year <= FechaF.tm_year)
+		{
+			//estan dentro de los anios pedidos
+			if (RegAyV->vector[i]->getFecha().tm_mon >= FechaI.tm_mon && RegAyV->vector[i]->getFecha().tm_mon <= FechaF.tm_mon)
+			{
+				//tienen distinto mes, tenemos que comparar el dia
+				if (RegAyV->vector[i]->getFecha().tm_mday >= FechaI.tm_mday && RegAyV->vector[i]->getFecha().tm_mday <= FechaF.tm_mday)
+				{
+					//tienen distino dia, comparamos las horas
+
+					if (RegAyV->vector[i]->getFecha().tm_hour >= FechaI.tm_hour && RegAyV->vector[i]->getFecha().tm_hour <= FechaF.tm_hour)
+					{
+						//tienen hora distinta, me fijo los minutos
+						if (RegAyV->vector[i]->getFecha().tm_min >= FechaI.tm_min && RegAyV->vector[i]->getFecha().tm_min <= FechaF.tm_min)
+						{
+							//tienen minutos distinto me fijo los segundos
+							if (RegAyV->vector[i]->getFecha().tm_sec >= FechaI.tm_sec && RegAyV->vector[i]->getFecha().tm_sec <= FechaF.tm_sec)
+							{
+								//si entra, significa que esta en el periodo de tiempo pedido
+
+								VistosEnPeriodo[VistosEnPeriodo->getCA()] = RegAyV[i];//H
+
+							}
+
+						}
+					}
+				}
+
+			}
+
+		}
+
+		//significa que no esta entre el periodo de anios pedido
+		for (int i = 0; i < VistosEnPeriodo->getCA(); i++)
+		{
+			for (int j = 0; j < m_Servicios->getCA(); j++)
+			{
+				Juegos* ju = dynamic_cast<Juegos*>(m_Servicios->vector[j]);
+				if (ju != NULL)
+				{
+					if (VistosEnPeriodo->vector[i]->getNombre() == ju->getNombre())
+					{
+						ju->setCont();
+					}
+
+				}
 
 
+			}
+		}
+		mJ = -1;//no hay juego que se haya jugado menos de una vez
+		for (int i = 0; i < m_Servicios->getCA(); i++)
+		{
+			Juegos* ju = dynamic_cast<Juegos*>((m_Servicios->vector[i]));
+			//buscamos los 5 maximos
 
-	return  NULL;
+			if (ju != NULL)
+			{
+				if (ju->getCont() > mJ)
+				{
+					masJug[0] = ju->getNombre();
+					mJ = ju->getCont();
+				}
+
+				if (ju->getCont() >= mJ1 && ju->getNombre() != masJug[0])
+				{
+					masJug[1] = ju->getNombre();
+					mJ1 = ju->getCont();
+				}
+				if (ju->getCont() >= mJ2 && ju->getNombre() != masJug[0] && ju->getNombre() != masJug[1])
+				{
+					masJug[2] = ju->getNombre();
+					mJ2 = ju->getCont();
+
+				}
+			}
+		}
+
+		return  masJug;
 }
-
-
-cListaT<AudioVisual>* Plataforma::MasVistos(tm Periodo){
-
-	return  NULL;
-}
-
-
 
 void Plataforma::PromedioConectadosenSemanaxDia()
 {
 	int cant = UsuariosxSemana / 7;
 }
-
-
-
 
 void Plataforma::VerResumen(){
 	//imprimimos todo :)
