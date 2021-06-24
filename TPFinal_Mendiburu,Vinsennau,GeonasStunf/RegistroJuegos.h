@@ -7,6 +7,7 @@ class RegistroJuegos
 {
 private:
 	friend class Juegos;
+	string Nombre;
 	int CantidadPartidasGanadas;
 	tm Fecha;
 	tm FechaUltimaJugada;
@@ -17,5 +18,7 @@ private:
 public:
 	RegistroJuegos(const string Namecnst ,string UserName);
 	virtual ~RegistroJuegos();
+
+	tm getFechaUltJ() { return FechaUltimaJugada; }
 };
 

@@ -8,11 +8,12 @@
 #include "AudioVisual.h"
 #include "Juegos.h"
 
-Usuarios::Usuarios(int Edad, Paises Pais, string Password, const string Name):UserName(Name)
+Usuarios::Usuarios(int Edad, Paises Pais, string Password, const string Name, string* tarjeta):UserName(Name)
 {
 	Estado = false;//usuario empieza desconectado
 	this->Pais = Pais;
 	this->Password = Password;
+	this->tarjeta = NULL;
 	servicio = NULL;//no pasamos servicio?- lo seteamos despues?
 	cantConexSemana = 0;
 	Eliminado = false;
@@ -69,7 +70,7 @@ void Usuarios::IniciarSesion(Plataforma* plataforma){
 
 RegUsuarios* Usuarios::RegistrarenRegistro(){
 	//hacemos un registro y en el constructor le pasamos por parametros a reg usuarios los datos del usuario
-	RegUsuarios* reg;
+	RegUsuarios* reg=NULL;
 		
 	
 	if (dynamic_cast<PREMIUM*>(this)!= NULL )
@@ -88,24 +89,16 @@ RegUsuarios* Usuarios::RegistrarenRegistro(){
 }
 
 
-void Usuarios::Registrarse(Usuarios* user, Plataforma* plataforma){//me parece que este metodo debería ser de plataforma, 
-		//o no es necesario pasar el user pq podemos usar el puntero this!
-	if (user == NULL)
-		throw new exception("\nNo se pudo registrar el usuario ingresado.");
-	if((plataforma->m_Usuarios->BuscarItem1(UserName))!=-1)
-		throw new exception("\nEl nombre de usuario ingresado ya posee una cuenta" );//en este caso el usuario ya esta registrado
-	*(plataforma->m_Usuarios) + user;
-	Estado = true;//se inicia sesion
-	setFHinicio();//capaz podemos directamente iniciar sesion y nos salteamos esta parte
-	cListaT<RegUsuarios>* RegU = plataforma->getRgUsuarios();
-	*RegU + RegistrarenRegistro();
-	cantConexSemana++;
-	
-}
 
 
-void Usuarios::setFHcierre(tm cierre)
+
+void Usuarios::setFHcierre()
 {
+	time_t rawtime;
+	tm* info;
+	time(&rawtime);
+	info = localtime(&rawtime);
+	FechayHoraCierre= *info;
 	//le podemos ir pasando un parametro de tiempo que se le suma
 	//por ej (entre iniciar sesion y seleccionar servicio le sumamos aprox 10 segundos)
 	//despues le sumamos el tiempo que uso el servicio 
@@ -164,17 +157,17 @@ void Usuarios::SeleccionarServicio(cListaT <Servicios>* serv)
 		Juegos* aux = dynamic_cast<Juegos*>((*serv)[pos]);
 		if (aux!=NULL)
 		{
-			servicio = new Juegos(aux);
+			servicio = new Juegos(*aux);
 		}
 		AudioVisual* aux1 = dynamic_cast<AudioVisual*>((*serv)[pos]);
-		if (aux1!=NULL))
+		if (aux1!=NULL)
 		{
-			servicio = new AudioVisual((*serv)[pos]);
+			servicio = new AudioVisual(*aux1);
 		}
 		Audio* aux2 = dynamic_cast<Audio*>((*serv)[pos]);
-		if (aux2!=NULL))
+		if (aux2!=NULL)
 		{
-			servicio = new Audio((*serv)[pos]);
+			servicio = new Audio(*aux2);
 		}
 		
 		try
@@ -200,3 +193,13 @@ void Usuarios::SeleccionarServicio(cListaT <Servicios>* serv)
 }
 //capaz podemos hacer un metodo de usuario que verifique cual es el tipo de usuario, como que haga toda la parte del dynamic cast
 //y retorne el enum del tipo de usuario, la podriamos usar en varios metodos y ahorrarnos lineas de codigo
+
+
+istream& Usuarios::operator>>(istream& in) {
+	cout << "\nIngrese el numero de la tarjeta: " << endl;
+	int numero;
+	in >> numero;
+	return in;
+}
+
+

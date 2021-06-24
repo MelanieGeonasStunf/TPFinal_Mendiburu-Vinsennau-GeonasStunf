@@ -34,16 +34,17 @@ int main()
 	*Labflix->m_Servicios + audio1;
 
 	Paises paisAV[7] = { Chile, EstadosUnidos, Bolivia, Paraguay, Venezuela , Canada, Peru};
-	AudioVisual* audioyvideo1 = new AudioVisual("911", "Sobreviviendo Favaloro", 7, paisAV, adulto,{ 12, 5, 02 },/*NO SE QUE PONER DE TIPO*/);
+	AudioVisual* audioyvideo1 = new AudioVisual("911", "Sobreviviendo Favaloro", 7, paisAV, adulto,{ 12, 5, 02 },1);//hay que hacer un enum de servicios
 	*Labflix->m_Servicios + audioyvideo1;
+
 
 	FREE* usuarioFree = new FREE(19, Francia, "EstaLoco00!", "Damian");
 
 	PREMIUM* usuarioPremium = new PREMIUM(70, Argentina, "Bypass123-", "Rene", "06062002");
 	PREMIUM* usuarioPremium1 = new PREMIUM(11,Venezuela , "Crisis", "LaBelu", "09082001");//mal la contrasena
 
-	BASIC* usuarioBasic1 = new BASIC(13, Colombia, "Contra123-", "Ruperto", "42190416");//tarjeta mal
-	BASIC* usuarioBasic = new BASIC(14, Brasil, "Yanotengoimagination<3", "Coco", "11001100");
+	BASIC* usuarioBasic1 = new BASIC(13, Colombia, "Contra123-", "Ruperto", "42190416");
+	BASIC* usuarioBasic = new BASIC(14, Brasil, "Yanotengoimagination<3", "Coco", "11001100");//tarjeta mal
 
 	bool semana = false;
 

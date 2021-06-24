@@ -138,7 +138,7 @@ RegistroAyV* AudioVisual::RegistrarenRegistro(Usuarios* user)
 RegistroAyV* Audio::RegistrarenRegistro(Usuarios* user) //no se si hay que pasarle el tiempo de reproduccion
 {
 	RegistroAyV* reg;
-	reg = new RegistroAyV(user->getFechayHoraCierre(), this->tiempoReproduccion, user->getUserName());
+	reg = new RegistroAyV(user->getFechayHoraCierre(), this->duracion, user->getclave());
 
 	/*
 	tm fecha;

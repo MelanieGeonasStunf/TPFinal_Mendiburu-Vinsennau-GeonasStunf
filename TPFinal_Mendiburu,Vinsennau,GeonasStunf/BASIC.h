@@ -2,7 +2,7 @@
 
 #include "Usuarios.h"
 #include "Librerias.h"
-
+class Plataforma;
 class BASIC : public Usuarios
 {
 private:
@@ -12,14 +12,12 @@ private:
 public:
 	BASIC(int Edad, Paises Pais, string Password, const string Name, string tarjeta);
 	virtual ~BASIC();
-	BASIC(Usuarios& user, string tarjeta);
+	BASIC(Usuarios& user);
 	
 
-
+	void Registrarse(Plataforma* plataforma);
 	//void SeleccionarServicio(cListaT<Servicios>* servicio);
 	//elije un servicio de la lista de servicios
-
-
 
 
 };

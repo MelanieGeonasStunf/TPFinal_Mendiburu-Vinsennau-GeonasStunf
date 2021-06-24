@@ -7,19 +7,20 @@
 #include "RegUsuarios.h"
 #include "funciones.h"
 #include "TipoUsuario.h"
-//#include "cListaT.h"
+#include "cListaT.h"
+#include "AudioVisual.h"
 
 class Plataforma;
 class PREMIUM;
 class BASIC;
 class FREE;
-class Audiovisual;
+//class Audiovisual;
 class Audio;
 
 class Usuarios
 {
 
-private:
+protected:
 	int Edad;
 	bool Estado;
 	tm FechayHoraCierre;
@@ -33,7 +34,7 @@ private:
 	bool Eliminado;////si es true-> iniciar sesion ->no puede iniciar
 	//termina la semana-> en el main nos fijamos que usuarios estan en true y los eliminamos (delete)
 	//si es false-> no pasa nada
-
+	string* tarjeta;
 	//int tiempoconex;->cuenta el tiempo de conexion del usuario que nos va a servir para setear el horario
 	//del cierre de sesion y para limitar a los usuarios FREE.
 	cListaT<AudioVisual>* ListadeRecientesAyV;
@@ -41,7 +42,7 @@ private:
 
 	
 public:
-	Usuarios(int Edad, Paises Pais,string Password, const string Name);
+	Usuarios(int Edad, Paises Pais,string Password, const string Name, string* tarjeta=NULL);
 	virtual ~Usuarios();
 	Usuarios(Usuarios& user);
 
@@ -50,7 +51,7 @@ public:
 	//tiene que verificar que la contrasena y el user sean correctos->verificar en m_Usuarios de plataforma
 
 	RegUsuarios* RegistrarenRegistro();//plataforma usa el registro
-	void Registrarse(Usuarios* user, Plataforma* plataforma);//->registra usuario!=iniciar sesion
+	virtual void Registrarse(Plataforma* plataforma) = 0;//->registra usuario!=iniciar sesion
 	//tendria que ser virtual pura?-> esta en todos los hijos
 
 	void SeleccionarServicio(cListaT <Servicios> *serv);
@@ -59,10 +60,10 @@ public:
 	//hay alguna restriccion con free/premium?
 	
 	//getters y setters
-	void setFHcierre(tm cierre);
+	void setFHcierre();
 	void setFHinicio();//PROBLEMA!!
 	void setEliminado(bool elim);
-	string getUserName() { return UserName; };
+	string getclave() { return UserName; };
 	tm getFechayHoraCierre() { return FechayHoraCierre; };
 	int getEdad() { return Edad; }
 	Paises getPais();
@@ -70,4 +71,6 @@ public:
 	//AGREGADO:
 	bool VerificarContrasena();//verifica que cumpla requisitos-> ya hecha!
 	
+	void setTarjeta() { cin >> *tarjeta; }
+	istream& operator>>(istream& in);
 };

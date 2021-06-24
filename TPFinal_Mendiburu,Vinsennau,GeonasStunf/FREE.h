@@ -16,6 +16,9 @@ public:
 	//void SeleccionarServicio(cListaT<Servicios>*servicio);->era virtual
 	void VariarLista();
 
+	void Registrarse(Plataforma* plataforma);
+
+
 
 private:
 	static int LimiteTiempoMax;

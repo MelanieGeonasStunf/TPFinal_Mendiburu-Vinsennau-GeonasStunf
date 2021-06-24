@@ -8,6 +8,8 @@ class RegistroAyV
 {
 
 private:
+	static int counter;
+	const string clave;
 	tm Fecha;
 	tm tiempoReproduccion;
 	bool Visto;//vio + 30% ->lo vio
@@ -16,8 +18,10 @@ private:
 	friend class AudioVisual;
 
 public:
-	RegistroAyV(const string Name);
+	RegistroAyV(tm tiemporep, const string Name,bool visto);
 	virtual ~RegistroAyV();
+
+	string getclave() const { return clave; };
 
 
 };
