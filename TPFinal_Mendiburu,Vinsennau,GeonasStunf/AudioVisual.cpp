@@ -10,13 +10,11 @@ AudioVisual::AudioVisual(const string clave, const string nombre, int cantP,
 {
 	this->tiempoInicio = { 0,0,0 };
 	this->duracion = duracion;
-	TipoAudioVisual = Tipo;//tendriamos que poner el tipo como enum o dejarlo en int?
-	HD = false;
 	cantVisxPer = 0;
 }
 
-AudioVisual::AudioVisual(AudioVisual& ayv):Servicios(ayv), HD(ayv.HD),
-TipoAudioVisual(ayv.TipoAudioVisual),duracion(ayv.duracion)
+AudioVisual::AudioVisual(AudioVisual& ayv):Servicios(ayv),
+duracion(ayv.duracion)
 {
 }
 
@@ -146,6 +144,8 @@ RegistroAyV* AudioVisual::RegistrarenRegistro(Usuarios* user,bool visto)
 }
  ostream& AudioVisual::operator<<(ostream& out)
   {
-	  out << tostring() << "\nDuracion: " << to_string(duracion.tm_hour) << ":"
-		  << to_string(duracion.tm_min) << ":"to_string(duracion.tm_sec) << endl;
+	 Servicios& P = *this;
+	  out << &P<< "\nDuracion: " << to_string(duracion.tm_hour) << ":"
+		  << to_string(duracion.tm_min) << ":"<<to_string(duracion.tm_sec) << endl;
+	  return out;
   }

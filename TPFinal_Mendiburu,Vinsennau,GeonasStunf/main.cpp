@@ -54,7 +54,6 @@ int main()
 		catch (int opcion)
 		{
 			cout << "Saliendo de Labflix..." << endl;
-			break;
 		}
 		
 		try
@@ -98,8 +97,8 @@ int main()
 		semana = tick();
 
 	} while (semana==false);
-	cout << *(plataforma->getUsuarios());
-	cout<<*(plataforma->get)
+	cout << *(Labflix->getUsuarios());
+	cout << *(Labflix->getServicios());
 
 	tm FechaFin = setLocalTime();
 	if (semana == true)

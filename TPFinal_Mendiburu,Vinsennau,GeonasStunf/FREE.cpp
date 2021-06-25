@@ -6,8 +6,7 @@ FREE::FREE(int Edad, Paises Pais, string Password, const string Name,string* tar
 	Usuarios(Edad, Pais, Password, Name,tarjeta)
 {
 	calidad = false;
-	tiempoConex = { 0,0,0 };
-	tm primeringreso = { 0,0,0 };
+	tiempoConex = 0;
 	int contador = 0;
 	//ServAElegir = new Servicios*[10];
 }
@@ -48,7 +47,7 @@ cListaT<Servicios>* FREE::VariarLista(cListaT<Servicios>* serv){
 //el usuario free puede elegir entre 10 servicios aleatorios de la plataforma
 	cout << "SERVICIOS A ELEGIR: " << endl;
 	int cont = 0;
-	Servicios** ServAElegir;
+	cListaT<Servicios>* ServAElegir=NULL;
 for (int i=0;i<10;i++)
 {
 
@@ -56,30 +55,36 @@ for (int i=0;i<10;i++)
 	if(dynamic_cast<Juegos*>(serv->vector[i])!=NULL)
 	{
 		cout << "OPCION " << i << ": Juego: " << serv->vector[i]->getNombre() << endl;
-		ServAElegir[cont] = serv->vector[i];
+		ServAElegir->vector[cont] = serv->vector[i];
 	}
 	if(dynamic_cast<Audio*>(serv->vector[i])!=NULL)
 	{
 		cout << "OPCION " << i << ": Audio: " << serv->vector[i]->getNombre() << endl;
-		ServAElegir[cont] = serv->vector[i];
+		ServAElegir->vector[cont] = serv->vector[i];
 
 	}
 	if(dynamic_cast<AudioVisual*>(serv->vector[i])!=NULL)
 	{
 		cout << "OPCION " << i << ": Videos: " << serv->vector[i]->getNombre() << endl;
-		ServAElegir[cont] = serv->vector[i];
+		ServAElegir->vector[cont] = serv->vector[i];
 	}
 	cont++;
 }
-
+return ServAElegir;
 }
 
 
 void FREE::Registrarse(Plataforma* plataforma){
 	if (this == NULL)
 		throw new exception("\nNo se pudo registrar el usuario ingresado.");
-	if((plataforma->m_Usuarios->BuscarItem1(UserName))!=-1)
-		throw new exception("\nEl nombre de usuario ingresado ya posee una cuenta" );//en este caso el usuario ya esta registrado
+	try {
+		if ((plataforma->m_Usuarios->BuscarItem1(UserName)) != -1)
+			throw new exception("\nEl nombre de usuario ingresado ya posee una cuenta");//en este caso el usuario ya esta registrado
+	}
+	catch (exception* e)
+	{
+		cout << e->what();
+	}
 	*(plataforma->m_Usuarios) + this;
 	Estado = true;//se inicia sesion
 	setFHinicio();
@@ -93,7 +98,7 @@ void FREE::SeleccionarServicio(cListaT<Servicios>* serv)
 	cListaT<Servicios>* aElegir=VariarLista(serv);
 	int pos = rand() % 10;
 	//int pos = 1;
-	if(tiempoconex>54000)
+	if(tiempoConex>54000)
 		throw new exception("\nHa superado su limite semanal.");
 	if ((*aElegir)[pos] != NULL)
 	{
@@ -138,9 +143,9 @@ void FREE::SeleccionarServicio(cListaT<Servicios>* serv)
 void FREE::settiempoConex()
 {
 	FechayHoraInicio.tm_year = (FechayHoraInicio).tm_year - 1900;
-	FechayHoraFin.tm_year = (FechayHoraFin).tm_year - 1900;
-	i = mktime(FechayHoraInicio);
-	f = mktime(FechayHoraCierre);
+	FechayHoraCierre.tm_year = (FechayHoraCierre).tm_year - 1900;
+	time_t i = mktime(&FechayHoraInicio);
+	time_t f = mktime(&FechayHoraCierre);
 	long int tiempo = difftime(f, i);
 	tiempoConex = tiempoConex + tiempo;
 }

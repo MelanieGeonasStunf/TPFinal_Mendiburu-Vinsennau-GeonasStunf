@@ -81,21 +81,23 @@ void Casos1(Usuarios* user, Plataforma* plataforma)//lo hice en do while para qu
 				user->IniciarSesion(plataforma);
 				Casos2(user, plataforma);
 			}
-			catch (string exc)//si agarra excepcion significa que no se inicio sesion bien
+			catch (exception& exc)//si agarra excepcion significa que no se inicio sesion bien
 			{//catch (e.what)!!
-				cout << exc << endl;
+				cout << exc.what() << endl;
 				cout << "1) Desea registrarse?" << endl <<
 					"2) Desea salir?" << endl;
 				opcion2 = 1 + rand() % 3;
-				if (opcion == 1)
+				if (opcion2 == 1) {
 					try {
-					user->Registrarse(plataforma);//suponemos que al registrarse se inicia sesion 
-					Casos2(user, plataforma);
-				}
-				catch (exception* e)
-				{
-					cout << e->what();
-					break;
+						user->Registrarse(plataforma);//suponemos que al registrarse se inicia sesion 
+						Casos2(user, plataforma);
+					}
+
+					catch (exception* e)
+					{
+						cout << e->what();
+						break;
+					}
 				}
 				else
 					throw 3;//para que lo agarre en el main
@@ -123,7 +125,7 @@ void Casos1(Usuarios* user, Plataforma* plataforma)//lo hice en do while para qu
 void Casos2(Usuarios* user, Plataforma* plataforma)
 {
 	int opcion;
-	FREE*f=dynamic_cast<FREE*>(user):
+	FREE* f = dynamic_cast<FREE*>(user);
 	//se hace infinitamenete
 	do {
 		opcion = Menu2();
@@ -354,10 +356,10 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 		*(plataforma->getRgAyV()) + regA;
 	}
 }
-void Servicios(){
+void Servicios_(){
 	Paises paisA2[4] = { Chile, Colombia, Argentina,Francia};
 	Paises paisJ2[3] = { Francia, Argentina, España };
-	Paises paisAV2[2] = { EstadosUnidos,Canda };
+	Paises paisAV2[2] = { EstadosUnidos,Canada };
 	Servicios* juego2 = new Juegos("662", "subway surfers", 4, paisJ2, nino ,2014);
 	Servicios* audio2 = new Audio("152", "Mamma Mia", 3, paisA2, adolescente, { 12, 05, 00 });
 	Servicios* audioyvideo2 = new AudioVisual("982", "Fast&Fourious", 2, paisAV2, adulto,{ 03, 54, 04 },1);
@@ -374,5 +376,5 @@ void Servicios(){
 	Paises paisAV4[1] = {Chile};
 	Servicios* juego4 = new Juegos("021", "Temple Run", 3, paisJ4, nino ,2011);
 	Servicios* audio4 = new Audio("962", "Dangerous Woman", 2, paisA4, adolescente, { 35, 04, 01 });
-	Servicios* audioyvideo4 = new AudioVisual("156", "Rey Leon", 1, paisAV, adolescente,{ 01, 09, 02 },1);
+	Servicios* audioyvideo4 = new AudioVisual("156", "Rey Leon", 1, paisAV4, adolescente,{ 01, 0, 02 },1);
 }

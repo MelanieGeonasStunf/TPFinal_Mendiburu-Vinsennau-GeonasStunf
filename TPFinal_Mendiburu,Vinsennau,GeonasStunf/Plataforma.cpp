@@ -418,7 +418,7 @@ void Plataforma::EditarCuenta(Usuarios* user, int tipo, bool eliminar)
 		{
 			//hacemos funcion que copia al usuario y lo pasa a free
 			FREE* cambiado = new FREE(*user);
-			user->setEliminado();
+			user->setEliminado(true);
 			if (tipo == 2)//significa que era premium 
 			{
 				cambiado->setCalidad();

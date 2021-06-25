@@ -43,6 +43,6 @@ public:
 	string getclave()const { return Clave; };
 
 	string getNombre()const { return Nombre; };
-	void tostring();
+	ostream& operator<<(ostream& out);
 };
 

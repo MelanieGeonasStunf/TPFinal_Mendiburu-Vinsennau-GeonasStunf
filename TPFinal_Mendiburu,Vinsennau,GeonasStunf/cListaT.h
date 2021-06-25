@@ -210,10 +210,12 @@ void cListaT<T>::Eliminar(unsigned int pos) {
 template<class T>
 T* cListaT<T>::BuscarItem(string clave)
 {
-	for (unsigned int i = 0; i < CA; i++)
+	for (int i = 0; i < CA; i++)
 	{
-		if (vector[i]->getclave() == clave)
-			return vector[i];
+		if (vector[i] != NULL) {
+			if (vector[i]->getclave() == clave)
+				return vector[i];
+		}
 	}
 	return NULL;
 }
@@ -253,8 +255,8 @@ unsigned int cListaT<T>::getItemPos(string clave)
 template<class T>
 ostream& operator<<(ostream& out, cListaT<T>& object)//CORREGIR
 {
-	for (int i = 0; i < object->getCA(); i++) {
-		out << object<< endl;
+	for (int i = 0; i < object.getCA(); i++) {
+		out << object.vector[i] << endl;
 	}
 	return out;
 }

@@ -1,5 +1,5 @@
 #pragma once
-
+/*
 void crear_archivo1()
 {
 	FILE* fp = fopen("servicios.dat", "w+b");
@@ -80,7 +80,7 @@ int cant_registros (string archivo)
 
 
 
-
+*/
 
 
 

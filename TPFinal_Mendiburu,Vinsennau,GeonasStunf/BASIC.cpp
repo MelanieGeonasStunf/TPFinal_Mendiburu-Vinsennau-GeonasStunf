@@ -21,8 +21,14 @@ void BASIC::Registrarse(Plataforma* plataforma)
 {
 	if (this == NULL)
 		throw new exception("\nNo se pudo registrar el usuario ingresado.");
-	if((plataforma->m_Usuarios->BuscarItem1(UserName))!=-1)
-		throw new exception("\nEl nombre de usuario ingresado ya posee una cuenta" );//en este caso el usuario ya esta registrado
+	try {
+		if ((plataforma->m_Usuarios->BuscarItem1(UserName)) != -1)
+			throw new exception("\nEl nombre de usuario ingresado ya posee una cuenta");//en este caso el usuario ya esta registrado
+	}
+	catch (exception* e)
+	{
+		cout << e->what();
+	}
 	*(plataforma->m_Usuarios) + this;
 	Estado = true;//se inicia sesion
 	setFHinicio();
@@ -36,7 +42,6 @@ void BASIC::SeleccionarServicio(cListaT<Servicios>* serv)
 {
 	int pos = rand() % (serv->getCA());
 	//int pos = 1;
-	if()
 
 	if ((*serv)[pos] != NULL)
 	{

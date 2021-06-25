@@ -131,6 +131,8 @@ RegistroAyV* Audio::RegistrarenRegistro(Usuarios* user,bool visto) //no se si ha
 }
  ostream& Audio::operator<<(ostream& out)
   {
-	  out << tostring() << "\nDuracion: " << to_string(duracion.tm_hour) << ":"
-		  << to_string(duracion.tm_min) << ":"to_string(duracion.tm_sec) << endl;
+	 Servicios& P = *this;
+	 out << &P << "\nDuracion: " << to_string(duracion.tm_hour) << ":"
+		 << to_string(duracion.tm_min) << ":" << to_string(duracion.tm_sec) << endl;
+	 return out;
   }

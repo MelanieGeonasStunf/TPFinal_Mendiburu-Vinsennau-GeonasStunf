@@ -38,7 +38,7 @@ void Usuarios::CerrarSesion(){
 		throw new exception("\nNunca debería pasar esto.");//vemos que hacemos
 	Estado = false;
 	setFHcierre();
-	FREE* usuarioF = dynamic_cast<FREE*>(user);
+	FREE* usuarioF = dynamic_cast<FREE*>(this);
 	if (usuarioF != NULL)
 	{
 		usuarioF->settiempoConex();
@@ -167,8 +167,8 @@ istream& Usuarios::operator>>(istream& in) {
 }
 ostream& Usuarios::operator<<(ostream& out)
 {
-	out<<"\nUser Name:"<<clave<<"\nContrasenia:"<<Encriptar(contraseña)<<"\nServicio:"
-	<<(*servicio)<<"\nEdad:"<<Edad<<"\nPais:"<<Pais<<"\nTarjeta:"<<Encriptar(Tarjeta)<<endl;
+	out<<"\nUser Name:"<<UserName<<"\nContrasenia:"<<Encriptar(Password)<<"\nServicio:"
+		<<(servicio)<<"\nEdad:"<<Edad<<"\nPais:"<<Pais<<"\nTarjeta:"<<Encriptar(*tarjeta)<<endl;
 	return out;
 }
 
