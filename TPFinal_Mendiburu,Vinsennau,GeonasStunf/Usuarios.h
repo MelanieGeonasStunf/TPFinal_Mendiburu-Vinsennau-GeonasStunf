@@ -64,6 +64,7 @@ public:
 	void setFHcierre();
 	void setFHinicio();//PROBLEMA!!
 	void setEliminado(bool elim);
+	virtual void setCalidad() = 0;
 	string getclave() { return UserName; };
 	tm getFechayHoraCierre() { return FechayHoraCierre; };
 	int getEdad() { return Edad; }

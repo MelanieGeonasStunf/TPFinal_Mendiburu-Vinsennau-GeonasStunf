@@ -16,7 +16,7 @@ private:
 
 public:
 	AudioVisual(const string clave, const string nombre, int cantP, Paises* paises, 
-		RangoEtareo rango, tm duracion ,int Tipo );
+		RangoEtareo rango, tm duracion);
 	AudioVisual(AudioVisual& ayv);
 	virtual ~AudioVisual();
 

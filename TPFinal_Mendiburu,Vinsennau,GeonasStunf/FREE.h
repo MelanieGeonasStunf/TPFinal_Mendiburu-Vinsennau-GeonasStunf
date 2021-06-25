@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Usuarios.h"
-#include "funciones.h"
 
 class Plataforma;
 class FREE : public Usuarios
@@ -10,7 +9,6 @@ private:
 	static tm LimiteTiempoMax;
 	long int tiempoConex;
 	int contadorsem;//cant de conexiones
-	tm primeringreso;
 	//Servicios** ServAElegir;
 
 public:
