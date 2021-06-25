@@ -2,9 +2,12 @@
 
 #include "Usuarios.h"
 
-
+class Plataforma;
 class FREE : public Usuarios
 {
+private:
+	static int LimiteTiempoMax;
+
 public:
 	FREE(int Edad, Paises Pais, string Password, const string Name,string* tarjeta=NULL);
 	virtual ~FREE();
@@ -17,11 +20,6 @@ public:
 	void VariarLista();
 
 	void Registrarse(Plataforma* plataforma);
-
-
-
-private:
-	static int LimiteTiempoMax;
 
 };
 

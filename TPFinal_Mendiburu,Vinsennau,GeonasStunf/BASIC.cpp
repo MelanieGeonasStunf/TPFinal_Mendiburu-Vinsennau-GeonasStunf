@@ -1,6 +1,6 @@
 #include "BASIC.h"
 #define CostoB 200.00//defino costo basic
-
+#include "Plataforma.h"
 float BASIC::CostoBasic = CostoB;
 BASIC::BASIC(int Edad, Paises Pais, string Password, const string Name, string tarjeta):
 Usuarios(Edad, Pais, Password, Name)

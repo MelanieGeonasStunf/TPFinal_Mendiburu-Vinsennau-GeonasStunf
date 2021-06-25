@@ -1,15 +1,15 @@
 #include "Plataforma.h"
-//#include "FREE.h"
+#include "FREE.h"
 #include "BASIC.h"
 #include "PREMIUM.h"
-
+#include "cListaT.h"
 Plataforma::Plataforma():Nombre("Labflix")
 {
 	this->CantidadUsuariosConectados=0;
 	//ListaUsuariosxDia = new cListaT<Usuarios>;
 	this-> UsuariosxSemana=0;
-	m_Servicios=NULL;
-	m_Usuarios=NULL;
+	m_Servicios=new cListaT<Servicios>();
+	m_Usuarios= new cListaT<Usuarios>();
 	
 	paises=new Paises[14]{Argentina, Chile,	Peru, Brasil, Colombia,	Mexico,	EstadosUnidos,
 	Canada,Bolivia,	Paraguay,	Uruguay,	Venezuela,	España,	Francia};
@@ -385,7 +385,7 @@ void Plataforma::EditarCuenta(Usuarios* user, int tipo, bool eliminar)
 	* -Eliminar Cuenta.
 	* -Cambiar tipo usuario.
 	*/
-	int t;
+	int t = -1;
 	if (eliminar == true)
 	{
 		user->setEliminado(true);//=> se elimina al final de la semana para no tener problemas de memoria.
@@ -418,6 +418,9 @@ void Plataforma::EditarCuenta(Usuarios* user, int tipo, bool eliminar)
 		{
 			if (tipo == 2)//significa que era premium y ya tengo datos de una tarjeta.
 			{
+				PREMIUM* cambiado = new PREMIUM(*user);
+				*m_Usuarios + cambiado;
+				user->setEliminado(true);
 				//de premium a basic->baja calidad
 
 				//pido datos de tarjeta del usuario premium y lo pongo en constructor

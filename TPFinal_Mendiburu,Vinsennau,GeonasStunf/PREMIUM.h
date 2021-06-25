@@ -3,7 +3,7 @@
 #include "Usuarios.h"
 #include "Servicios.h"
 //#include "Librerias.h"
-//#include "cListaT.h"
+#include "cListaT.h"
 
 class PREMIUM : public Usuarios
 {
@@ -14,11 +14,13 @@ private:
 	
 public:
 	PREMIUM(int Edad, Paises Pais, string Password, const string Name, string tarjeta);
+	PREMIUM(Usuarios& copia);
 	virtual ~PREMIUM();
 
 	void Registrarse( Plataforma* plataforma);
 	void DescargarAyV(Servicios* servicio);
 	ostream& operator<<(ostream& out);
+	string tostring();
 
 	//void SeleccionarServicio(cListaT <Servicios>* servicio);
 };

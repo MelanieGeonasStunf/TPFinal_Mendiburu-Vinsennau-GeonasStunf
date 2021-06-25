@@ -25,7 +25,7 @@ int main()
 	Plataforma* Labflix = new Plataforma();
 	// creamos archivo
 	//Leemos archivo
-	Labflix->m_Servicios = new cListaT<Servicios>;
+	Labflix->m_Servicios = new cListaT<Servicios>();
 	Paises paisJ[4] = { Francia, Colombia, Argentina, España };
 	Juegos* juego1 = new Juegos("789", "Pacwomen", 4, paisJ, nino ,2021);
 	*Labflix->m_Servicios + juego1;

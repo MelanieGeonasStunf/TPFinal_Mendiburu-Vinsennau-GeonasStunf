@@ -3,7 +3,8 @@
 #include "Audio.h"
 #include "AudioVisual.h"
 #include "FREE.h"
-#include "Usuarios.h"
+//#include "Usuarios.h"
+#include "Plataforma.h"
 
 tm setLocalTime()
 {

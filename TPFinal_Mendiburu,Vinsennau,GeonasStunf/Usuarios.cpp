@@ -7,6 +7,7 @@
 #include "Audio.h"
 #include "AudioVisual.h"
 #include "Juegos.h"
+#include "funciones.h"
 
 Usuarios::Usuarios(int Edad, Paises Pais, string Password, const string Name, string* tarjeta):UserName(Name)
 {
@@ -49,9 +50,9 @@ void Usuarios::IniciarSesion(Plataforma* plataforma){
 		{
 			pos = plataforma->m_Usuarios->BuscarItem1(UserName);
 		}
-		catch (exception& e)
+		catch (exception* e)
 		{
-			throw e.what();
+			throw *e;
 		}
 		
 		if (plataforma->m_Usuarios->vector[pos]->Password == Password)

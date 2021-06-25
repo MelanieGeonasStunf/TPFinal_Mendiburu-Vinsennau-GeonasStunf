@@ -4,7 +4,6 @@
 #include "Paises.h"
 #include "Servicios.h"
 #include "RegUsuarios.h"
-#include "funciones.h"
 #include "TipoUsuario.h"
 #include "cListaT.h"
 //#include "AudioVisual.h"

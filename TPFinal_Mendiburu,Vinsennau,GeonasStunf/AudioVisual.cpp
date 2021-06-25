@@ -1,7 +1,7 @@
 #include "AudioVisual.h"
 #include "RegistroAyV.h"
 #include "funciones.h"
-
+#include "Usuarios.h"
 class Usuarios;
 
 AudioVisual::AudioVisual(const string clave, const string nombre, int cantP, 

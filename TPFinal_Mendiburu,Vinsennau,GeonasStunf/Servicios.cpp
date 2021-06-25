@@ -5,8 +5,9 @@
 Servicios::Servicios(const string clave,  const string nombre,int cantP, Paises* paises, RangoEtareo rango): 
 	Clave(clave), Nombre(nombre)
 {
+	Reproduciendo = false;
 	this->cantP = cantP;
-	this->paises[cantP] = paises[cantP];//no se si ta bien
+	this->paises = paises;//no se si ta bien, el puntero que recibe deberia tener un array de paises almacenado
 	rangoE = rango;
 }
 

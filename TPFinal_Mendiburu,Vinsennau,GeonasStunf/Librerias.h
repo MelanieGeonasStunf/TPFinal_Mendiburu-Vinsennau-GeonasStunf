@@ -27,4 +27,5 @@ enum Servicio { audio, audioVisual, juego};
 * -Hacer los to string
 * -Poner los imprimir e el main
 * -Cout hijos, y padres
+* -Agregar eliminar
 */

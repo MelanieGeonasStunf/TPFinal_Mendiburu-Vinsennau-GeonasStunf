@@ -1,5 +1,5 @@
 #include "FREE.h"
-
+#include "Plataforma.h"
 
 FREE::FREE(int Edad, Paises Pais, string Password, const string Name,string* tarjeta):
 	Usuarios(Edad, Pais, Password, Name,tarjeta)

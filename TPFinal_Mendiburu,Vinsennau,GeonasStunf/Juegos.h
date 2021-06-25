@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Servicios.h"
-#include "Librerias.h"
+//#include "Librerias.h"
 
 class RegistroJuegos;
 

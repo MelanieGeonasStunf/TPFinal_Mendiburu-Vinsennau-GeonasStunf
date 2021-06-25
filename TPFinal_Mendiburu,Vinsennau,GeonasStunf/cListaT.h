@@ -221,10 +221,12 @@ T* cListaT<T>::BuscarItem(string clave)
 template<class T>
 inline int cListaT<T>::BuscarItem1(string clave)
 {
-	for (unsigned int i = 0; i < CA; i++)
+	for (int i = 0; i < CA; i++)
 	{
-		if (vector[i]->getclave() == clave)
-			return i;
+		if (vector[i] != NULL) {
+			if (vector[i]->getclave() == clave)
+				return i;
+		}
 	}
 	throw new exception("No se encontro ");//lo hicimos general por si lo necesitamos de vuelta
 }

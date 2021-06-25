@@ -1,5 +1,5 @@
 #include "RegistroAyV.h"
-#include "funciones.cpp"
+#include "funciones.h"
 
 
 int RegistroAyV::counter = 0;

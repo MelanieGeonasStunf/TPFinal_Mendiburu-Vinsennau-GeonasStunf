@@ -1,6 +1,7 @@
 #include "Audio.h"
 #include "RegistroAyV.h"
 #include "funciones.h"
+#include "Usuarios.h"
 
 Audio::Audio(const string clave, const string nombre, int cantP, Paises* paises, RangoEtareo rango, tm duracion)
 	:Servicios(clave, nombre, cantP, paises, rango)

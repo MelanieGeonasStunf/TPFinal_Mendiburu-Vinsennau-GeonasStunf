@@ -1,16 +1,21 @@
 #include "PREMIUM.h"
 #define costoP 300.00
+#include "Plataforma.h"
 
 
 float PREMIUM::CostoPremium = costoP;
 PREMIUM::PREMIUM(int Edad, Paises Pais, string Password, const string Name, string tarjeta):
 Usuarios(Edad, Pais, Password, Name)
 {
-	ListaDescargas = NULL;
+	ListaDescargas = new cListaT<Servicios>(10);
 	for (int i = 0; i < ListaDescargas->getTAM(); i++)
 	{
 		ListaDescargas[i] = NULL;
 	}
+}
+
+PREMIUM::PREMIUM(Usuarios& copia):Usuarios(copia)
+{
 }
 
 PREMIUM::~PREMIUM(){
@@ -26,8 +31,8 @@ void PREMIUM::DescargarAyV(Servicios* servicio){
 ostream& PREMIUM::operator<<(ostream& out)
 {
 	Usuarios& P=*this;
-	//out<<P;
-	//out<<tostring();
+	out<<P;
+	out<<tostring();
 	return out;
 }
 
@@ -43,4 +48,8 @@ void PREMIUM::Registrarse(Plataforma* plataforma){
 	*RegU + RegistrarenRegistro();
 	cantConexSemana++;
 	
+}
+string PREMIUM::tostring()
+{
+	string cadena;
 }
