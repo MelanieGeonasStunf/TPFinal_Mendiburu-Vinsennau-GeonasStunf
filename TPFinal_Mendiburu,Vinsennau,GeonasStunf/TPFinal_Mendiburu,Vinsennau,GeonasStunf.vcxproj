@@ -141,7 +141,6 @@
   <ItemGroup>
     <ClInclude Include="Archivos.h" />
     <ClInclude Include="Audio.h" />
-    <ClInclude Include="eAudio.h" />
     <ClInclude Include="AudioVisual.h" />
     <ClInclude Include="BASIC.h" />
     <ClInclude Include="cListaT.h" />

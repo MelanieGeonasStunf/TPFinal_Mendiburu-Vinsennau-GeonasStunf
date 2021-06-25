@@ -9,6 +9,7 @@ class Audio :
 {
     tm duracion;
     tm tiempoInicio;
+    //eAudio tipo;
     int cantEscxPer;
 
 public:
@@ -20,7 +21,6 @@ public:
     void FastBackward(long int& time,long int&TiempoR);//flecha abajo
     void FastForward(long int& time,long int&TiempoR);//flecha arriba
     void Record();//R
-    void VelocidadReproduccion(int velocidad);
     void IniciarServicio();
     tm getTInicio() { return tiempoInicio; }
     tm getDuracion() { return duracion; }
@@ -31,5 +31,6 @@ public:
 
     int getCant() { return cantEscxPer; }
     void setCant() { cantEscxPer++; }
+    ostream& operator<<(ostream& out);
 };
 

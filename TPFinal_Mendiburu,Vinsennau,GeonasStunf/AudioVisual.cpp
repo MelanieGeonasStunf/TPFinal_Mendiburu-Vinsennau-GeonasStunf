@@ -144,3 +144,8 @@ RegistroAyV* AudioVisual::RegistrarenRegistro(Usuarios* user,bool visto)
 	reg = new RegistroAyV(Nombre, user->getclave(),visto);
 	return reg;
 }
+ ostream& AudioVisual::operator<<(ostream& out)
+  {
+	  out << tostring() << "\nDuracion: " << to_string(duracion.tm_hour) << ":"
+		  << to_string(duracion.tm_min) << ":"to_string(duracion.tm_sec) << endl;
+  }

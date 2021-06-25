@@ -44,7 +44,7 @@ public:
 	string *MasVistos(tm FechaI, tm FechaF);
 	//Periodo->pasar dos fechas o que te devuelva unicamente lo de la ultima semana.
 
-	void PromedioConectadosenSemanaxDia();
+	int PromedioConectadosenSemanaxDia();
 	
 	void VerResumen (tm FechaI, tm FechaF);//da resumen de la semana
 
@@ -53,7 +53,12 @@ public:
 	//THROW!!!!
 	
 	//seters y geters
+	cListaT <Usuarios>* getUsuarios() { return m_Usuarios; }
+	cListaT <Servicios>* getServicios() { return m_Servicios; }
 	cListaT<RegUsuarios>* getRgUsuarios() { return RegU; };
 	cListaT<RegistroAyV>* getRgAyV() { return RegAyV; }
+
+	void setUsuariosxSemana();
+	void PonerEnCeroConex() { UsuariosxSemana = 0; }
 };
 

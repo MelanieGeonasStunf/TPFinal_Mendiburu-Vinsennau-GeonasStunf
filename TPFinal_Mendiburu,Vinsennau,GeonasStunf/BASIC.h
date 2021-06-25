@@ -8,7 +8,8 @@ class BASIC : public Usuarios
 {
 private:
 	static float CostoBasic;//lo cambie a static
-	string tarjeta;
+	//string tarjeta;
+	bool calidad;
 
 public:
 	BASIC(int Edad, Paises Pais, string Password, const string Name, string tarjeta);
@@ -17,7 +18,8 @@ public:
 	
 
 	void Registrarse(Plataforma* plataforma);
-	//void SeleccionarServicio(cListaT<Servicios>* servicio);
+	void setCalidad() { calidad = false; }
+	void SeleccionarServicio(cListaT <Servicios>* serv);
 	//elije un servicio de la lista de servicios
 
 

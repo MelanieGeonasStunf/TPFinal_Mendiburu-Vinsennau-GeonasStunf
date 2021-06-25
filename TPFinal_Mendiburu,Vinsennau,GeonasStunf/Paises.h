@@ -17,5 +17,6 @@ enum Paises
 	Uruguay,
 	Venezuela,
 	España,
-	Francia
+	Francia,
+	Australia
 };

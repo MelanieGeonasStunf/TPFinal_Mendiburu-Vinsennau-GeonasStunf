@@ -31,6 +31,7 @@ protected:
 	int cantConexSemana;
 	friend void ReproducirServicio(Usuarios* user, Plataforma* plataforma);
 	bool Eliminado;////si es true-> iniciar sesion ->no puede iniciar
+	bool calidad;
 	//termina la semana-> en el main nos fijamos que usuarios estan en true y los eliminamos (delete)
 	//si es false-> no pasa nada
 	string* tarjeta;
@@ -53,7 +54,7 @@ public:
 	virtual void Registrarse(Plataforma* plataforma) = 0;//->registra usuario!=iniciar sesion
 	//tendria que ser virtual pura?-> esta en todos los hijos
 
-	void SeleccionarServicio(cListaT <Servicios> *serv);
+	virtual void SeleccionarServicio(cListaT <Servicios> *serv)=0;
 	/*se fija si el servicio que esta en la lista que le paso por parametro
 	*/
 	//hay alguna restriccion con free/premium?
@@ -66,10 +67,14 @@ public:
 	tm getFechayHoraCierre() { return FechayHoraCierre; };
 	int getEdad() { return Edad; }
 	Paises getPais();
-
+	int getConex() { return cantConexSemana; }
+	Servicios* getServ() { return servicio; }
+	string getPass() { return Password; }
+	bool getestadoEliminado() { return Eliminado; }
 	//AGREGADO:
 	bool VerificarContrasena();//verifica que cumpla requisitos-> ya hecha!
 	
 	void setTarjeta() { cin >> *tarjeta; }
+	ostream& operator<<(ostream& out);
 	istream& operator>>(istream& in);
 };

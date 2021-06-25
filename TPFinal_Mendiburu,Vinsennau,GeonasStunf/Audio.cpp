@@ -24,8 +24,6 @@ Audio::~Audio(){
 
 
 
-
-
 void Audio::FastBackward(long int& time,long int&TiempoR){
 	time -= 10;
 	TiempoR -= 10;
@@ -42,10 +40,6 @@ void Audio::Record(){
 	cout << "\nGrabacion en progreso." << endl;
 }
 
-
-/*void Audio::VelocidadReproduccion(int velocidad){
-
-}*/
 
 
 bool Audio::GuardartiempoRep( int seg)
@@ -135,3 +129,8 @@ RegistroAyV* Audio::RegistrarenRegistro(Usuarios* user,bool visto) //no se si ha
 	reg = new RegistroAyV(Nombre, user->getclave(),visto);
 	return reg;
 }
+ ostream& Audio::operator<<(ostream& out)
+  {
+	  out << tostring() << "\nDuracion: " << to_string(duracion.tm_hour) << ":"
+		  << to_string(duracion.tm_min) << ":"to_string(duracion.tm_sec) << endl;
+  }

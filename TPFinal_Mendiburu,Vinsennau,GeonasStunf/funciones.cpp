@@ -95,6 +95,7 @@ void Casos1(Usuarios* user, Plataforma* plataforma)//lo hice en do while para qu
 				catch (exception* e)
 				{
 					cout << e->what();
+					break;
 				}
 				else
 					throw 3;//para que lo agarre en el main
@@ -122,14 +123,34 @@ void Casos1(Usuarios* user, Plataforma* plataforma)//lo hice en do while para qu
 void Casos2(Usuarios* user, Plataforma* plataforma)
 {
 	int opcion;
+	FREE*f=dynamic_cast<FREE*>(user):
 	//se hace infinitamenete
 	do {
 		opcion = Menu2();
 		switch (opcion)
 		{
-		case 1:user->SeleccionarServicio(plataforma->m_Servicios);
+		case 1:
+		{
+			try{
+			user->SeleccionarServicio(plataforma->m_Servicios);
+			}
+			catch(exception*e)
+			{
+			throw e;
+			}
 			ReproducirServicio(user, plataforma);
+			if(f!=NULL)
+			{
+				try{
+					f->tiempoExcedido();
+				}
+				catch(exception*e)
+				{
+					throw e;
+				}
+			}
 			break;
+			}
 		case 2:plataforma->EditarCuenta(user, rand()%3, rand()%1);//elige el tipo y si se elimina al azar
 			break;
 		case 3:
@@ -154,9 +175,6 @@ long int PasarAseg(tm tiempo)
 
 void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 {
-
-	//ponemos el anuncio
-	//dynamic cast
 	/*
 	* PAUSAR: " "(espacio)
 	* REANUDAR: " "(espacio)
@@ -336,4 +354,25 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 		*(plataforma->getRgAyV()) + regA;
 	}
 }
-
+void Servicios(){
+	Paises paisA2[4] = { Chile, Colombia, Argentina,Francia};
+	Paises paisJ2[3] = { Francia, Argentina, España };
+	Paises paisAV2[2] = { EstadosUnidos,Canda };
+	Servicios* juego2 = new Juegos("662", "subway surfers", 4, paisJ2, nino ,2014);
+	Servicios* audio2 = new Audio("152", "Mamma Mia", 3, paisA2, adolescente, { 12, 05, 00 });
+	Servicios* audioyvideo2 = new AudioVisual("982", "Fast&Fourious", 2, paisAV2, adulto,{ 03, 54, 04 },1);
+	//------------------------------------------------------------------------------------------------------
+	Paises paisA3[2] = { Mexico,Paraguay};
+	Paises paisJ3[1] = { Peru };
+	Paises paisAV3[2] = { Australia};
+	Servicios* juego3 = new Juegos("831", "minecraft", 2, paisJ3, adolescente ,2014);
+	Servicios* audio3 = new Audio("670", "Kiwi", 1, paisA3, adulto, { 56, 02, 00 });
+	Servicios* audioyvideo3 = new AudioVisual("42", "Buscando a Nemo", 1, paisAV3, nino,{ 03, 54, 04 },1);
+	//------------------------------------------------------------------------------------------------------
+	Paises paisA4[2] = { Argentina,Francia};
+	Paises paisJ4[1] = { Uruguay};
+	Paises paisAV4[1] = {Chile};
+	Servicios* juego4 = new Juegos("021", "Temple Run", 3, paisJ4, nino ,2011);
+	Servicios* audio4 = new Audio("962", "Dangerous Woman", 2, paisA4, adolescente, { 35, 04, 01 });
+	Servicios* audioyvideo4 = new AudioVisual("156", "Rey Leon", 1, paisAV, adolescente,{ 01, 09, 02 },1);
+}

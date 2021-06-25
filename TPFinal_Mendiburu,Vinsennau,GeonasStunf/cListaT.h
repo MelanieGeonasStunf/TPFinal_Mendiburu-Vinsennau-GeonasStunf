@@ -253,7 +253,9 @@ unsigned int cListaT<T>::getItemPos(string clave)
 template<class T>
 ostream& operator<<(ostream& out, cListaT<T>& object)//CORREGIR
 {
-	out << object.toString() << endl;
+	for (int i = 0; i < object->getCA(); i++) {
+		out << object<< endl;
+	}
 	return out;
 }
 
@@ -293,7 +295,7 @@ template<class T>
 	 /*else
 		 return NULL;*/
 }
-
+/*
 template<class T>
  string cListaT<T>::toString()
  {
@@ -303,4 +305,4 @@ template<class T>
 		 cadena += vector[i]->tostring();
 	 }
 	 return cadena;
- }
+ }*/

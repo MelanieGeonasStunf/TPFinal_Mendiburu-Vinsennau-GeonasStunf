@@ -21,6 +21,13 @@ Plataforma::~Plataforma(){
 	delete m_Servicios;
 }
 
+void Plataforma::setUsuariosxSemana()
+{
+for(int i=0;i<m_Usuarios->getCA();i++)
+{
+	UsuariosxSemana = m_Usuarios->vector[i]->getConex();//cantidad de usuarios conectados por semana.
+}
+}
 
 void Plataforma::EstadisticasPorContenido(Servicios*serv, tm FechaI, tm FechaF){
 
@@ -346,9 +353,10 @@ string* Plataforma::MasVistos(tm FechaI, tm FechaF)
 	}
 }
 
-void Plataforma::PromedioConectadosenSemanaxDia()
+int Plataforma::PromedioConectadosenSemanaxDia()
 {
 	int cant = UsuariosxSemana / 7;
+	return cant;
 }
 
 void Plataforma::VerResumen(tm FechaI, tm FechaF){
@@ -376,6 +384,7 @@ void Plataforma::VerResumen(tm FechaI, tm FechaF){
 		cout << "-" << MJ[i] << endl;
 	}
 
+	cout << "Promedio de usuarios conectados en la semana: " << PromedioConectadosenSemanaxDia() << endl;
 
 }
 
@@ -409,28 +418,40 @@ void Plataforma::EditarCuenta(Usuarios* user, int tipo, bool eliminar)
 		{
 			//hacemos funcion que copia al usuario y lo pasa a free
 			FREE* cambiado = new FREE(*user);
+			user->setEliminado();
 			if (tipo == 2)//significa que era premium 
 			{
+				cambiado->setCalidad();
 				//de premium a free->baja calidad
 			}
+			*m_Usuarios + cambiado;
 		}
 		else if (tipo == basic && t!=1)
 		{
-			if (tipo == 2)//significa que era premium y ya tengo datos de una tarjeta.
+			BASIC* cambiado = new BASIC(*user);
+			if (t == 2)//significa que era premium y ya tengo datos de una tarjeta.
 			{
-				PREMIUM* cambiado = new PREMIUM(*user);
 				*m_Usuarios + cambiado;
 				user->setEliminado(true);
+				cambiado->setCalidad();
 				//de premium a basic->baja calidad
 
 				//pido datos de tarjeta del usuario premium y lo pongo en constructor
 				//BASIC*cambiado=new 
 			}
+			cambiado->setTarjeta();
+			*m_Usuarios + cambiado;
 			//BASIC* cambiado = new BASIC(*user, 0);//tendriamos que pedir datos de una tarjeta!!!
 		}
 		else if (tipo == premium && t!=2)
 		{
-			//no olvidar de mejorar la calidad a 1080!!->llamar a funicion de audiovisual MejorarCalidad
+			PREMIUM* cambiado = new PREMIUM(*user);
+			cambiado->setCalidad();
+			user->setEliminado(true);
+			if (t == 0) {
+				cambiado->setTarjeta();
+			}//no olvidar de mejorar la calidad a 1080!!->llamar a funicion de audiovisual MejorarCalidad
+			*m_Usuarios + cambiado;
 		}
 		else
 		{

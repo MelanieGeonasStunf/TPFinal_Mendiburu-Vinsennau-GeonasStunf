@@ -7,6 +7,7 @@ float PREMIUM::CostoPremium = costoP;
 PREMIUM::PREMIUM(int Edad, Paises Pais, string Password, const string Name, string tarjeta):
 Usuarios(Edad, Pais, Password, Name)
 {
+	calidad = true;
 	ListaDescargas = new cListaT<Servicios>(10);
 	for (int i = 0; i < ListaDescargas->getTAM(); i++)
 	{
@@ -31,10 +32,57 @@ void PREMIUM::DescargarAyV(Servicios* servicio){
 ostream& PREMIUM::operator<<(ostream& out)
 {
 	Usuarios& P=*this;
-	out<<P;
-	out<<tostring();
+	out << &P;//H
+	out << *ListaDescargas;
 	return out;
 }
+
+
+void PREMIUM::SeleccionarServicio(cListaT<Servicios>* serv)
+{
+	int pos = rand() % (serv->getCA());
+	//int pos = 1;
+
+	if ((*serv)[pos] != NULL)
+	{
+		Juegos* aux = dynamic_cast<Juegos*>((*serv)[pos]);
+		if (aux!=NULL)
+		{
+			servicio = new Juegos(*aux);
+		}
+		AudioVisual* aux1 = dynamic_cast<AudioVisual*>((*serv)[pos]);
+		if (aux1!=NULL)
+		{
+			servicio = new AudioVisual(*aux1);
+		}
+		Audio* aux2 = dynamic_cast<Audio*>((*serv)[pos]);
+		if (aux2!=NULL)
+		{
+			servicio = new Audio(*aux2);
+		}
+		
+		try
+		{
+			servicio->VerificarPais(this);
+		}
+		catch (exception& e)
+		{
+			throw e.what();
+		}
+		int rangoEtareo = servicio->ChequearEdad();
+		if (Edad < 13 && rangoEtareo != 0)
+		{
+			throw exception("No tiene la edad suficiente para utilizar este servicio");
+		}
+		if (Edad < 18 && rangoEtareo == 2)
+		{
+			throw exception("No tiene la edad suficiente para utilizar este servicio");
+		}
+	}
+	//si la edad>18 no tiene ninguna restriccion
+}
+
+
 
 void PREMIUM::Registrarse(Plataforma* plataforma){
 	if (this == NULL)
@@ -47,9 +95,4 @@ void PREMIUM::Registrarse(Plataforma* plataforma){
 	cListaT<RegUsuarios>* RegU = plataforma->getRgUsuarios();
 	*RegU + RegistrarenRegistro();
 	cantConexSemana++;
-	
-}
-string PREMIUM::tostring()
-{
-	string cadena;
 }

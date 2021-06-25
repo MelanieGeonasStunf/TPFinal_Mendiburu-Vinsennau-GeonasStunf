@@ -20,7 +20,9 @@ public:
 	void Registrarse( Plataforma* plataforma);
 	void DescargarAyV(Servicios* servicio);
 	ostream& operator<<(ostream& out);
-	string tostring();
+	void setCalidad() { calidad = true; }
+	void SeleccionarServicio(cListaT <Servicios> *serv);
+	//string tostring();
 
 	//void SeleccionarServicio(cListaT <Servicios>* servicio);
 };

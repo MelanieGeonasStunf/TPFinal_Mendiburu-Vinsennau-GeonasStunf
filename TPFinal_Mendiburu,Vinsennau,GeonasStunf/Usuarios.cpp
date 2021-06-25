@@ -37,7 +37,12 @@ void Usuarios::CerrarSesion(){
 	if (!Estado)
 		throw new exception("\nNunca debería pasar esto.");//vemos que hacemos
 	Estado = false;
-	setFHcierre();//vemos que hacemos
+	setFHcierre();
+	FREE* usuarioF = dynamic_cast<FREE*>(user);
+	if (usuarioF != NULL)
+	{
+		usuarioF->settiempoConex();
+	}
 	RegUsuarios* regu = RegistrarenRegistro();
 }
 
@@ -58,7 +63,13 @@ void Usuarios::IniciarSesion(Plataforma* plataforma){
 		if (plataforma->m_Usuarios->vector[pos]->Password == Password)
 		{
 			Estado = true;//se inicia sesion
-			setFHinicio();//le hacemos el local time?? 
+			setFHinicio();//le hacemos el local time??
+			FREE* usuarioF = dynamic_cast<FREE*>(this);
+			if(usuarioF!=NULL)
+			{
+				if (usuarioF->getcontadorsem() == 0)
+					usuarioF->setcontadorsem();
+			}
 			cListaT<RegUsuarios>* RegU = plataforma->getRgUsuarios();
 			*RegU + RegistrarenRegistro();
 			cantConexSemana++;
@@ -112,11 +123,7 @@ void Usuarios::setFHcierre()
 
 void Usuarios::setFHinicio()
 {
-	time_t rawtime;
-	tm* info;
-	time(&rawtime);
-	info = localtime(&rawtime);
-	FechayHoraInicio = *info;
+	FechayHoraInicio = setLocalTime();
 }
 
 void Usuarios::setEliminado(bool elim)
@@ -151,51 +158,6 @@ bool Usuarios::VerificarContrasena()
 }
 //PROBAR!
 
-void Usuarios::SeleccionarServicio(cListaT <Servicios>* serv)
-{
-	int pos = rand() % (serv->getCA());
-	//int pos = 1;
-
-	if ((*serv)[pos] != NULL)
-	{
-		Juegos* aux = dynamic_cast<Juegos*>((*serv)[pos]);
-		if (aux!=NULL)
-		{
-			servicio = new Juegos(*aux);
-		}
-		AudioVisual* aux1 = dynamic_cast<AudioVisual*>((*serv)[pos]);
-		if (aux1!=NULL)
-		{
-			servicio = new AudioVisual(*aux1);
-		}
-		Audio* aux2 = dynamic_cast<Audio*>((*serv)[pos]);
-		if (aux2!=NULL)
-		{
-			servicio = new Audio(*aux2);
-		}
-		
-		try
-		{
-			servicio->VerificarPais(this);
-		}
-		catch (exception& e)
-		{
-			throw e.what();
-		}
-		int rangoEtareo = servicio->ChequearEdad();
-		if (Edad < 13 && rangoEtareo != 0)
-		{
-			throw exception("No tiene la edad suficiente para utilizar este servicio");
-		}
-		if (Edad < 18 && rangoEtareo == 2)
-		{
-			throw exception("No tiene la edad suficiente para utilizar este servicio");
-		}
-	}
-	//si la edad>18 no tiene ninguna restriccion
-}
-
-
 
 istream& Usuarios::operator>>(istream& in) {
 	cout << "\nIngrese el numero de la tarjeta: " << endl;
@@ -203,5 +165,10 @@ istream& Usuarios::operator>>(istream& in) {
 	in >> numero;
 	return in;
 }
-
+ostream& Usuarios::operator<<(ostream& out)
+{
+	out<<"\nUser Name:"<<clave<<"\nContrasenia:"<<Encriptar(contraseña)<<"\nServicio:"
+	<<(*servicio)<<"\nEdad:"<<Edad<<"\nPais:"<<Pais<<"\nTarjeta:"<<Encriptar(Tarjeta)<<endl;
+	return out;
+}
 

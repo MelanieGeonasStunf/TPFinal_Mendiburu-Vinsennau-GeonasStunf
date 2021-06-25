@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="eAudio.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AudioVisual.h">
       <Filter>Header Files</Filter>
     </ClInclude>

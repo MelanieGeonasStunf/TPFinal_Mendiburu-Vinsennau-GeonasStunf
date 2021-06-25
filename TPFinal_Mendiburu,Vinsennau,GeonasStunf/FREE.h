@@ -1,12 +1,17 @@
 #pragma once
 
 #include "Usuarios.h"
+#include "funciones.h"
 
 class Plataforma;
 class FREE : public Usuarios
 {
 private:
-	static int LimiteTiempoMax;
+	static tm LimiteTiempoMax;
+	long int tiempoConex;
+	int contadorsem;//cant de conexiones
+	tm primeringreso;
+	//Servicios** ServAElegir;
 
 public:
 	FREE(int Edad, Paises Pais, string Password, const string Name,string* tarjeta=NULL);
@@ -17,9 +22,14 @@ public:
 
 	void LimiteTiempo();
 	//void SeleccionarServicio(cListaT<Servicios>*servicio);->era virtual
-	void VariarLista();
+	cListaT<Servicios>* VariarLista(cListaT<Servicios>* serv);
 
 	void Registrarse(Plataforma* plataforma);
-
+	void setCalidad()  { calidad  =  false;  }
+	int getcontadorsem() { return contadorsem; }
+	void setcontadorsem() {contadorsem++; }
+	void SeleccionarServicio(cListaT <Servicios>* serv);
+	void settiempoConex();
+	void tiempoExcedido();
 };
 

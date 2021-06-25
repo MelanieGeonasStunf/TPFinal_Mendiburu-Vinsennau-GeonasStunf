@@ -9,8 +9,7 @@ class AudioVisual : public Servicios
 {
 
 private:
-	bool HD;//true para usuarios premium nada mas
-	int TipoAudioVisual; //ES UN ENUM?
+	//int TipoAudioVisual; //ES UN ENUM?
 	tm duracion;
 	tm tiempoInicio;//cuenta el tiempo en que empieza a ver-> nos sirve para saber si vio todo el video
 	int cantVisxPer;
@@ -21,7 +20,6 @@ public:
 	AudioVisual(AudioVisual& ayv);
 	virtual ~AudioVisual();
 
-	void setCalidad(bool hd) { HD = hd; }
 	tm getTInicio() { return tiempoInicio; }
 
 	void FastBackward(long int& time,long int&TiempoR);//flecha abajo
@@ -34,6 +32,7 @@ public:
 	
 	RegistroAyV* RegistrarenRegistro(Usuarios* user,bool visto);
 	tm getDuracion() { return duracion; }
+	ostream& operator<<(ostream& out);
 
 	void setCant() { cantVisxPer++; }
 	int getCant() { return cantVisxPer; }

@@ -11,7 +11,12 @@ Servicios::Servicios(const string clave,  const string nombre,int cantP, Paises*
 	rangoE = rango;
 }
 
-
+string Servicios::tostring()
+{
+	string cadena;
+	cadena += "\nClave: " + Clave + "\nNombre: " + Nombre;
+	return cadena;
+}
 
 Servicios::~Servicios(){
 
