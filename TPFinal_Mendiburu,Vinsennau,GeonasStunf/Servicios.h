@@ -26,8 +26,8 @@ protected:
 	bool Reproduciendo;//true se esta reproduciendo
 
 public:
-	Servicios(const string clave, const string nombre,int cantP, Paises* paises, RangoEtareo rango);
-	Servicios(Servicios& copia) :Clave(copia.Clave), Nombre(copia.Nombre), cantP(copia.cantP), rangoE(copia.rangoE){};
+	Servicios(const string clave, const string nombre,int cantP, Paises* paises_, RangoEtareo rango);
+	Servicios(Servicios& copia);
 	virtual ~Servicios();
 
 	
@@ -42,6 +42,7 @@ public:
 
 	string getclave()const { return Clave; };
 
+	string tostring();
 	string getNombre()const { return Nombre; };
 	ostream& operator<<(ostream& out);
 };

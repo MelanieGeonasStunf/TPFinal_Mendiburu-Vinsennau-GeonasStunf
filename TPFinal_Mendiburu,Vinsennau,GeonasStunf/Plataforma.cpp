@@ -8,6 +8,9 @@ Plataforma::Plataforma():Nombre("Labflix")
 	this->CantidadUsuariosConectados=0;
 	//ListaUsuariosxDia = new cListaT<Usuarios>;
 	this-> UsuariosxSemana=0;
+	RegU = new cListaT<RegUsuarios>();
+	RegJ=new cListaT<RegistroJuegos>();
+	RegAyV=new cListaT<RegistroAyV>();
 	m_Servicios=new cListaT<Servicios>();
 	m_Usuarios= new cListaT<Usuarios>();
 	
@@ -19,14 +22,17 @@ Plataforma::~Plataforma(){
 	//delete ListaUsuariosxDia;
 	delete m_Usuarios;
 	delete m_Servicios;
+	delete RegU;
+	delete RegAyV;
+	delete RegJ;
 }
 
 void Plataforma::setUsuariosxSemana()
 {
-for(int i=0;i<m_Usuarios->getCA();i++)
-{
-	UsuariosxSemana = m_Usuarios->vector[i]->getConex();//cantidad de usuarios conectados por semana.
-}
+	for(int i=0;i<m_Usuarios->getCA();i++)
+	{
+		UsuariosxSemana = m_Usuarios->vector[i]->getConex();//cantidad de usuarios conectados por semana.
+	}
 }
 
 void Plataforma::EstadisticasPorContenido(Servicios*serv, tm FechaI, tm FechaF){
@@ -70,7 +76,7 @@ string* Plataforma::MasEscuchados(tm FechaI, tm FechaF){
 	int mE1 = -1;
 
 	int cont = 0;//cuenta cuantos juegos estan dentro del periodo pedido
-	cListaT<RegistroAyV>* VistosEnPeriodo = NULL;
+	cListaT<RegistroAyV>* VistosEnPeriodo = new cListaT<RegistroAyV>();
 
 	for (int i = 0; i < cantAudio; i++)
 	{
@@ -168,7 +174,7 @@ string* Plataforma::MasJugados(tm FechaI, tm FechaF) {
 	int mJ1 = -1;
 
 	int cont = 0;//cuenta cuantos juegos estan dentro del periodo pedido
-	cListaT<RegistroJuegos>* JugadosEnPeriodo = NULL;
+	cListaT<RegistroJuegos>* JugadosEnPeriodo = new cListaT<RegistroJuegos>();
 
 	for (int i = 0; i < cantJuegos; i++)
 	{
@@ -266,7 +272,7 @@ string* Plataforma::MasVistos(tm FechaI, tm FechaF)
 	int mV1 = -1;
 
 	int cont = 0;//cuenta cuantos juegos estan dentro del periodo pedido
-	cListaT<RegistroAyV>* VistosEnPeriodo = NULL;
+	cListaT<RegistroAyV>* VistosEnPeriodo = new cListaT<RegistroAyV>;
 
 	for (int i = 0; i < cantVideos; i++)
 	{
@@ -353,9 +359,10 @@ string* Plataforma::MasVistos(tm FechaI, tm FechaF)
 	}
 }
 
-int Plataforma::PromedioConectadosenSemanaxDia()
+float Plataforma::PromedioConectadosenSemanaxDia()
 {
-	int cant = UsuariosxSemana / 7;
+	setUsuariosxSemana();
+	float cant = UsuariosxSemana / 7;
 	return cant;
 }
 
@@ -369,19 +376,35 @@ void Plataforma::VerResumen(tm FechaI, tm FechaF){
 	//imprimimos los 3 mas vistos, escuchados y jugados de la semana.
 	//ponemos el periodo en el main
 	cout << "Mas vistos: " << endl;
-	for (int i = 0; i < 3; i++)
-	{
-		cout << "-" << MV[i] << endl;
+	if (MV != NULL) {
+		for (int i = 0; i < 3; i++)
+		{
+			if (MV[i] != "")
+				cout << "-" << MV[i] << endl;
+			else
+				break;
+
+		}
 	}
 	cout << "Mas escuchados: " << endl;
-	for (int i = 0; i < 3; i++)
-	{
-		cout << "-" << ME[i] << endl;
+	if (ME != NULL) {
+		for (int i = 0; i < 3; i++)
+		{
+			if (ME[i] != "")
+				cout << "-" << ME[i] << endl;
+			else
+				break;
+		}
 	}
 	cout << "Mas jugados: " << endl;
-	for (int i = 0; i < 3; i++)
-	{
-		cout << "-" << MJ[i] << endl;
+	if (MJ != NULL) {
+		for (int i = 0; i < 3; i++)
+		{
+			if (MJ[i] != "")
+				cout << "-" << MJ[i] << endl;
+			else
+				break;
+		}
 	}
 
 	cout << "Promedio de usuarios conectados en la semana: " << PromedioConectadosenSemanaxDia() << endl;
@@ -431,7 +454,13 @@ void Plataforma::EditarCuenta(Usuarios* user, int tipo, bool eliminar)
 			BASIC* cambiado = new BASIC(*user);
 			if (t == 2)//significa que era premium y ya tengo datos de una tarjeta.
 			{
-				*m_Usuarios + cambiado;
+				try {
+					*m_Usuarios + cambiado;
+				}
+				catch (exception* e)
+				{
+					throw e;
+				}
 				user->setEliminado(true);
 				cambiado->setCalidad();
 				//de premium a basic->baja calidad
@@ -440,7 +469,13 @@ void Plataforma::EditarCuenta(Usuarios* user, int tipo, bool eliminar)
 				//BASIC*cambiado=new 
 			}
 			cambiado->setTarjeta();
-			*m_Usuarios + cambiado;
+			try {
+				*m_Usuarios + cambiado;
+			}
+			catch (exception*e)
+			{
+				throw e;
+			}
 			//BASIC* cambiado = new BASIC(*user, 0);//tendriamos que pedir datos de una tarjeta!!!
 		}
 		else if (tipo == premium && t!=2)
@@ -451,11 +486,17 @@ void Plataforma::EditarCuenta(Usuarios* user, int tipo, bool eliminar)
 			if (t == 0) {
 				cambiado->setTarjeta();
 			}//no olvidar de mejorar la calidad a 1080!!->llamar a funicion de audiovisual MejorarCalidad
-			*m_Usuarios + cambiado;
+			try {
+				*m_Usuarios + cambiado;
+			}
+			catch (exception* e)
+			{
+				throw e;
+			}
 		}
 		else
 		{
-			throw exception("Ese tipo no se encuentra disponible o ya sos el tipo de usuario");//ya es de ese tipo
+			throw new exception("Ese tipo no se encuentra disponible o ya sos el tipo de usuario");//ya es de ese tipo
 		}
 	}
 

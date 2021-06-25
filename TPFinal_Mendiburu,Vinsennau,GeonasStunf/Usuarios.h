@@ -20,6 +20,7 @@ class Usuarios
 {
 
 protected:
+	static int copia;
 	int Edad;
 	bool Estado;
 	tm FechayHoraCierre;
@@ -42,7 +43,7 @@ protected:
 
 	
 public:
-	Usuarios(int Edad, Paises Pais,string Password, const string Name, string* tarjeta=NULL);
+	Usuarios(int Edad, Paises Pais,string Password, const string Name,bool calidad, string* tarjeta = NULL);
 	virtual ~Usuarios();
 	Usuarios(Usuarios& user);
 
@@ -74,7 +75,10 @@ public:
 	//AGREGADO:
 	bool VerificarContrasena();//verifica que cumpla requisitos-> ya hecha!
 	
-	void setTarjeta() { cin >> *tarjeta; }
+	void setTarjeta() { 
+		tarjeta = new string;
+		cin >> *tarjeta; }
+	string tostring();
 	ostream& operator<<(ostream& out);
 	istream& operator>>(istream& in);
 };

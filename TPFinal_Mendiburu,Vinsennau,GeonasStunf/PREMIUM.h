@@ -13,7 +13,7 @@ private:
 	string tarjeta;
 	
 public:
-	PREMIUM(int Edad, Paises Pais, string Password, const string Name, string tarjeta);
+	PREMIUM(int Edad, Paises Pais, string Password, const string Name, string* tarjeta);
 	PREMIUM(Usuarios& copia);
 	virtual ~PREMIUM();
 

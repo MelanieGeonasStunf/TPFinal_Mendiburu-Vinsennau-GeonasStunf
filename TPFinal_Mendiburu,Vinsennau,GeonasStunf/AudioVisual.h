@@ -22,8 +22,8 @@ public:
 
 	tm getTInicio() { return tiempoInicio; }
 
-	void FastBackward(long int& time,long int&TiempoR);//flecha abajo
-	void FastForward(long int& time,long int&TiempoR);//flecha arriba
+	bool FastBackward(long int& time,long int&TiempoR);//flecha abajo
+	bool FastForward(long int& time,long int&TiempoR);//flecha arriba
 	void Record();//R-> la verdad que ni idea con lo que podemos hacer aca
 	void VelocidadReproduccion(int velocidad);//-> la vamos a hacer al final?
 	bool GuardartiempoRep( int seg);

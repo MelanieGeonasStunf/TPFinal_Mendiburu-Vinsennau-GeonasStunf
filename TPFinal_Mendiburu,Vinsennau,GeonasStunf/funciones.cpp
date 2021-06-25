@@ -6,6 +6,7 @@
 //#include "Usuarios.h"
 #include "Plataforma.h"
 
+
 tm setLocalTime()
 {
 	time_t rawtime;
@@ -28,7 +29,7 @@ string Encriptar(string clave)
 	string encript;
 	for(int i=0; i<largo;i++)
 	{
-		encript[i]='*';
+		encript+= '*';
 	}
 	return encript;
 }
@@ -41,7 +42,7 @@ int Menu1()
 		"2) Registrarse" << endl <<
 		"3) Salir" << endl;//sale del loop -> liberamos memoria usuario
 	//cin >> opcion;
-	opcion = 1 + rand() % 4;
+	opcion = 1 + rand() % 3;
 	/*
 	opcion=1;
 	opcion=2;
@@ -58,7 +59,7 @@ int Menu2()
 		"2) Editar cuenta" << endl <<//puede cambiarse de free a premium por ej o eliminarla?
 		"3) Cerrar Sesion" << endl;
 	//cin >> opcion;
-	opcion = 1 + rand() % 4 ;
+	opcion = 1 + rand() % 3;
 	/*
 	opcion=1;
 	opcion=2;
@@ -79,20 +80,25 @@ void Casos1(Usuarios* user, Plataforma* plataforma)//lo hice en do while para qu
 			try
 			{
 				user->IniciarSesion(plataforma);
-				Casos2(user, plataforma);
+				try {
+					Casos2(user, plataforma);
+				}
+				catch (exception* e)
+				{
+					cout << e->what() << endl;
+				}
 			}
 			catch (exception& exc)//si agarra excepcion significa que no se inicio sesion bien
 			{//catch (e.what)!!
 				cout << exc.what() << endl;
 				cout << "1) Desea registrarse?" << endl <<
 					"2) Desea salir?" << endl;
-				opcion2 = 1 + rand() % 3;
-				if (opcion2 == 1) {
+				opcion2 = 1 + rand() % 2;
+				if (opcion2 == 2) {
 					try {
 						user->Registrarse(plataforma);//suponemos que al registrarse se inicia sesion 
 						Casos2(user, plataforma);
 					}
-
 					catch (exception* e)
 					{
 						cout << e->what();
@@ -107,17 +113,28 @@ void Casos1(Usuarios* user, Plataforma* plataforma)//lo hice en do while para qu
 		case 2: {
 			try {
 				user->Registrarse(plataforma);
-				Casos2(user, plataforma);
+				try {
+					Casos2(user, plataforma);
+				}
+				catch (exception* e)
+				{
+					cout << e->what() << endl;
+				}
 			}
 			catch (exception* e)
 			{
 
 				cout << e->what();
 			}
+			catch (Usuarios* o)
+			{
+				cout << "\nEl usuario: " << o->getclave() << " ya se encuentra registrado." << endl;
+			}
 			break;
 		}
 		case 3:throw 3;
 		}
+		//system("CLS");
 	} while (opcion != 3);
 
 }
@@ -129,6 +146,7 @@ void Casos2(Usuarios* user, Plataforma* plataforma)
 	//se hace infinitamenete
 	do {
 		opcion = Menu2();
+		//opcion = 1;
 		switch (opcion)
 		{
 		case 1:
@@ -138,7 +156,7 @@ void Casos2(Usuarios* user, Plataforma* plataforma)
 			}
 			catch(exception*e)
 			{
-			throw e;
+				throw e;
 			}
 			ReproducirServicio(user, plataforma);
 			if(f!=NULL)
@@ -153,7 +171,12 @@ void Casos2(Usuarios* user, Plataforma* plataforma)
 			}
 			break;
 			}
-		case 2:plataforma->EditarCuenta(user, rand()%3, rand()%1);//elige el tipo y si se elimina al azar
+		case 2:try {
+			plataforma->EditarCuenta(user, rand() % 3, rand() % 1);//elige el tipo y si se elimina al azar
+		}
+		catch (exception* e) {
+			cout << e->what();
+		}
 			break;
 		case 3:
 			try {
@@ -165,6 +188,7 @@ void Casos2(Usuarios* user, Plataforma* plataforma)
 			}
 			break;
 		}
+		//system("CLS");
 	} while (opcion != 2);
 }
 
@@ -252,12 +276,21 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			}
 			if (GetKeyState(VK_UP) & 0x8000)//flecha arriba
 			{
-				audiov1->FastForward(tiempoModificado,TiempoReal);//siempre adelantamos 10 seg
+				bool rep=audiov1->FastForward(tiempoModificado,TiempoReal);//siempre adelantamos 10 seg
+				if (!rep) {
+					bool ok = audiov1->GuardartiempoRep(TiempoReal - tiempoModificado);
+					regAV = audiov1->RegistrarenRegistro(user, ok);
+					break;
+				}
 			}
 			if (GetKeyState(VK_DOWN) & 0x8000)//flecha abajo
 			{
-				audiov1->FastBackward(tiempoModificado,TiempoReal);
-				//TiempoReal += 10;
+				bool rep = audiov1->FastBackward(tiempoModificado, TiempoReal);//siempre adelantamos 10 seg
+				if (!rep) {
+					bool ok = audiov1->GuardartiempoRep(TiempoReal - tiempoModificado);
+					regAV = audiov1->RegistrarenRegistro(user, ok);
+					break;
+				}
 			}
 			/*
 			mas opciones !!-> NO OLVIDAR
@@ -266,21 +299,11 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			{
 				user->servicio->Apagar();
 				//tenemos que llamar a la funcion que controla si vio 30% 
-				bool ok=audiov1->GuardartiempoRep(TiempoReal-tiempoModificado);
-				regAV=audiov1->RegistrarenRegistro(user,ok);
-				
+				bool ok = audiov1->GuardartiempoRep(TiempoReal - tiempoModificado);
+				regAV = audiov1->RegistrarenRegistro(user, ok);
+
 				*(plataforma->getRgAyV()) + regAV;
 				return;
-			}
-			if (GetKeyState(VK_UP) & 0x8000)//flecha arriba
-			{
-				audiov1->FastForward(tiempoModificado, TiempoReal);//siempre adelantamos 10 seg
-				
-			}
-			if (GetKeyState(VK_DOWN) & 0x8000)//flecha abajo
-			{
-				audiov1->FastBackward(tiempoModificado, TiempoReal);
-				
 			}
 			//
 			if (GetKeyState('R') & 0x8000)//letra R
@@ -309,6 +332,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 			"-Fast Backward: flecha abajo" << endl <<
 			"-Record: R" << endl <<
 			"----------------------" << endl;
+		system("pause");
 		audio->IniciarServicio();
 		//RegistroAyV* regA;
 		long int TiempoReal = PasarAseg(audio->getDuracion());
@@ -319,7 +343,7 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 		do
 		{
 		// string exc = "Fechas ingresadas no disponibles";
-			if (GetKeyState(VK_SPACE) & 0x8000)//PAUSA-> tendriamos que poner el espacio
+         if (GetKeyState(VK_SPACE) & 0x8000)//PAUSA-> tendriamos que poner el espacio
 			{
 				// Shift down
 				user->servicio->Pausar();
@@ -334,16 +358,34 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 					tiempoModificado += seg;
 				}
 			}
-			if (GetKeyState(VK_ESCAPE) & 0x8000)//APAGAR-> Esc
+     		if (GetKeyState(VK_ESCAPE) & 0x8000)//APAGAR-> Esc
 			{
 				user->servicio->Apagar();
 				//tenemos que llamar a la funcion que controla si vio 30% 
-				regA = audio->RegistrarenRegistro(user,audio->GuardartiempoRep(TiempoReal-tiempoModificado));
-				*(plataforma->getRgAyV()) + regA;
+				/*regA = audio->RegistrarenRegistro(user,audio->GuardartiempoRep(TiempoReal-tiempoModificado));
+				*(plataforma->getRgAyV()) + regA;*/
+				break;
 			}
-
+			if (GetKeyState(VK_UP) & 0x8000)//flecha arriba
+			{
+				bool rep = audio->FastForward(tiempoModificado, TiempoReal);//siempre adelantamos 10 seg
+				if (!rep) {
+					/*bool ok = audio->GuardartiempoRep(TiempoReal - tiempoModificado);
+					regAV = audio->RegistrarenRegistro(user, ok);*/
+					break;
+				}
+			}
+			if (GetKeyState(VK_DOWN) & 0x8000)//flecha abajo
+			{
+				bool rep = audio->FastBackward(tiempoModificado, TiempoReal);//siempre adelantamos 10 seg
+				if (!rep) {
+					/*bool ok = audio->GuardartiempoRep(TiempoReal - tiempoModificado);
+					regAV = audio->RegistrarenRegistro(user, ok);*/
+					cout << "\nComenzando de nuevo la reproducción." << endl;
+				}
+			}
 			tm inicio;
-			inicio.tm_year= (audiov1->getTInicio()).tm_year - 1900;
+			inicio.tm_year= (audio->getTInicio()).tm_year - 1900;
 			tm* I = &inicio;
 			time_t rawtime;
 			time(&rawtime);
@@ -356,13 +398,16 @@ void ReproducirServicio(Usuarios* user, Plataforma* plataforma)
 		*(plataforma->getRgAyV()) + regA;
 	}
 }
-void Servicios_(){
+void Servicios_(cListaT<Servicios>* p){
 	Paises paisA2[4] = { Chile, Colombia, Argentina,Francia};
 	Paises paisJ2[3] = { Francia, Argentina, España };
 	Paises paisAV2[2] = { EstadosUnidos,Canada };
 	Servicios* juego2 = new Juegos("662", "subway surfers", 4, paisJ2, nino ,2014);
 	Servicios* audio2 = new Audio("152", "Mamma Mia", 3, paisA2, adolescente, { 12, 05, 00 });
 	Servicios* audioyvideo2 = new AudioVisual("982", "Fast&Fourious", 2, paisAV2, adulto,{ 03, 54, 04 },1);
+	*p + juego2;
+	*p + audio2;
+	*p + audioyvideo2;
 	//------------------------------------------------------------------------------------------------------
 	Paises paisA3[2] = { Mexico,Paraguay};
 	Paises paisJ3[1] = { Peru };
@@ -370,6 +415,9 @@ void Servicios_(){
 	Servicios* juego3 = new Juegos("831", "minecraft", 2, paisJ3, adolescente ,2014);
 	Servicios* audio3 = new Audio("670", "Kiwi", 1, paisA3, adulto, { 56, 02, 00 });
 	Servicios* audioyvideo3 = new AudioVisual("42", "Buscando a Nemo", 1, paisAV3, nino,{ 03, 54, 04 },1);
+	*p + juego3;
+	*p + audio3;
+	*p + audioyvideo3;
 	//------------------------------------------------------------------------------------------------------
 	Paises paisA4[2] = { Argentina,Francia};
 	Paises paisJ4[1] = { Uruguay};
@@ -377,4 +425,7 @@ void Servicios_(){
 	Servicios* juego4 = new Juegos("021", "Temple Run", 3, paisJ4, nino ,2011);
 	Servicios* audio4 = new Audio("962", "Dangerous Woman", 2, paisA4, adolescente, { 35, 04, 01 });
 	Servicios* audioyvideo4 = new AudioVisual("156", "Rey Leon", 1, paisAV4, adolescente,{ 01, 0, 02 },1);
+	*p + juego4;
+	*p + audio4;
+	*p + audioyvideo4;
 }

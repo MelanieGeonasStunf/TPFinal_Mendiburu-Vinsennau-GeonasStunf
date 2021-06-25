@@ -24,15 +24,29 @@ Audio::~Audio(){
 
 
 
-void Audio::FastBackward(long int& time,long int&TiempoR){
+bool Audio::FastBackward(long int& time,long int&TiempoR){
+	long int TiempRep = TiempoR - time;
+	/*long int dur = duracion.tm_hour * 3600 + duracion.tm_min * 60 + duracion.tm_sec;
+	long int faltante = dur - TiempRep;*/
+	if (TiempRep < 10) {
+		time = time - TiempRep;
+		return false;
+	}
 	time -= 10;
 	TiempoR -= 10;
+	return true;
 }
 
 
-void Audio::FastForward(long int& time,long int&TiempoR){
+bool Audio::FastForward(long int& time,long int&TiempoR){
+	long int TiempRep = TiempoR - time;
+	long int dur = duracion.tm_hour * 3600 + duracion.tm_min * 60 + duracion.tm_sec;
+	long int faltante = dur - TiempRep;
+	if (faltante < 10)
+		return false;
 	time += 10;
 	TiempoR += 10;
+	return true;
 }
 
 

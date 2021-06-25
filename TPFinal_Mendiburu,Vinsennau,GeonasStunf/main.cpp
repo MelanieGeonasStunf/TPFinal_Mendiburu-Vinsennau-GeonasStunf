@@ -6,6 +6,7 @@
 #include "PREMIUM.h"
 #include "BASIC.h"
 #include "FREE.h"
+//#include "Usuarios.h"
 //#include "Juegos.h"
 
 
@@ -21,7 +22,8 @@ int main()
 	// creamos archivo
 	//Leemos archivo
 	Labflix->m_Servicios = new cListaT<Servicios>();
-	Paises paisJ[4] = { Francia, Colombia, Argentina, España };
+	Servicios_(Labflix->m_Servicios);
+	Paises paisJ[4]={ Francia, Colombia, Argentina, España };
 	Servicios* juego1 = new Juegos("789", "Pacwomen", 4, paisJ, nino ,2021);
 	*Labflix->m_Servicios + juego1;
 
@@ -35,12 +37,15 @@ int main()
 
 
 	FREE* usuarioFree = new FREE(19, Francia, "EstaLoco00!", "Damian");
-
-	PREMIUM* usuarioPremium = new PREMIUM(70, Argentina, "Bypass123-", "Rene", "06062002");
-	PREMIUM* usuarioPremium1 = new PREMIUM(11,Venezuela , "Crisis", "LaBelu", "09082001");//mal la contrasena
-
-	BASIC* usuarioBasic1 = new BASIC(13, Colombia, "Contra123-", "Ruperto", "42190416");
-	BASIC* usuarioBasic = new BASIC(14, Brasil, "Yanotengoimagination<3", "Coco", "11001100");//tarjeta mal
+	string* t1 = new string;
+	*t1="06062002";
+	PREMIUM* usuarioPremium = new PREMIUM(70, Argentina, "Bypass123-", "Rene", t1);
+	*t1 = "09082001";
+	PREMIUM* usuarioPremium1 = new PREMIUM(11,Venezuela , "Crisis", "LaBelu", t1);//mal la contrasena
+	*t1 = "42190416";
+	BASIC* usuarioBasic1 = new BASIC(13, Colombia, "Contra123-", "Ruperto", t1);
+	*t1 = "11001100";
+	BASIC* usuarioBasic = new BASIC(14, Brasil, "Yanotengoimagination<3", "Coco", t1);//tarjeta mal
 
 	bool semana = false;
 
@@ -55,7 +60,7 @@ int main()
 		{
 			cout << "Saliendo de Labflix..." << endl;
 		}
-		
+		system("pause");
 		try
 		{
 			Casos1(usuarioBasic, Labflix);
@@ -63,9 +68,9 @@ int main()
 		catch (int opcion)
 		{
 			cout << "Saliendo de Labflix..." << endl;
-			break;
+			
 		}
-
+		system("pause");
 		try
 		{
 			Casos1(usuarioPremium, Labflix);
@@ -73,8 +78,9 @@ int main()
 		catch (int opcion)
 		{
 			cout << "Saliendo de Labflix..." << endl;
-			break;
+			//break;
 		}
+		system("pause");
 		try
 		{
 			Casos1(usuarioPremium1, Labflix);
@@ -83,8 +89,8 @@ int main()
 		{
 			cout << "Saliendo de Labflix..." << endl;
 			
-			break;
 		}
+		system("pause");
 		try
 		{
 			Casos1(usuarioBasic1, Labflix);
@@ -92,13 +98,16 @@ int main()
 		catch (int opcion)
 		{
 			cout << "Saliendo de Labflix..." << endl;
-			break;
+			
 		}
-		semana = tick();
+		system("pause");
+		//semana = tick();
+		semana = true;
 
 	} while (semana==false);
-	cout << *(Labflix->getUsuarios());
+ 	cout << *(Labflix->getUsuarios());
 	cout << *(Labflix->getServicios());
+	//cout << *(Labflix->getUsuarios()->vector[0]);
 
 	tm FechaFin = setLocalTime();
 	if (semana == true)
@@ -111,7 +120,10 @@ int main()
 	{
 		Usuarios* user = Labflix->getUsuarios()->vector[i];
 		if (user->getestadoEliminado() == true) //eliminamos a los usuarios que anteriormente habian eliminado su cuenta durante la semana
+		{
+			Labflix->getUsuarios()->vector[i] = NULL;
 			delete user;
+		}
 	}
 	//poner contador en 0
 	system("pause");

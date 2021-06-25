@@ -256,7 +256,7 @@ template<class T>
 ostream& operator<<(ostream& out, cListaT<T>& object)//CORREGIR
 {
 	for (int i = 0; i < object.getCA(); i++) {
-		out << object.vector[i] << endl;
+		out << object[i]->tostring()<< endl;
 	}
 	return out;
 }

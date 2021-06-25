@@ -18,8 +18,8 @@ public:
     Audio(Audio& audio);
     virtual ~Audio();
 
-    void FastBackward(long int& time,long int&TiempoR);//flecha abajo
-    void FastForward(long int& time,long int&TiempoR);//flecha arriba
+    bool FastBackward(long int& time,long int&TiempoR);//flecha abajo
+    bool FastForward(long int& time,long int&TiempoR);//flecha arriba
     void Record();//R
     void IniciarServicio();
     tm getTInicio() { return tiempoInicio; }

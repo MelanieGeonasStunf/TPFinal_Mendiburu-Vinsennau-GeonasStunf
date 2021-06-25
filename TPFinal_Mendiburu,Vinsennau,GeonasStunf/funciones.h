@@ -3,6 +3,7 @@
 #include "Librerias.h"
 class Plataforma;
 class Usuarios;
+class Servicios;
 bool tick();
 //cuenta para saber cuantos dias pasaron de la semana->para cortar el main cuando se termina la semana
 
@@ -20,5 +21,5 @@ long int PasarAseg(tm tiempo);
 */
 void Casos1(Usuarios*user, Plataforma* plataforma);// recibe opcion del menu-> tira un throw
 void Casos2(Usuarios* user, Plataforma* plataforma);
-void Servicios_();
+void Servicios_(cListaT<Servicios>* p);
 tm setLocalTime();

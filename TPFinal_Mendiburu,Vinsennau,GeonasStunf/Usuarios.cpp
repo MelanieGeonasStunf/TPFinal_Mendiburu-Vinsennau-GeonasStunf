@@ -8,13 +8,14 @@
 #include "AudioVisual.h"
 #include "Juegos.h"
 #include "funciones.h"
-
-Usuarios::Usuarios(int Edad, Paises Pais, string Password, const string Name, string* tarjeta):UserName(Name)
+int Usuarios::copia = 0;
+Usuarios::Usuarios(int Edad, Paises Pais, string Password, const string Name, bool calidad,string* tarjeta):UserName(Name)
 {
+	this->calidad = calidad;
 	Estado = false;//usuario empieza desconectado
 	this->Pais = Pais;
 	this->Password = Password;
-	this->tarjeta = NULL;
+	this->tarjeta = tarjeta;
 	servicio = NULL;//no pasamos servicio?- lo seteamos despues?
 	cantConexSemana = 0;
 	Eliminado = false;
@@ -29,8 +30,13 @@ Usuarios::~Usuarios(){
 
 Usuarios::Usuarios(Usuarios& user) :Edad(user.Edad), Estado(user.Estado),
 Pais(user.Pais), Password(user.Password), servicio(user.servicio), cantConexSemana(user.cantConexSemana),
-Eliminado(user.Eliminado)//,Name(user.Name)??
+Eliminado(user.Eliminado),UserName((user.UserName+to_string(copia)))
 {
+	FechayHoraCierre = user.FechayHoraCierre;
+	FechayHoraCierre = user.FechayHoraInicio;
+	this->calidad = user.calidad;
+	tarjeta = user.tarjeta;
+	copia++;
 }
 
 void Usuarios::CerrarSesion(){
@@ -164,6 +170,14 @@ istream& Usuarios::operator>>(istream& in) {
 	int numero;
 	in >> numero;
 	return in;
+}
+string Usuarios::tostring()
+{
+	string cadena;
+	string pass = Encriptar(Password);
+	cadena+= "\nUser Name: " + UserName + "\nContrasenia: " +pass + "\nServicio: "+
+		 servicio->tostring()+ "Edad: " + to_string(Edad)  + "\nTarjeta: " + Encriptar(*tarjeta)+'\n';
+	return cadena;
 }
 ostream& Usuarios::operator<<(ostream& out)
 {

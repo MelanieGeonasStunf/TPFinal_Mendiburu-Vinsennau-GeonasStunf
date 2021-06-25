@@ -3,11 +3,12 @@
 
 
 FREE::FREE(int Edad, Paises Pais, string Password, const string Name,string* tarjeta):
-	Usuarios(Edad, Pais, Password, Name,tarjeta)
+	Usuarios(Edad, Pais, Password, Name, false, tarjeta)
 {
-	calidad = false;
 	tiempoConex = 0;
-	int contador = 0;
+	//int contador = 0;
+	primeringreso = { 0,0,0 };
+	contadorsem = 0;
 	//ServAElegir = new Servicios*[10];
 }
 
@@ -19,6 +20,10 @@ FREE::~FREE(){
 
 FREE::FREE(Usuarios& user):Usuarios(user)
 {
+	tiempoConex = 0;
+	//int contador = 0;
+	primeringreso = { 0,0,0 };
+	contadorsem = 0;
 }
 
 
@@ -47,7 +52,7 @@ cListaT<Servicios>* FREE::VariarLista(cListaT<Servicios>* serv){
 //el usuario free puede elegir entre 10 servicios aleatorios de la plataforma
 	cout << "SERVICIOS A ELEGIR: " << endl;
 	int cont = 0;
-	cListaT<Servicios>* ServAElegir=NULL;
+	cListaT<Servicios>* ServAElegir=new cListaT<Servicios>();
 for (int i=0;i<10;i++)
 {
 
@@ -96,8 +101,8 @@ void FREE::Registrarse(Plataforma* plataforma){
 void FREE::SeleccionarServicio(cListaT<Servicios>* serv)
 {
 	cListaT<Servicios>* aElegir=VariarLista(serv);
-	int pos = rand() % 10;
-	//int pos = 1;
+	//int pos = rand() % 10;
+	int pos = 1;
 	if(tiempoConex>54000)
 		throw new exception("\nHa superado su limite semanal.");
 	if ((*aElegir)[pos] != NULL)
@@ -122,9 +127,9 @@ void FREE::SeleccionarServicio(cListaT<Servicios>* serv)
 		{
 			servicio->VerificarPais(this);
 		}
-		catch (exception& e)
+		catch (exception* e)
 		{
-			throw e.what();
+			throw e;
 		}
 		int rangoEtareo = servicio->ChequearEdad();
 		if (Edad < 13 && rangoEtareo != 0)

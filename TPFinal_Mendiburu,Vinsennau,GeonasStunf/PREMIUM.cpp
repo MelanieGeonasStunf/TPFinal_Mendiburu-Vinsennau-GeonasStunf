@@ -4,10 +4,10 @@
 
 
 float PREMIUM::CostoPremium = costoP;
-PREMIUM::PREMIUM(int Edad, Paises Pais, string Password, const string Name, string tarjeta):
-Usuarios(Edad, Pais, Password, Name)
+PREMIUM::PREMIUM(int Edad, Paises Pais, string Password, const string Name, string* tarjeta):
+Usuarios(Edad, Pais, Password, Name, false, tarjeta)
 {
-	calidad = true;
+	//calidad = true;
 	ListaDescargas = new cListaT<Servicios>(10);
 	for (int i = 0; i < ListaDescargas->getTAM(); i++)
 	{

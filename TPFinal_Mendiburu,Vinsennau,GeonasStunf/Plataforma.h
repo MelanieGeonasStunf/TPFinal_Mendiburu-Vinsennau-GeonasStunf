@@ -44,7 +44,7 @@ public:
 	string *MasVistos(tm FechaI, tm FechaF);
 	//Periodo->pasar dos fechas o que te devuelva unicamente lo de la ultima semana.
 
-	int PromedioConectadosenSemanaxDia();
+	float PromedioConectadosenSemanaxDia();
 	
 	void VerResumen (tm FechaI, tm FechaF);//da resumen de la semana
 

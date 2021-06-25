@@ -2,10 +2,9 @@
 #define CostoB 200.00//defino costo basic
 #include "Plataforma.h"
 float BASIC::CostoBasic = CostoB;
-BASIC::BASIC(int Edad, Paises Pais, string Password, const string Name, string tarjeta):
-Usuarios(Edad, Pais, Password, Name)
+BASIC::BASIC(int Edad, Paises Pais, string Password, const string Name, string* tarjeta):
+Usuarios(Edad, Pais, Password, Name, false, tarjeta)
 {
-	calidad = false;
 }
 
 BASIC::~BASIC(){
@@ -27,13 +26,20 @@ void BASIC::Registrarse(Plataforma* plataforma)
 	}
 	catch (exception* e)
 	{
-		cout << e->what();
+		cout<<e->what()<<endl;
 	}
-	*(plataforma->m_Usuarios) + this;
+	try {
+		*(plataforma->m_Usuarios) + this;
+	}
+	catch (Usuarios* no)
+	{
+		throw no;
+	}
 	Estado = true;//se inicia sesion
 	setFHinicio();
 	cListaT<RegUsuarios>* RegU = plataforma->getRgUsuarios();
-	*RegU + RegistrarenRegistro();
+	RegUsuarios*u= RegistrarenRegistro();
+	*RegU + u;
 	cantConexSemana++;
 }
 
