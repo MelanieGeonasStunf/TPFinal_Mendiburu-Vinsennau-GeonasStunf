@@ -418,9 +418,10 @@ void Plataforma::EditarCuenta(Usuarios* user, int tipo, bool eliminar)
 		{
 			if (tipo == 2)//significa que era premium y ya tengo datos de una tarjeta.
 			{
-				PREMIUM* cambiado = new PREMIUM(*user);
+				BASIC* cambiado = new BASIC(*user);
 				*m_Usuarios + cambiado;
 				user->setEliminado(true);
+				cambiado->setCalidad();
 				//de premium a basic->baja calidad
 
 				//pido datos de tarjeta del usuario premium y lo pongo en constructor

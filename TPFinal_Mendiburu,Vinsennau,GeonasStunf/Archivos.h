@@ -2,12 +2,10 @@
 
 void crear_archivo1()
 {
-	FILE* fp = fopen("jugadores.dat", "w+b");
+	FILE* fp = fopen("servicios.dat", "w+b");
 	if (fp == NULL)
-		throw exception("No se pudo crear ")
+		throw exception("No se pudo crear ");
 	fclose(fp);
-	return 0;
-
 }//Crea archivo vacion--> TIRA EXCEPCION 
 
 template <class T>
@@ -21,11 +19,10 @@ int cant_registro();
 
 void crear_archivo2()
 {
-	FILE* fp = fopen("jugadores.dat", "w+b");
+	FILE* fp = fopen("usuarios.dat", "w+b");
 	if (fp == NULL)
-		return -1;
+		throw exception("No se pudo crear el archivo");
 	fclose(fp);
-	return 0;
 
 }
 
