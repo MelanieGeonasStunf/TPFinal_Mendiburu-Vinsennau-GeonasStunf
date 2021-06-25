@@ -24,5 +24,6 @@ public:
 	void IniciarServicio();//que haria?
 	bool getEstado()  { return this->Finalizado;  }
 	void setCont() { cantJugxPer++; }
+	ostream& operator<<(ostream& out);
 	int getCont() { return cantJugxPer; }
 };

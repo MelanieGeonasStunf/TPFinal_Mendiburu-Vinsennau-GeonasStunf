@@ -253,7 +253,7 @@ unsigned int cListaT<T>::getItemPos(string clave)
 template<class T>
 ostream& operator<<(ostream& out, cListaT<T>& object)//CORREGIR
 {
-	for (int i = 0; i < object->getCA(); i++) {
+	for (int i = 0; i < object.getCA(); i++) {
 		out << object<< endl;
 	}
 	return out;

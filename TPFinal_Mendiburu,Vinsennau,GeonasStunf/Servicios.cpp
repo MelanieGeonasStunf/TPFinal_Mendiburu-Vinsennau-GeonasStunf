@@ -11,11 +11,11 @@ Servicios::Servicios(const string clave,  const string nombre,int cantP, Paises*
 	rangoE = rango;
 }
 
-string Servicios::tostring()
+ostream& Servicios::operator<<(ostream& out)
 {
 	string cadena;
-	cadena += "\nClave: " + Clave + "\nNombre: " + Nombre;
-	return cadena;
+	out<< "\nClave: " <<Clave <<"\nNombre: "<< Nombre<<endl;
+	return out;
 }
 
 Servicios::~Servicios(){

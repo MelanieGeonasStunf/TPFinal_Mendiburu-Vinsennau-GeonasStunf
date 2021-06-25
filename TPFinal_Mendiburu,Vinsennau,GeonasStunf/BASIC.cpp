@@ -36,7 +36,6 @@ void BASIC::SeleccionarServicio(cListaT<Servicios>* serv)
 {
 	int pos = rand() % (serv->getCA());
 	//int pos = 1;
-	if()
 
 	if ((*serv)[pos] != NULL)
 	{

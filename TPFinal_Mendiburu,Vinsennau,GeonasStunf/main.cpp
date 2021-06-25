@@ -21,6 +21,7 @@ int main()
 	// creamos archivo
 	//Leemos archivo
 	Labflix->m_Servicios = new cListaT<Servicios>();
+	Servicios(Labflix->m_Servicios );
 	Paises paisJ[4] = { Francia, Colombia, Argentina, España };
 	Servicios* juego1 = new Juegos("789", "Pacwomen", 4, paisJ, nino ,2021);
 	*Labflix->m_Servicios + juego1;
@@ -98,8 +99,8 @@ int main()
 		semana = tick();
 
 	} while (semana==false);
-	cout << *(plataforma->getUsuarios());
-	cout<<*(plataforma->get)
+	cout << *(Labflix->getUsuarios());
+	//cout << *(plataforma->get);
 
 	tm FechaFin = setLocalTime();
 	if (semana == true)

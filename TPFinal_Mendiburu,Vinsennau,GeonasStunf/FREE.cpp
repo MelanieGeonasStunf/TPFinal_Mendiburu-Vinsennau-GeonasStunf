@@ -1,13 +1,15 @@
 #include "FREE.h"
 #include "Plataforma.h"
+//#include "funciones.h"
+
+
 
 
 FREE::FREE(int Edad, Paises Pais, string Password, const string Name,string* tarjeta):
 	Usuarios(Edad, Pais, Password, Name,tarjeta)
 {
 	calidad = false;
-	tiempoConex = { 0,0,0 };
-	tm primeringreso = { 0,0,0 };
+	tiempoConex = 0;
 	int contador = 0;
 	//ServAElegir = new Servicios*[10];
 }
@@ -93,7 +95,7 @@ void FREE::SeleccionarServicio(cListaT<Servicios>* serv)
 	cListaT<Servicios>* aElegir=VariarLista(serv);
 	int pos = rand() % 10;
 	//int pos = 1;
-	if(tiempoconex>54000)
+	if(tiempoConex>54000)
 		throw new exception("\nHa superado su limite semanal.");
 	if ((*aElegir)[pos] != NULL)
 	{
@@ -138,9 +140,9 @@ void FREE::SeleccionarServicio(cListaT<Servicios>* serv)
 void FREE::settiempoConex()
 {
 	FechayHoraInicio.tm_year = (FechayHoraInicio).tm_year - 1900;
-	FechayHoraFin.tm_year = (FechayHoraFin).tm_year - 1900;
-	i = mktime(FechayHoraInicio);
-	f = mktime(FechayHoraCierre);
+	FechayHoraCierre.tm_year = (FechayHoraCierre).tm_year - 1900;
+	time_t* i = mktime(FechayHoraInicio);
+	time_t* f = mktime(FechayHoraCierre);
 	long int tiempo = difftime(f, i);
 	tiempoConex = tiempoConex + tiempo;
 }

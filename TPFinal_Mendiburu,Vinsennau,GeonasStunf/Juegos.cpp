@@ -31,8 +31,20 @@ void Juegos::GuardarProgreso(RegistroJuegos* reg){
 }
 void Juegos::IniciarServicio()
 {
+	time_t rawtime;
+	time(&rawtime);
+	tm* hoy = localtime(&rawtime);
+	tiempoInicio = hoy;
 }
-RegistroJuegos* Juegos::RegistrarenRegistro(const string userName){
-	RegistroJuegos* reg = new RegistroJuegos(this->Nombre, userName);//wtf  //jajajajaja no se
+
+RegistroJuegos* Juegos::RegistrarenRegistro(const string userName) 
+{
+	RegistroJuegos* reg = new RegistroJuegos(this->Nombre, userName);
 	return reg;
+}
+
+ostream& Juegos::operator<<(ostream&out){
+	 Servicios& P=*this;
+	  out << &P;
+	  out<< "\nNivel final: " << to_string(NivelFinal) << endl;
 }
