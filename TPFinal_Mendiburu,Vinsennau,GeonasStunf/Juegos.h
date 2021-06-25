@@ -12,6 +12,7 @@ private:
 	int NivelFinal;
 	bool Finalizado;//completo todos los niveles?
 	int cantJugxPer;
+	tm tiempoInicio;
 	//string NombreJuego;->nombre ya esta en servicios
 
 public:

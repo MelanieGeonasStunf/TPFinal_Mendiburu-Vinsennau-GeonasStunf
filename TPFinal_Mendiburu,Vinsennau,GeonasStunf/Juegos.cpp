@@ -6,13 +6,15 @@ Juegos::Juegos(const string clave, const string nombre, int cantP, Paises* paise
 {
 	this->NivelFinal = NivelFinal;
 	Finalizado = false;
+	tiempoInicio = { 0,0,0 };
 	cantJugxPer = 0;
 }
 
 Juegos::Juegos(Juegos& juego) :Servicios(juego)
 {
-NivelFinal=juego.NivelFinal;
-Finalizado = juego.Finalizado;
+	NivelFinal=juego.NivelFinal;
+	tiempoInicio = { 0,0,0 };
+	Finalizado = juego.Finalizado;
 }
 
 Juegos::~Juegos(){
@@ -34,7 +36,7 @@ void Juegos::IniciarServicio()
 	time_t rawtime;
 	time(&rawtime);
 	tm* hoy = localtime(&rawtime);
-	tiempoInicio = hoy;
+	tiempoInicio = *hoy;
 }
 
 RegistroJuegos* Juegos::RegistrarenRegistro(const string userName) 
@@ -47,4 +49,5 @@ ostream& Juegos::operator<<(ostream&out){
 	 Servicios& P=*this;
 	  out << &P;
 	  out<< "\nNivel final: " << to_string(NivelFinal) << endl;
+	  return out;
 }

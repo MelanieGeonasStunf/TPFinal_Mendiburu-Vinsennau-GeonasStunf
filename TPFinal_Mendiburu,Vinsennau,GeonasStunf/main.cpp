@@ -32,7 +32,7 @@ int main()
 	*Labflix->m_Servicios + audio1;
 
 	Paises paisAV[7] = { Chile, EstadosUnidos, Bolivia, Paraguay, Venezuela , Canada, Peru};
-	Servicios* audioyvideo1 = new AudioVisual("911", "Sobreviviendo Favaloro", 7, paisAV, adulto,{ 12, 5, 02 },1);//hay que hacer un enum de servicios
+	Servicios* audioyvideo1 = new AudioVisual("911", "Sobreviviendo Favaloro", 7, paisAV, adulto,{ 12, 5, 02 });//hay que hacer un enum de servicios
 	*Labflix->m_Servicios + audioyvideo1;
 
 
@@ -101,8 +101,8 @@ int main()
 			
 		}
 		system("pause");
-		//semana = tick();
-		semana = true;
+		semana = tick();
+		//semana = true;
 
 	} while (semana==false);
  	cout << *(Labflix->getUsuarios());

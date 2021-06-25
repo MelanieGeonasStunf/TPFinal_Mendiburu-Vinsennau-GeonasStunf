@@ -7,7 +7,7 @@ FREE::FREE(int Edad, Paises Pais, string Password, const string Name,string* tar
 {
 	tiempoConex = 0;
 	//int contador = 0;
-	primeringreso = { 0,0,0 };
+	//primeringreso = { 0,0,0 };
 	contadorsem = 0;
 	//ServAElegir = new Servicios*[10];
 }
@@ -22,7 +22,7 @@ FREE::FREE(Usuarios& user):Usuarios(user)
 {
 	tiempoConex = 0;
 	//int contador = 0;
-	primeringreso = { 0,0,0 };
+	//primeringreso = { 0,0,0 };
 	contadorsem = 0;
 }
 

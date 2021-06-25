@@ -5,7 +5,7 @@
 class Usuarios;
 
 AudioVisual::AudioVisual(const string clave, const string nombre, int cantP, 
-	Paises* paises, RangoEtareo rango, tm duracion, int Tipo )
+	Paises* paises, RangoEtareo rango, tm duracion)
 	:Servicios( clave, nombre, cantP, paises,rango)
 {
 	this->tiempoInicio = { 0,0,0 };
@@ -26,7 +26,7 @@ AudioVisual::~AudioVisual(){
 
 
 
-bool AudioVisual::FastBackward(long int& time,long int&TiempoR){
+bool AudioVisual::FastBackward(long int& time,long int& TiempoR){
 	long int TiempRep = TiempoR - time;
 	/*long int dur = duracion.tm_hour * 3600 + duracion.tm_min * 60 + duracion.tm_sec;
 	long int faltante = dur - TiempRep;*/

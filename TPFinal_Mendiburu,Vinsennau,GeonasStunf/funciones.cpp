@@ -404,7 +404,7 @@ void Servicios_(cListaT<Servicios>* p){
 	Paises paisAV2[2] = { EstadosUnidos,Canada };
 	Servicios* juego2 = new Juegos("662", "subway surfers", 4, paisJ2, nino ,2014);
 	Servicios* audio2 = new Audio("152", "Mamma Mia", 3, paisA2, adolescente, { 12, 05, 00 });
-	Servicios* audioyvideo2 = new AudioVisual("982", "Fast&Fourious", 2, paisAV2, adulto,{ 03, 54, 04 },1);
+	Servicios* audioyvideo2 = new AudioVisual("982", "Fast&Fourious", 2, paisAV2, adulto,{ 03, 54, 04 });
 	*p + juego2;
 	*p + audio2;
 	*p + audioyvideo2;
@@ -414,7 +414,7 @@ void Servicios_(cListaT<Servicios>* p){
 	Paises paisAV3[2] = { Australia};
 	Servicios* juego3 = new Juegos("831", "minecraft", 2, paisJ3, adolescente ,2014);
 	Servicios* audio3 = new Audio("670", "Kiwi", 1, paisA3, adulto, { 56, 02, 00 });
-	Servicios* audioyvideo3 = new AudioVisual("42", "Buscando a Nemo", 1, paisAV3, nino,{ 03, 54, 04 },1);
+	Servicios* audioyvideo3 = new AudioVisual("42", "Buscando a Nemo", 1, paisAV3, nino,{ 03, 54, 04 });
 	*p + juego3;
 	*p + audio3;
 	*p + audioyvideo3;
@@ -424,7 +424,7 @@ void Servicios_(cListaT<Servicios>* p){
 	Paises paisAV4[1] = {Chile};
 	Servicios* juego4 = new Juegos("021", "Temple Run", 3, paisJ4, nino ,2011);
 	Servicios* audio4 = new Audio("962", "Dangerous Woman", 2, paisA4, adolescente, { 35, 04, 01 });
-	Servicios* audioyvideo4 = new AudioVisual("156", "Rey Leon", 1, paisAV4, adolescente,{ 01, 0, 02 },1);
+	Servicios* audioyvideo4 = new AudioVisual("156", "Rey Leon", 1, paisAV4, adolescente,{ 01, 0, 02 });
 	*p + juego4;
 	*p + audio4;
 	*p + audioyvideo4;
