@@ -134,5 +134,5 @@ RegistroAyV* Audio::RegistrarenRegistro(Usuarios* user,bool visto) //no se si ha
   Servicios& P=*this;
 	  out << &P;
 	  out<< "\nDuracion: " << to_string(duracion.tm_hour) << ":"
-		  << to_string(duracion.tm_min) << ":"to_string(duracion.tm_sec) << endl;
+		  << to_string(duracion.tm_min) << ":" << to_string(duracion.tm_sec) << endl;
   }
