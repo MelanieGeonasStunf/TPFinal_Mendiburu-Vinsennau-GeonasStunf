@@ -167,8 +167,8 @@ istream& Usuarios::operator>>(istream& in) {
 }
 ostream& Usuarios::operator<<(ostream& out)
 {
-	out<<"\nUser Name:"<<Clave<<"\nContrasenia:"<<Encriptar(Password)<<"\nServicio:"
-	<<(*servicio)<<"\nEdad:"<<Edad<<"\nPais:"<<Pais<<"\nTarjeta:"<<Encriptar(tarjeta)<<endl;
+	out<<"\nUser Name:"<< UserName<<"\nContrasenia:"<<Encriptar(Password)<<"\nServicio:"
+	<<(*servicio)<<"\nEdad:"<<Edad<<"\nPais:"<<Pais<<"\nTarjeta:"<<Encriptar(*tarjeta)<<endl;
 	return out;
 }
 
